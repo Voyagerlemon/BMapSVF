@@ -19,11 +19,11 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
-    "@commitlint/cz-commitlint": "^17.5.0",
     "@rollup/plugin-alias": "^4.0.3",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
     "commitizen": "^4.3.0",
+    "commitlint-config-cz": "^0.13.3",
     "cz-conventional-changelog": "3.3.0",
     "cz-customizable": "^7.0.0",
     "eslint": "^8.37.0",
@@ -31,12 +31,28 @@
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.10.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "postcss": "^8.4.21",
     "postcss-pxtorem": "^6.0.0",
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "tailwindcss": "2.2.16",
     "vite": "^4.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{vue,js}": [
+      "yarn lint"
+    ],
+    "src/**/*.{json,md,css,scss}": [
+      "prettier --write"
+    ]
   },
   "config": {
     "commitizen": {
