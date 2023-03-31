@@ -154,3 +154,4 @@ https://yarnpkg.com/package/commitizen
 - `yarn add commitizen -D`--- 局部安装commitizen, 辅助填写提交信息
 - `yarn add cz-conventional-changelog -D` --- 基于conventional-changelog 规范的适配器
 - `yarn add cz-customizable -D` --- 支持自定义的适配器
+- `yarn add @@commitlint/cli @commitlint/config-conventional husky lint-staged`
