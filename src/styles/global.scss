@@ -48,23 +48,4 @@ body {
 .fade-leave-to {
   opacity: 0;
 }
-.ivu-btn {
-  // color: #00b3ff;
-  // background: rgba(0, 19, 27, 0.7);
-  //border: 1px solid rgba(0, 179, 255, 0.32);
-
-  // 使用白色字体 透明背景 鼠标悬停蓝紫色高亮
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0);
-  /* &:hover {
-    @apply border-primary;
-  } */
-}
-.ivu-btn-primary {
-  color: #ffffff;
-  background-color: #00b3ff;
-  border-color: #00b3ff;
-  :hover {
-    color: #ffffff;
-  }
-}
+/* 微应用使用的样式 */
