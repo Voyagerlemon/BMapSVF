@@ -2,22 +2,22 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-03-30 22:19:00
+ * @LastEditTime: 2023-04-01 21:37:36
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: 系统界面布局
 -->
 <template>
-  <div id="sceneViewer" class="absolute flex flex-col w-full h-full">
-    <div class="w-full h-full relative overflow-hidden scene-viewer">
+  <div id="screenViewer" class="absolute flex flex-col w-full h-full">
+    <div class="w-full h-full relative overflow-hidden screen-viewer">
       <div class="flex flex-1 h-full relative">
-        <div id="sceneWrapper" class="relative h-full w-full"></div>
+        <div id="screenWrapper" class="relative h-full w-full"></div>
         <div
-          id="sceneTool"
-          class="absolute pointer-events-none scene-tool"
+          id="screenTool"
+          class="absolute pointer-events-none screen-tool"
         ></div>
       </div>
       <div
-        id="sceneLeft"
+        id="screenLeft"
         class="absolute top-0 left-0 bottom-0 bg-digit bg-opacity-70 border border-digitline border-opacity-30 border-l-0"
       ></div>
       <div
@@ -31,8 +31,8 @@
 import { reactive } from "vue";
 </script>
 <style lang="scss" scoped>
-.scene-viewer {
-  .scene-tool {
+.screen-viewer {
+  .screen-tool {
     top: 0.94rem;
     left: 0.94rem;
     right: 0.94rem;
