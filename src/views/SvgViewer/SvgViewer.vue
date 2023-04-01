@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:26:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-03-30 20:52:40
+ * @LastEditTime: 2023-04-01 11:47:55
  * @FilePath: \BMapSVF-Client\src\views\SvgViewer\SvgViewer.vue
  * @Description: svg图标预览组件
 -->
@@ -34,6 +34,7 @@ const getIcons = () => {
 async function handleIconClick(iconName) {
   await navigator.clipboard.writeText(`<SvgIcon iconName="${iconName}" />`);
   Message.success({
+    background: true,
     content: `${iconName}图标代码已复制到剪切板`,
     duration: 3
   });

@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2022-12-05 15:40:45
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-03-30 20:52:47
+ * @LastEditTime: 2023-04-01 11:44:12
  * @FilePath: \ce-map3d\src\views\SvgViewer\components\SvgRegister.vue
  * @Description: Svg图标注册
 -->
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   iconName: String,
   className: {
     type: String,
