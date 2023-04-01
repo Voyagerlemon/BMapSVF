@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 20:20:59
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-01 11:22:54
+ * @LastEditTime: 2023-04-01 22:15:29
  * @FilePath: \BMapSVF-Client\tailwind.config.cjs
  * @Description: Tailwind CSS配置
  */
@@ -30,6 +30,7 @@ module.exports = {
       base: "0.93rem",
       xl: "1.04rem",
       lg: "1.25rem",
+      llg: "1.5rem",
       xxl: "1.67rem"
     },
     // 自定义全局颜色

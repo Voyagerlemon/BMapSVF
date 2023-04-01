@@ -2,12 +2,13 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-01 21:37:36
+ * @LastEditTime: 2023-04-01 22:04:09
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: 系统界面布局
 -->
 <template>
   <div id="screenViewer" class="absolute flex flex-col w-full h-full">
+    <top-header :logoUrl="logoUrl" :appTitle="appTitle"></top-header>
     <div class="w-full h-full relative overflow-hidden screen-viewer">
       <div class="flex flex-1 h-full relative">
         <div id="screenWrapper" class="relative h-full w-full"></div>
@@ -28,7 +29,13 @@
   </div>
 </template>
 <script setup>
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
+import TopHeader from "./components/Header.vue";
+const logoUrl = reactive({
+  name: "system icon",
+  path: "/fisheye.png"
+});
+const appTitle = ref("BMapSVF");
 </script>
 <style lang="scss" scoped>
 .screen-viewer {
