@@ -48,11 +48,15 @@
 **使用`yarn commit`**
 
 - feat: 新特性，新功能
-- fix: 修改问题
+- fix: 修复bug
+- merge: 合并
+- perf: 性能优化
 - refactor: 代码重构
 - docs: 文档修改
 - style: 代码格式修改, 注意不是 css 修改
-- chore: 其他修改, 比如构建流程, 依赖管理.
+- chore: 其他修改, 比如构建流程, 依赖管理
+- test: 测试
+- version: 版本发布
 - scope: commit 影响的范围, 比如: route, component, utils, build...
 
 
