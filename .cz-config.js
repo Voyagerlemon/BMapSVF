@@ -1,3 +1,11 @@
+/*
+ * @Author: xuhy 1727317079@qq.com
+ * @Date: 2023-03-31 20:48:36
+ * @LastEditors: xuhy 1727317079@qq.com
+ * @LastEditTime: 2023-04-01 11:32:40
+ * @FilePath: \BMapSVF-Client\.cz-config.js
+ * @Description: cz-customizable配置文件
+ */
 module.exports = {
   types: [
     { value: "feat", name: "✨ feat:  新增feature" },
@@ -21,7 +29,7 @@ module.exports = {
     { value: "test", name: "✅ test:  增加测试，包括单元测试、集成测试等" },
     {
       value: "version",
-      name: "📌 version:  版本部署"
+      name: "📌 version:  版本发布"
     }
   ],
 
