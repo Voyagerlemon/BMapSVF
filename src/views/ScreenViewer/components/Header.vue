@@ -26,7 +26,7 @@ defineProps({
   }
 });
 </script>
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .app-header {
   height: 3.63rem;
   z-index: 99;
