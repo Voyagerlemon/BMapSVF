@@ -1,4 +1,4 @@
-# 三维空间数字化系统
+# 城市天空可视域数字化系统
 
 ## feature
 
@@ -25,22 +25,25 @@
 │ ├── assets ---------------------------- 静态文件，一般用来放图片
 │ ├── components ------------------------ 全局组件
 │ │ ├── FuncPanel ---------------------------- 全局功能组件
-│ ├── svg ------------------------------  icon 管理
+│ ├── svg ------------------------------  svg图标
 │ ├── initAppConfig.js --------------------- 初始化系统配置信息
 │ ├── layout ---------------------------- layout 层管理
-│ ├── main.js --------------------------- app 入口
-│ ├── router ---------------------------  路由表管理
+│ ├── main.js --------------------------- app 入口文件
+│ ├── router ---------------------------  路由
 │ ├── store ----------------------------  Pinia
 │ ├── styles ---------------------------- 全局 css 和 scss 函数变量
 │ ├── utils ----------------------------- 工具函数管理
 │ ├── views ----------------------------- 子系统页面模块
 │ └── widgets ---------------------------- 全局widgets组件
-├── vue.config.js
-├── babel.config.js
-├── jsconfig.json
+├── vite.config.js
+├── .cz-config.js
+├── .commitlintrc.js
+├── .prettierrc
 ├── package.json
+├── package-lock.json
 ├── postcss.config.js
-├── prettier.config.js
+├── tailwind.config.js
+├── README.md
 ├── yarn.lock
 ```
 
@@ -61,7 +64,7 @@
 - scope: commit 影响的范围, 比如: route, component, utils, build...
 
 
-## 安装包说明
+## 安装与配置说明
 ### svg图标处理
 - `yarn add vite-plugin-svg-icons` ---在vite构建工具中处理svg图标
 - `yarn add fast-glob` --- 快速进行文件遍历, 解析完成后缓存处理
@@ -160,3 +163,5 @@ https://yarnpkg.com/package/commitizen
 - `yarn add cz-conventional-changelog -D` --- 基于conventional-changelog 规范的适配器
 - `yarn add cz-customizable -D` --- 支持自定义的适配器
 - `yarn add @@commitlint/cli @commitlint/config-conventional husky lint-staged`
+### axios
+- `yarn add axios -S`
