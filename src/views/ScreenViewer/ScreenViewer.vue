@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-02 10:23:51
+ * @LastEditTime: 2023-04-02 11:36:39
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: 系统界面布局
 -->
@@ -29,14 +29,21 @@
   </div>
 </template>
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import TopHeader from "./components/Header.vue";
+import { getWidgetConfig } from "@/api/public";
 const logoUrl = reactive({
   name: "system icon",
   path: "/fisheye.png"
 });
 const appTitle = ref("BMapSVF");
-
+const getDataSource = async () => {
+  const res = await getWidgetConfig("DataResource");
+  console.log(res);
+};
+onMounted(() => {
+  getDataSource();
+});
 /* async function initApp() {
   const { appId } = this.$route.params;
   this.$store.dispatch("app/setAppId", appId);
