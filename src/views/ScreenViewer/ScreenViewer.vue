@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-01 22:04:09
+ * @LastEditTime: 2023-04-02 10:23:51
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: 系统界面布局
 -->
@@ -36,6 +36,21 @@ const logoUrl = reactive({
   path: "/fisheye.png"
 });
 const appTitle = ref("BMapSVF");
+
+/* async function initApp() {
+  const { appId } = this.$route.params;
+  this.$store.dispatch("app/setAppId", appId);
+  this.setAppInfo(appId);
+  const resources = await getResourceTree(appId);
+  const resourceMap = handleResource("app", resources);
+  this.$store.dispatch("widget/setResourceMap", resourceMap);
+  const sceneInfo = resourceMap["Scene"];
+  if (!sceneInfo) {
+    this.$Message.info("资源中不存在场景组件");
+    return;
+  }
+  this.initSceneWidget();
+} */
 </script>
 <style lang="scss" scoped>
 .screen-viewer {
