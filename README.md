@@ -157,6 +157,7 @@ app.component("SvgIcon", SvgIcon);
 - `yarn add  eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue eslint-plugin-html prettier -D`
 ### Pinia---Vue的专属状态管理库
 - `yarn add pinia` ---https://pinia.vuejs.org/zh/getting-started.html
+- `yarn add pinia-plugin-persist -S` ---实现数据持久化功能
 ### yarn commit
 https://yarnpkg.com/package/commitizen
 - `yarn add commitizen -D`--- 局部安装commitizen, 辅助填写提交信息
