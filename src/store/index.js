@@ -2,12 +2,12 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-03 10:24:15
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-03 10:48:54
+ * @LastEditTime: 2023-04-03 10:55:54
  * @FilePath: \BMapSVF-Client\src\store\index.js
  * @Description: store核心文件
  */
 import { createStore } from "vuex";
-
+import createPersistedState from "vuex-persistedstate";
 //异步方式
 const modulesFiles = import.meta.glob("./modules/*.js", { eager: true });
 
@@ -32,7 +32,13 @@ const store = createStore({
       this.dispatch("app/setMainAppProp", mainAppProp);
       this.dispatch("app/setConfig", config);
     }
-  }
+  },
+  plugins: [
+    createPersistedState({
+      key: "vuex-local", //存储持久状态的键。（默认：vuex）
+      paths: ["index"]
+    })
+  ]
 });
 
 export default store;
