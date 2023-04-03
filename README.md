@@ -30,7 +30,7 @@
 │ ├── layout ---------------------------- layout 层管理
 │ ├── main.js --------------------------- app 入口文件
 │ ├── router ---------------------------  路由
-│ ├── store ----------------------------  Pinia
+│ ├── store ----------------------------  Vuex
 │ ├── styles ---------------------------- 全局 css 和 scss 函数变量
 │ ├── utils ----------------------------- 工具函数管理
 │ ├── views ----------------------------- 子系统页面模块
@@ -155,7 +155,9 @@ app.component("SvgIcon", SvgIcon);
 - `yarn add tailwindcss@2.2.16 postcss@latest autoprefixer@latest -D`---https://www.tailwindcss.cn/docs/installation
 ### eslint与prettier
 - `yarn add  eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue eslint-plugin-html prettier -D`
-### Pinia---Vue的专属状态管理库
+### Pinia---Vue的专属状态管理库(本项目使用了Vuex, Pinia作为下次版本更新)
+- `yarn add vuex -S`
+- `yarn add vuex-persistedstate -S` --- 解决刷新数据无保存的问题
 - `yarn add pinia` ---https://pinia.vuejs.org/zh/getting-started.html
 - `yarn add pinia-plugin-persist -S` ---实现数据持久化功能
 ### yarn commit
