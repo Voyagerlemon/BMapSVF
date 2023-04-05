@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 16:00:53
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-03 10:46:59
+ * @LastEditTime: 2023-04-04 22:21:27
  * @FilePath: \BMapSVF-Client\src\main.js
  * @Description: 入口文件相关配置
  */
@@ -25,9 +25,14 @@ import store from "@/store";
 import widgets from "@/widgets";
 store.dispatch("widget/setWidgets", widgets);
 
+import BaiduMap from "vue-baidu-map-3x";
+
 const app = createApp(App);
 app.component("SvgIcon", SvgIcon);
 app.use(store);
 app.use(router);
 app.use(ViewUIPlus);
+app.use(BaiduMap, {
+  ak: "S8q6KqpIytjZ9wR2Y3VnsCWjqzkiVUf8"
+});
 app.mount("#app");

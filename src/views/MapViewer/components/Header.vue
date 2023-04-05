@@ -1,6 +1,14 @@
+<!--
+ * @Author: xuhy 1727317079@qq.com
+ * @Date: 2023-04-01 22:34:27
+ * @LastEditors: xuhy 1727317079@qq.com
+ * @LastEditTime: 2023-04-04 10:37:44
+ * @FilePath: \BMapSVF-Client\src\views\MapViewer\components\Header.vue
+ * @Description: 头部组件
+-->
 <template>
   <div
-    class="app-header flex justify-between text-default bg-digit bg-opacity-70"
+    class="app-header flex justify-between text-default bg-primary"
   >
     <div class="app-container flex items-center">
       <img
@@ -10,7 +18,7 @@
         class="app-logo"
         alt="logo"
       />
-      <span class="app-title text-llg font-bold text-default">
+      <span class="app-title text-xxl font-bold text-default">
         {{ appTitle }}
       </span>
     </div>
@@ -38,8 +46,8 @@ defineProps({
     }
     .app-logo {
       cursor: pointer;
-      width: 2.05rem;
-      height: 2.05rem;
+      width: 3.05rem;
+      height: 3.05rem;
     }
   }
 }

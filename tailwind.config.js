@@ -2,12 +2,12 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 20:20:59
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-01 22:15:29
+ * @LastEditTime: 2023-04-04 14:41:44
  * @FilePath: \BMapSVF-Client\tailwind.config.cjs
  * @Description: Tailwind CSS配置
  */
 module.exports = {
-  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  purge: ["./index.html", "./src/**/*.{html,vue,js,scss}"],
   darkMode: false, // or 'media' or 'class' // 关闭深色模式变体
   theme: {
     // 响应设置
@@ -30,16 +30,13 @@ module.exports = {
       base: "0.93rem",
       xl: "1.04rem",
       lg: "1.25rem",
-      llg: "1.5rem",
       xxl: "1.67rem"
     },
     // 自定义全局颜色
     colors: {
       transparent: "transparent",
       default: "#ffffff",
-      digit: "#00131B",
-      digitline: "#00B3FF",
-      primary: "#00B3FF",
+      primary: "#3e75fc",
       secondary: "#3eb1fc",
       dark: "#0a2a7a",
       gradient: "linear-gradient(#2e75fc, #6323ff)",

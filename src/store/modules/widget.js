@@ -1,7 +1,7 @@
 /*
  * @Author: Lauxb
  * @Date: 2021-02-25 13:05:44
- * @LastEditTime: 2023-04-03 10:46:23
+ * @LastEditTime: 2023-04-03 16:41:28
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 微件状态管理
  */
@@ -39,11 +39,11 @@ const widget = {
     [SET_WIDGET_MAP](state, data) {
       state.widgetMap = data;
     },
-    [SET_ACTIVE_MAP](state, { name, widget }) {
-      // Vue.set(state.activeMap, name, widget);
+    [SET_ACTIVE_MAP](state, widget) {
+      state.activeMap.name = widget;
     },
-    [DELETE_ACTIVE_WIDGET](state, name) {
-      //Vue.delete(state.activeMap, name);
+    [DELETE_ACTIVE_WIDGET](state) {
+      state.activeMap.name = null;
     },
     [CLEAR_ACTIVE_MAP](state) {
       state.activeMap = {};

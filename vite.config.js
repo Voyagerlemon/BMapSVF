@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 16:00:53
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-03-30 11:14:52
+ * @LastEditTime: 2023-04-03 13:58:39
  * @FilePath: \BMapSVF-Client\vite.config.js
  * @Description: vite配置文件
  */
@@ -11,6 +11,7 @@ import vue from "@vitejs/plugin-vue";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import { resolve } from "path";
 import alias from "@rollup/plugin-alias";
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [

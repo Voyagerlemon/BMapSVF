@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-03 10:24:15
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-03 10:55:54
+ * @LastEditTime: 2023-04-03 22:45:37
  * @FilePath: \BMapSVF-Client\src\store\index.js
  * @Description: store核心文件
  */
@@ -17,7 +17,6 @@ for (const [key, value] of Object.entries(modulesFiles)) {
   const name = moduleName.split("/")[1];
   modules[name] = value.default;
 }
-
 const store = createStore({
   modules,
   actions: {

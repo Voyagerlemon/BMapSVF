@@ -1,0 +1,12 @@
+{
+  "camara": {
+    "x": 119.5046,
+    "y": 29.8609,
+    "z": 250000,
+    "heading": 0,
+    "pitch": -90,
+    "roll": 360
+  },
+  "showFrameRate": true,
+  "isShowGlobe": false
+}

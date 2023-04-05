@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:26:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-01 11:47:55
+ * @LastEditTime: 2023-04-04 10:20:24
  * @FilePath: \BMapSVF-Client\src\views\SvgViewer\SvgViewer.vue
  * @Description: svg图标预览组件
 -->
@@ -47,7 +47,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .icon-view {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   font-size: 35px;
   display: flex;
   flex-direction: column;
@@ -61,7 +61,6 @@ onMounted(() => {
   .icons {
     display: flex;
     flex-wrap: wrap;
-    height: 100%;
     overflow: auto;
     justify-content: space-between;
     .icon {
