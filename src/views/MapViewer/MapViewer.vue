@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-04 22:53:39
+ * @LastEditTime: 2023-04-06 13:08:38
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: 系统界面布局
 -->
@@ -10,17 +10,9 @@
   <div id="sceneViewer" class="absolute flex flex-col w-full h-full">
     <top-header :logoUrl="logoUrl" :appTitle="appTitle"></top-header>
     <div class="flex flex-row flex-1 w-full overflow-hidden scene-viewer">
-      <div
-        id="sceneLeft"
-        class="bg-transparent border-2 border-primary border-opacity-70 border-l-0"
-      >
-        <LeftCollapse></LeftCollapse>
-        >
-      </div>
       <div class="flex flex-1 relative">
-        <div id="sceneWrapper" class="relative h-full w-full"><Map></Map></div>
+        <div id="sceneWrapper" class="relative h-full w-full"></div>
         <div id="sceneTool" class="absolute pointer-events-none scene-tool">
-          <MapTool></MapTool>
         </div>
       </div>
       <div
@@ -37,9 +29,6 @@ import TopHeader from "./components/Header.vue";
 import { useStore } from "vuex";
 import { getResourceTree } from "@/api/public";
 import { handleResource } from "@/utils/permission/permission";
-import Map from "@/widgets/Map";
-import LeftCollapse from "@/widgets/LeftCollapse";
-import MapTool from "@/widgets/MapTool";
 const logoUrl = reactive({
   name: "system icon",
   path: "/fisheye.png"
@@ -50,16 +39,23 @@ const store = useStore();
 watch(
   () => store.state.map.mapLoaded,
   data => {
-    console.log("watch mapLoaded: ", data);
-  },
-  { immediate: true }
+    if (data) {
+      console.log("watch mapLoaded: ", data);
+      const resourceMap = store.getters["widget/resourceMap"];
+      const layouts = resourceMap["app"]["children"].filter(
+        item => item.name !== "Map"
+      );
+      initWidgets(layouts);
+      store.dispatch("map/setMapLoaded", false);
+    }
+  }
 );
 const initApp = async () => {
   const resources = await getResourceTree("resourceMap");
   const resourceMap = handleResource("app", resources);
   store.dispatch("widget/setResourceMap", resourceMap);
-  const sceneInfo = resourceMap["Map"];
-  if (!sceneInfo) {
+  const mapInfo = resourceMap["Map"];
+  if (!mapInfo) {
     Message.info({
       background: true,
       content: "资源中不存在地图组件",
@@ -67,9 +63,9 @@ const initApp = async () => {
     });
     return;
   }
-  initSceneWidget();
+  initMapWidget();
 };
-const initSceneWidget = () => {
+const initMapWidget = () => {
   store.dispatch("widget/openWidget", {
     name: "Map",
     prop: {

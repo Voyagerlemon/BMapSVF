@@ -15,30 +15,30 @@
     "pid": "-1"
   },
   {
-    "id": "603d9b2c471839b87319508c",
-    "name": "LeftCollapse",
-    "label": "数据资源",
-    "srcId": "5f924c9ac965d1faae92ad20",
+    "id": "603d9b2cfd2d8ba9731950a1",
+    "name": "MapTool",
+    "label": "地图工具",
+    "srcId": "5f924d2580f640d1ae92ae1c",
     "srcpId": "5f90e2434781b880fe9f5088",
     "needed": "0",
-    "configId": "603d9b2c1265bc9b7319508a",
+    "configId": "603d9b2cf9a72c477319509f",
     "type": 2,
     "needTitle": null,
-    "position": 1,
+    "position": 2,
     "children": [
       {
-        "id": "603d9b2c54dc477073195096",
-        "name": "DataResource",
-        "label": "数据目录",
-        "srcId": "5f924ce3c54edbfdae92adb7",
+        "id": "5fdc183f5ddd8a051936cf72",
+        "name": "ToolBox",
+        "label": "工具箱",
+        "srcId": "5f96b844192875dc260ea30f",
         "srcpId": null,
         "needed": "0",
-        "configId": "603d9b2c1d6b4a0f73195099",
-        "type": 4,
+        "configId": "5fdc183fb171acef1936cf75",
+        "type": 2,
         "needTitle": null,
-        "position": 1,
+        "position": 6,
         "children": null,
-        "pid": "603d9b2c471839b87319508c"
+        "pid": "5fdc182fe9f710d01936cedf"
       }
     ],
     "pid": "-1"

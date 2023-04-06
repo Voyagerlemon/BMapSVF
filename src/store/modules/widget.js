@@ -1,7 +1,7 @@
 /*
  * @Author: Lauxb
  * @Date: 2021-02-25 13:05:44
- * @LastEditTime: 2023-04-03 16:41:28
+ * @LastEditTime: 2023-04-05 21:15:22
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 微件状态管理
  */
@@ -66,7 +66,7 @@ const widget = {
       commit(SET_WIDGET_MAP, dataMap);
     },
     async openWidget({ state }, { name, prop }) {
-      const widgetInfo = state.widgetMap[name.replace(/\d+/g, "")];
+      const widgetInfo = state.widgetMap[name];
       if (!widgetInfo) {
         console.error(`Widget:${name}不存在`);
         return;
@@ -83,10 +83,6 @@ const widget = {
       }
       if (widgetInfo.meta.isMutex) {
         closeMutexWidget(state.activeMap);
-      }
-
-      if (prop.label) {
-        widgetInfo.meta.label = prop.label;
       }
       await openWidget(widgetInfo, { ...prop, config });
       return true;

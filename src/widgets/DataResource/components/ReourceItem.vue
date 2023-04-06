@@ -1,7 +1,7 @@
 <!--
  * @Author: Lauxb
  * @Date: 2021-03-11 14:05:31
- * @LastEditTime: 2023-04-04 11:35:59
+ * @LastEditTime: 2023-04-05 16:18:39
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 右侧操作按钮组件
 -->
@@ -188,7 +188,7 @@ export default {
   .svg-icon {
     margin-right: 0.73rem;
   }
- :deep .ivu-poptip {
+ :deep(.ivu-poptip) {
     @apply h-full;
     .ivu-poptip-rel {
       @apply h-full;

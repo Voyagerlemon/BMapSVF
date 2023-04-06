@@ -4,7 +4,7 @@
     style="transition: ease-in-out all 0.3s"
     class="relative h-full left-collapse"
   >
-     <Collapse accordion simple v-model="activeName">
+    <Collapse accordion simple v-model="activeName">
       <Panel hide-arrow v-for="item in panels" :name="item.name" :key="item.id">
         <div
           class="flex w-full h-full items-center text-sm font-bold text-dark bg-default collapse-header"
@@ -14,9 +14,9 @@
         >
       </Panel>
     </Collapse>
-    <!--  <div class="flex items-center bg-neutral-5 text-neutral-3 reset-wrapper">
+     <div class="flex items-center bg-neutral-5 text-neutral-3 reset-wrapper">
       <div class="flex items-center cursor-pointer" @click="reset">
-        <SvgIcon className="w-4 h-4" iconName="reset-setting" />
+        <SvgIcon className="w-4 h-4 reset-icon" iconName="reset-setting" />
         <span>重置</span>
       </div>
       <div class="flex-1 tip">
@@ -33,7 +33,7 @@
           </span>
         </div>
       </div>
-    </div> -->
+    </div>
     <div
       class="absolute flex flex-col justify-center items-center text-default cursor-pointer collapse-button"
       @click="collapsePanel"
@@ -62,15 +62,12 @@ const init = async () => {
   const resourceMap = await getWidgetConfig("DataResource");
   const resources = handleResource("app", resourceMap);
   const leftResources = resources.app.children.config.topics[0];
-  console.log(resources.app.children.config.topics[0]);
-
   panels.push(...(leftResources.children || []));
-  console.log(panels);
+
   loadPanel();
 };
 const loadPanel = () => {
   panels.forEach((panel, index) => {
-    console.log(panel.name, index);
     if (index === 0) {
       activeName.value = panel.name;
     }
@@ -140,7 +137,7 @@ onMounted(() => {
   .reset-wrapper {
     height: 2.29rem;
     padding: 1.04rem;
-    .svg-icon {
+    .reset-icon {
       margin-right: 0.3rem;
       opacity: 0.5;
     }

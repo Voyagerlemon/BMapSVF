@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-03 11:27:30
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-03 11:28:43
+ * @LastEditTime: 2023-04-05 20:44:46
  * @FilePath: \BMapSVF-Client\src\utils\permission\permission.js
  * @Description: 授权访问
  */
@@ -17,7 +17,7 @@ const formatResource = (resources, resourceMap = {}) => {
     resources.forEach(item => {
       if (item.name) {
         const widget =
-          store.getters[`widget/widgetMap`][item.name.replace(/\d+/g, "")];
+          store.getters[`widget/widgetMap`][item.name];
         if (widget) {
           widget.meta.label = item.label;
           resourceMap[item.name] = item;

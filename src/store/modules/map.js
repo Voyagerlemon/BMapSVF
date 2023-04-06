@@ -1,7 +1,7 @@
 /*
- * @Author: Lauxb
- * @Date: 2021-02-25 13:05:44
- * @LastEditTime: 2023-04-03 22:55:30
+ * @Author: xuhy
+ * @Date: 2023-04-02 13:05:44
+ * @LastEditTime: 2023-04-05 20:20:15
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 三维状态管理
  */
@@ -17,7 +17,7 @@ import {
   SET_CUR_CAMARA,
   SET_CUR_2D_CAMARA,
   SET_ANNOTATION_LAYER,
-  SET_SCENE_LOADED,
+  SET_MAP_LOADED,
   SET_LEGEND_INFO,
   ADD_OPEN_LEGEND,
   DELETE_OPEN_LEGEND,
@@ -73,8 +73,8 @@ const map = {
     [SET_ANNOTATION_LAYER](state, data) {
       state.annotationLayer = data;
     },
-    [SET_SCENE_LOADED](state, data) {
-      state.sceneLoaded = data;
+    [SET_MAP_LOADED](state, data) {
+      state.mapLoaded = data;
     },
     [SET_LEGEND_INFO](state, data) {
       const id = data.id;
@@ -92,8 +92,8 @@ const map = {
   },
 
   actions: {
-    setSceneLoaded({ commit }, data) {
-      commit(SET_SCENE_LOADED, data);
+    setMapLoaded({ commit }, data) {
+      commit(SET_MAP_LOADED, data);
     },
     setSceneMode({ commit }, data) {
       commit(SET_SCENEMODE, data);
@@ -154,7 +154,7 @@ const map = {
   },
 
   getters: {
-    sceneLoaded: state => state.sceneLoaded,
+    mapLoaded: state => state.mapLoaded,
     sceneMode: state => state.sceneMode,
     fullview: state => state.fullview,
     camara: state => state.camara,
