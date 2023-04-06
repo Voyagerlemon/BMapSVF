@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 13:08:38
+ * @LastEditTime: 2023-04-06 14:09:35
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: 系统界面布局
 -->
@@ -31,7 +31,7 @@ import { getResourceTree } from "@/api/public";
 import { handleResource } from "@/utils/permission/permission";
 const logoUrl = reactive({
   name: "system icon",
-  path: "/fisheye.png"
+  icon: "/fisheye.png"
 });
 const appTitle = ref("BMapSVF");
 const store = useStore();

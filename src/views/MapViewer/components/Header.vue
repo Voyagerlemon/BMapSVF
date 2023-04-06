@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-01 22:34:27
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-04 10:37:44
+ * @LastEditTime: 2023-04-06 14:09:31
  * @FilePath: \BMapSVF-Client\src\views\MapViewer\components\Header.vue
  * @Description: 头部组件
 -->
@@ -13,7 +13,7 @@
     <div class="app-container flex items-center">
       <img
         v-if="logoUrl"
-        :src="logoUrl.path"
+        :src="logoUrl.icon"
         crossOrigin="anonymous"
         class="app-logo"
         alt="logo"

@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-04 15:55:32
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 13:26:55
+ * @LastEditTime: 2023-04-06 14:08:27
  * @FilePath: \BMapSVF-Client\src\widgets\MapTool\MapTool.vue
  * @Description: 地图工具容器
 -->
@@ -42,7 +42,6 @@ import store from "@/store";
 const initTool = async () => {
   const resource = store.getters["widget/resourceMap"]["MapTool"];
   const tools = resource.children || [];
-  console.log("tools", tools);
   loadTool(tools);
 };
 const loadTool = async tools => {

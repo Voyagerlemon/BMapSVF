@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-05 15:01:31
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 13:45:11
+ * @LastEditTime: 2023-04-06 14:08:13
  * @FilePath: \BMapSVF-Client\src\widgets\ToolBox\components\CommonToolItem.vue
  * @Description: 工具箱中的功能组件
 -->
@@ -78,7 +78,7 @@ watchEffect(() => store.state.widgets.activeMap, {
   }
 });
 let isDisable = computed(() => {
-  return store.getters["map/sceneMode"] === "2D" && props.toolItem.meta.isScene;
+  return store.getters["map/mapMode"] === "2D" && props.toolItem.meta.isMap;
 });
 const handleClick = () => {
   if (!isDisable) {
