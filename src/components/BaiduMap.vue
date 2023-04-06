@@ -26,12 +26,35 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const BMap = (window as any).BMap;
-
+    console.log("BMap", window);
     onMounted(() => {
       var map = new BMap.Map("map");
       var point = new BMap.Point(props.longitude, props.latitude);
       map.centerAndZoom(point, props.zoom);
       map.enableScrollWheelZoom(true);
+      map.addControl(
+        new BMap.GeolocationControl({
+          anchor: window.BMAP_ANCHOR_BOTTOM_RIGHT,
+          offset: new BMap.Size(15, 140)
+        })
+      );
+      map.addControl(
+        new BMap.PanoramaControl({
+          anchor: window.BMAP_ANCHOR_TOP_RIGHT,
+          offset: new BMap.Size(15, 50)
+        })
+      );
+      map.addControl(
+        new BMap.CityListControl({
+          anchor: window.BMAP_ANCHOR_TOP_LEFT,
+          offset: new BMap.Size(15, 10)
+        })
+      );
+      map.addControl(
+        new BMap.ScaleControl({
+          offset: new BMap.Size(90, 23)
+        })
+      );
     });
   }
 });
