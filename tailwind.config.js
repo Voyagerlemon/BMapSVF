@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 20:20:59
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-04 14:41:44
+ * @LastEditTime: 2023-04-06 15:18:35
  * @FilePath: \BMapSVF-Client\tailwind.config.cjs
  * @Description: Tailwind CSS配置
  */
@@ -44,6 +44,7 @@ module.exports = {
       warning: "#ffcf26",
       error: "#ff554a",
       light: "rgba(0, 179, 255, 0.2)",
+      "gray-200": "#d1d5d8",
       "neutral-5": "#eeeeee",
       "neutral-4": "#999999",
       "neutral-3": "#666666",

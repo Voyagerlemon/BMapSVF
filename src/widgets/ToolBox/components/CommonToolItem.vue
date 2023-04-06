@@ -2,13 +2,13 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-05 15:01:31
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 13:44:37
+ * @LastEditTime: 2023-04-06 15:20:21
  * @FilePath: \BMapSVF-Client\src\widgets\ToolBox\components\CommonToolItem.vue
  * @Description: 工具箱
 -->
 <template>
   <div
-    class="flex items-center cursor-pointer overflow-hidden w-full common-too-item"
+    class="flex items-center cursor-pointer overflow-hidden w-full common-too-item bg-gray-200"
     :class="{ active: state }"
     @click="handleClick"
   >
@@ -47,7 +47,7 @@ const handleClick = () => {
 <style lang="scss" scoped>
 .common-too-item {
   height: 2.13rem;
-  padding: 0 0.1rem;
+  padding: 0 0.02rem;
   &:hover {
     @apply bg-light;
   }

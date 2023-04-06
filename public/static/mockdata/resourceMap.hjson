@@ -27,6 +27,20 @@
     "position": 2,
     "children": [
       {
+        "id": "603d9b2cd46d7cb1731950a4",
+        "name": "MapToggle",
+        "label": "底图切换",
+        "srcId": "5f924d453fb9a69aae92ae25",
+        "srcpId": null,
+        "needed": "0",
+        "configId": "603d9b2c91444583731950a7",
+        "type": 4,
+        "needTitle": null,
+        "position": 0,
+        "children": null,
+        "pid": "603d9b2cfd2d8ba9731950a1"
+      },
+      {
         "id": "5fdc183f5ddd8a051936cf72",
         "name": "ToolBox",
         "label": "工具箱",

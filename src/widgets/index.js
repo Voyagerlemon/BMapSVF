@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 11:22:40
+ * @LastEditTime: 2023-04-06 15:00:12
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -54,6 +54,15 @@ const widgets = [
       doLast: true
     },
     component: () => import("@/widgets/ToolBox")
+  },
+  {
+    name: "MapToggle",
+    meta: {
+      label: "底图切换",
+      container: "sceneBottomRight",
+      doLast: true
+    },
+    component: () => import("@/widgets/MapToggle")
   }
 ];
 export default widgets;
