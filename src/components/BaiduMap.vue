@@ -29,6 +29,7 @@ export default defineComponent({
     console.log("BMap", window);
     onMounted(() => {
       var map = new BMap.Map("map");
+      window.map = map;
       var point = new BMap.Point(props.longitude, props.latitude);
       map.centerAndZoom(point, props.zoom);
       map.enableScrollWheelZoom(true);

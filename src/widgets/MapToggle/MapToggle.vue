@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-06 14:49:50
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 16:48:59
+ * @LastEditTime: 2023-04-06 22:14:51
  * @FilePath: \BMapSVF-Client\src\widgets\MapToggle\MapToggle.vue
  * @Description: 底图切换组件
 -->
@@ -10,20 +10,27 @@
   <Dropdown class="map-toggle" placement="left">
     <div class="bg-gray-200 cursor-pointer shadow map-layer">
       <div class="map-layer-inner">
-        <div class="bg-neutral-0">
-          <SvgIcon className="opacity-80 w-14 h-14" iconName="img" />
+        <div class="">
+          <SvgIcon
+            v-if="nowBaseLayer"
+            className="opacity-80 w-14 h-14"
+            :iconName="nowBaseLayer.icon"
+          />
         </div>
       </div>
     </div>
     <template #list>
       <DropdownMenu transfer>
-        <div class="flex flex-row-reverse">
+        <div class="flex justify-evenly flex-row-reverse w-60">
           <div
             class="relative layer"
             v-for="(item, index) in baseMapLayers"
             :key="index"
           >
-            <div class="overflow-hidden cursor-pointer layer-item bg-gray-200">
+            <div
+              class="overflow-hidden cursor-pointer layer-item bg-gray-200"
+              @click="changeBaseMap(item)"
+            >
               <div
                 class="h-full overflow-hidden border-2 border-solid"
                 :class="
@@ -50,15 +57,16 @@ import { ref, reactive } from "vue";
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
 
 const baseMapLayers = reactive([
-  { name: "电子地图", icon: "vec" },
-  { name: "卫星地图", icon: "img" },
-  { name: "混合地图", icon: "img" }
+  { name: "电子地图", icon: "vec", id: 1 },
+  { name: "卫星地图", icon: "img", id: 2 },
+  { name: "混合地图", icon: "img", id: 3 }
 ]);
 let nowBaseLayer = ref(
   { name: "电子地图", icon: "vec" },
   { name: "卫星地图", icon: "img" },
   { name: "混合地图", icon: "img" }
 );
+console.log("@@", window);
 
 const isNodeLayer = curBaseLayer => {
   let layer = null;
@@ -68,6 +76,20 @@ const isNodeLayer = curBaseLayer => {
   }
 
   return layer;
+};
+const changeBaseMap = node => {
+  if (node.id === 1) {
+    window.map.setMapType(window.BMAP_NORMAL_MAP);
+    nowBaseLayer.value.icon = "vec";
+  }
+  if (node.id === 2) {
+    window.map.setMapType(window.BMAP_SATELLITE_MAP);
+    nowBaseLayer.value.icon = "img";
+  }
+  if (node.id === 3) {
+    window.map.setMapType(window.BMAP_HYBRID_MAP);
+    nowBaseLayer.value.icon = "img";
+  }
 };
 </script>
 <style lang="scss" scoped>

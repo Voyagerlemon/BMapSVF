@@ -1,7 +1,7 @@
 <!--
  * @Author: xuhy
  * @Date: 2021-02-26 14:16:48
- * @LastEditTime: 2023-04-06 14:13:09
+ * @LastEditTime: 2023-04-06 21:51:51
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 百度地图组件
 -->
@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, inject } from "vue";
 import store from "@/store";
 import BaiduMap from "../../components/BaiduMap.vue";
 const initApp = () => {
