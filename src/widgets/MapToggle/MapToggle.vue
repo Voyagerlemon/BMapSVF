@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-06 14:49:50
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 15:47:27
+ * @LastEditTime: 2023-04-07 16:34:01
  * @FilePath: \BMapSVF-Client\src\widgets\MapToggle\MapToggle.vue
  * @Description: 底图切换组件
 -->
@@ -13,7 +13,7 @@
         <div class="">
           <SvgIcon
             v-if="nowBaseLayer"
-            className="opacity-80 w-14 h-14"
+            className="opacity-80 w-16 h-16"
             :iconName="nowBaseLayer"
           />
         </div>
@@ -21,7 +21,7 @@
     </div>
     <template #list>
       <DropdownMenu transfer>
-        <div class="flex justify-evenly flex-row-reverse w-60">
+        <div class="flex justify-evenly items-center flex-row-reverse w-72 h-24">
           <div
             class="relative layer"
             v-for="(item, index) in baseMapLayers"
@@ -32,14 +32,17 @@
               @click="changeBaseMap(item)"
             >
               <div
-                class="h-full overflow-hidden border-2 border-solid"
+                class="h-full overflow-hidden border-2 border-solid layer-border"
                 :class="
                   isNodeLayer(item) ? `border-primary` : `border-neutral-5`
                 "
               >
-                <SvgIcon :iconName="item.icon" className="w-14 h-14" />
+                <SvgIcon
+                  :iconName="item.icon"
+                  className="w-16 h-16 map-toggle"
+                />
                 <div
-                  class="w-full sticky bottom-0 bg-primary bg-opacity-50 text-default text-xs text-center layer-name"
+                  class="w-full sticky bottom-0 bg-primary bg-opacity-50 text-default text-center layer-name"
                 >
                   {{ isNodeLayer(item) ? isNodeLayer(item).name : item.name }}
                 </div>
@@ -107,23 +110,29 @@ onMounted(() => {
 });
 </script>
 <style lang="scss" scoped>
-$distance: 0.13rem;
+$distance: 0.42rem;
 $border-radius: 0.26rem;
 .map-toggle {
   .map-layer {
-    width: 4.2rem;
-    height: 4.2rem;
+    width: 4.68rem;
+    height: 4.68rem;
     border-radius: $border-radius;
     &-inner {
-      padding: 0.3rem;
+      padding: 0.35rem;
     }
   }
 
   .layer-item {
-    width: 4.2rem;
-    height: 4.2rem;
+    width: 5.25rem;
+    height: 5.08rem;
     border-radius: $border-radius;
     padding: $distance;
+    .layer-border {
+      width: 4.66rem;
+      .map-toggle {
+        margin: 0 auto;
+      }
+    }
     .layer-name {
       padding: 0.21rem 0;
     }

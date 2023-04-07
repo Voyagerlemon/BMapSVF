@@ -4,19 +4,19 @@
   "config": {
     "baseLayers": [
       {
-        "name": "电子地图",
+        "name": "NORMAL",
         "icon": "vec",
         "id": 1,
         "visible": true
       },
       {
-        "name": "卫星地图",
+        "name": "SATELLITE",
         "icon": "img",
         "id": 2,
         "visible": false
       },
       {
-        "name": "混合地图",
+        "name": "HYBRID",
         "icon": "img",
         "id": 3,
         "visible": false

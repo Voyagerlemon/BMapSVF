@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 20:20:59
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 15:18:35
+ * @LastEditTime: 2023-04-07 16:04:36
  * @FilePath: \BMapSVF-Client\tailwind.config.cjs
  * @Description: Tailwind CSS配置
  */
