@@ -1,0 +1,26 @@
+{
+  "id": null,
+  "catalogId": null,
+  "config": {
+    "baseLayers": [
+      {
+        "name": "电子地图",
+        "icon": "vec",
+        "id": "510a5d6234c21448801a2843",
+        "visible": true
+      },
+      {
+        "name": "卫星地图",
+        "icon": "img",
+        "id": "1c989aff99b41d491c690d70",
+        "visible": false
+      },
+      {
+        "name": "混合地图",
+        "icon": "img",
+        "id": "988d2cbbc601bc46f9a82f5b",
+        "visible": false
+      }
+    ]
+  }
+}

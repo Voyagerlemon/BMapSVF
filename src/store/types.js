@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-03 10:27:04
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 14:05:14
+ * @LastEditTime: 2023-04-07 09:26:13
  * @FilePath: \BMapSVF-Client\src\store\types.js
  * @Description: mutation的类型名称常量
  */
@@ -17,6 +17,7 @@ export const SET_SHOW_TOPIC = "SET_SHOW_TOPIC";
 // MAP
 export const SET_MAP_LOADED = "SET_MAP_LOADED"; // 设置地图是否加载
 export const SET_MAP_MODE ="SET_MAP_MODE" // 设置地图模式
+export const SET_BASE_LAYER = "SET_BASE_LAYER"; // 当前底图
 // SCENE
 export const SET_SCENE_LOADED = "SET_SCENE_LOADED"; // 设置场景是否加载
 export const SET_SCENEMODE = "SET_SCENEMODE"; // 设置场景模式
