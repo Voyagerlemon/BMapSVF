@@ -1,7 +1,7 @@
 /*
  * @Author: xuhy
  * @Date: 2023-04-03 13:05:44
- * @LastEditTime: 2023-04-06 14:13:42
+ * @LastEditTime: 2023-04-07 14:09:42
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 微件状态管理
  */
@@ -13,7 +13,7 @@ import {
   CLEAR_ACTIVE_MAP,
   DELETE_ACTIVE_WIDGET,
   SET_RESOURCE_MAP,
-  SET_SHOW_TOPIC
+  SET_WIDGET_CONFIG
 } from "@/store/types";
 import {
   openWidget,
@@ -29,6 +29,7 @@ const widget = {
     widgetMap: {},
     activeMap: {},
     resourceMap: {},
+    widgetConfig: {},
     showTopic: true
   },
 
@@ -51,8 +52,8 @@ const widget = {
     [SET_RESOURCE_MAP](state, data) {
       state.resourceMap = data;
     },
-    [SET_SHOW_TOPIC](state, data) {
-      state.showTopic = data;
+    [SET_WIDGET_CONFIG](state, data) {
+      state.widgetConfig = data;
     }
   },
 
@@ -65,7 +66,7 @@ const widget = {
       commit(SET_WIDGETS, data);
       commit(SET_WIDGET_MAP, dataMap);
     },
-    async openWidget({ state }, { name, prop }) {
+    async openWidget({ state, commit }, { name, prop }) {
       const widgetInfo = state.widgetMap[name];
       if (!widgetInfo) {
         console.error(`Widget:${name}不存在`);
@@ -80,11 +81,12 @@ const widget = {
       if (widgetInfo.meta.hasConfig) {
         const res = await getWidgetConfig(name);
         config = res.config ? res.config : res;
+        commit(SET_WIDGET_CONFIG, config);
       }
       if (widgetInfo.meta.isMutex) {
         closeMutexWidget(state.activeMap);
       }
-      await openWidget(widgetInfo, { ...prop, config });
+      await openWidget(widgetInfo, { ...prop });
       return true;
     },
     closeWidget({ state }, name) {
@@ -105,7 +107,7 @@ const widget = {
       }
       return true;
     },
-    destoryAllWidget({ state }) {
+    destroyAllWidget({ state }) {
       const keys = Object.keys(state.activeMap);
       for (const key of keys) {
         const widget = state.activeMap[key];
@@ -125,9 +127,6 @@ const widget = {
     },
     setResourceMap({ commit }, data) {
       commit(SET_RESOURCE_MAP, data);
-    },
-    setShowTopic({ commit }, data) {
-      commit(SET_SHOW_TOPIC, data);
     }
   },
 
@@ -135,7 +134,7 @@ const widget = {
     widgetMap: state => state.widgetMap,
     activeMap: state => state.activeMap,
     resourceMap: state => state.resourceMap,
-    showTopic: state => state.showTopic
+    widgetConfig: state => state.widgetConfig
   }
 };
 

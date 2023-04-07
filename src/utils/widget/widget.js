@@ -2,7 +2,7 @@
  * @Author: xuhy
  * @Date: 2023-04-05 18:45:32
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 10:05:26
+ * @LastEditTime: 2023-04-07 13:47:09
  * @Description: widget
  */
 
@@ -22,7 +22,7 @@ const createPanel = (widgetInfo, mixinProps) => {
 };
 
 const createWidget = async (widgetInfo, mixinProps = {}) => {
-  const { name, meta, component } = widgetInfo;
+  const { meta, component } = widgetInfo;
   let widget = null;
   if (meta.hasPanel) {
     widget = createPanel(widgetInfo, mixinProps);
@@ -39,6 +39,7 @@ const createWidget = async (widgetInfo, mixinProps = {}) => {
 export const openWidget = async (widgetInfo, mixinProps = {}) => {
   const { meta, name } = widgetInfo;
   const widget = await createWidget(widgetInfo, mixinProps);
+
   const container = document.createElement("div");
   const mainAppProp = store.getters["app/mainAppProp"];
   const el = mainAppProp
@@ -50,7 +51,6 @@ export const openWidget = async (widgetInfo, mixinProps = {}) => {
     closeWidget(widget);
   } else {
     store.commit(`widget/${SET_ACTIVE_MAP}`, { name, widget });
-
   }
   return true;
 };

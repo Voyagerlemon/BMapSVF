@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-06 14:49:50
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 22:14:51
+ * @LastEditTime: 2023-04-07 14:10:36
  * @FilePath: \BMapSVF-Client\src\widgets\MapToggle\MapToggle.vue
  * @Description: 底图切换组件
 -->
@@ -55,7 +55,8 @@
 import { Dropdown, DropdownMenu } from "view-ui-plus";
 import { ref, reactive } from "vue";
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
-
+import store from '@/store'
+// 配置文件 ---> MapToggle.hjson
 const baseMapLayers = reactive([
   { name: "电子地图", icon: "vec", id: 1 },
   { name: "卫星地图", icon: "img", id: 2 },
@@ -66,7 +67,6 @@ let nowBaseLayer = ref(
   { name: "卫星地图", icon: "img" },
   { name: "混合地图", icon: "img" }
 );
-console.log("@@", window);
 
 const isNodeLayer = curBaseLayer => {
   let layer = null;
