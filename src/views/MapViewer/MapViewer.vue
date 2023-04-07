@@ -2,22 +2,22 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 14:09:35
+ * @LastEditTime: 2023-04-07 16:44:18
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: 系统界面布局
 -->
 <template>
-  <div id="sceneViewer" class="absolute flex flex-col w-full h-full">
+  <div id="mapViewer" class="absolute flex flex-col w-full h-full">
     <top-header :logoUrl="logoUrl" :appTitle="appTitle"></top-header>
-    <div class="flex flex-row flex-1 w-full overflow-hidden scene-viewer">
+    <div class="flex flex-row flex-1 w-full overflow-hidden map-viewer">
       <div class="flex flex-1 relative">
-        <div id="sceneWrapper" class="relative h-full w-full"></div>
-        <div id="sceneTool" class="absolute pointer-events-none scene-tool">
+        <div id="mapWrapper" class="relative h-full w-full"></div>
+        <div id="mapTool" class="absolute pointer-events-none map-tool">
         </div>
       </div>
       <div
-        id="sceneFull"
-        class="absolute top-0 left-0 bottom-0 right-0 pointer-events-none scene-full"
+        id="mapFull"
+        class="absolute top-0 left-0 bottom-0 right-0 pointer-events-none map-full"
       ></div>
     </div>
   </div>
@@ -89,15 +89,15 @@ onMounted(() => {
 });
 </script>
 <style lang="scss" scoped>
-.scene-viewer {
-  .scene-tool {
+.map-viewer {
+  .map-tool {
     top: 0.94rem;
     left: 0.94rem;
     right: 0.94rem;
     bottom: 1rem;
     background-color: rgba($color: #000000, $alpha: 0);
   }
-  .scene-full {
+  .map-full {
     z-index: 9999;
     background-color: rgba($color: #000000, $alpha: 0);
     & > div {

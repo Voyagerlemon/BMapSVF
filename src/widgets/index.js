@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 10:32:03
+ * @LastEditTime: 2023-04-07 16:46:08
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -32,7 +32,7 @@ const widgets = [
     name: "Map",
     meta: {
       label: "地图组件",
-      container: "sceneWrapper",
+      container: "mapWrapper",
       doLast: true,
     },
     component: () => import("@/widgets/Map")
@@ -41,7 +41,7 @@ const widgets = [
     name: "MapTool",
     meta: {
       label: "地图工具",
-      container: "sceneTool",
+      container: "mapTool",
       doLast: true,
     },
     component: () => import("@/widgets/MapTool")
@@ -50,7 +50,7 @@ const widgets = [
     name: "ToolBox",
     meta: {
       label: "工具箱",
-      container: "sceneTopRight",
+      container: "mapTopRight",
       doLast: true,
     },
     component: () => import("@/widgets/ToolBox")
@@ -59,7 +59,7 @@ const widgets = [
     name: "MapToggle",
     meta: {
       label: "底图切换",
-      container: "sceneBottomRight",
+      container: "mapBottomRight",
       doLast: true,
       hasConfig: true
     },
