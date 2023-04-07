@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 16:46:08
+ * @LastEditTime: 2023-04-07 17:08:02
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -33,7 +33,7 @@ const widgets = [
     meta: {
       label: "地图组件",
       container: "mapWrapper",
-      doLast: true,
+      doLast: true
     },
     component: () => import("@/widgets/Map")
   },
@@ -42,7 +42,7 @@ const widgets = [
     meta: {
       label: "地图工具",
       container: "mapTool",
-      doLast: true,
+      doLast: true
     },
     component: () => import("@/widgets/MapTool")
   },
@@ -51,7 +51,7 @@ const widgets = [
     meta: {
       label: "工具箱",
       container: "mapTopRight",
-      doLast: true,
+      doLast: true
     },
     component: () => import("@/widgets/ToolBox")
   },
@@ -64,6 +64,20 @@ const widgets = [
       hasConfig: true
     },
     component: () => import("@/widgets/MapToggle")
+  },
+  {
+    name: "DistanceMeasure",
+    meta: {
+      label: "距离测量",
+      container: "mapWrapper",
+      icon: "measure-distance",
+      defaultHidden: false,
+      isMutex: true,
+      escOff: true,
+      top: 3.94,
+      left: 0.94
+    },
+    component: () => import("@/widgets/DistanceMeasure")
   }
 ];
 export default widgets;

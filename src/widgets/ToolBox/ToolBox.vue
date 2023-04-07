@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-04 16:02:24
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 13:45:43
+ * @LastEditTime: 2023-04-07 17:15:28
  * @FilePath: \BMapSVF-Client\src\widgets\Toolbox\Toolbox.vue
  * @Description: 工具箱管理组件
 -->
@@ -46,8 +46,8 @@
           </div>
           <SvgIcon
             v-else
-            iconName="edit"
-            className="w-3 h-3 icon-edit"
+            iconName="edit-black"
+            className="w-4 h-4 icon-edit"
             @click="editToolPanel"
           />
           <SvgIcon
@@ -100,7 +100,7 @@ import { ref, reactive, onMounted } from "vue";
 import ToolItem from "./components/ToolItem.vue";
 import CommonToolItem from "./components/CommonToolItem.vue";
 import { Message } from "view-ui-plus";
-import store from "@/store"
+import store from "@/store";
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
 const editable = ref(false);
 const isWholeBarShow = ref(false);
