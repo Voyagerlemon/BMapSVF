@@ -55,7 +55,7 @@
           {
             "id": "5fdc183f61efa6611936cfa3",
             "name": "Measure",
-            "label": "测量",
+            "label": "Measure",
             "srcId": "5f96b87857f0e7fb260ea334",
             "srcpId": null,
             "needed": "0",
@@ -67,7 +67,7 @@
               {
                 "id": "5fdc183fbf7f33a71936cfaa",
                 "name": "DistanceMeasure",
-                "label": "距离测量",
+                "label": "Distance Measure",
                 "srcId": "5f96c28091b53d4c260eb657",
                 "srcpId": null,
                 "needed": "0",

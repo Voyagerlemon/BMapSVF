@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-04 16:02:24
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 17:15:28
+ * @LastEditTime: 2023-04-07 21:25:05
  * @FilePath: \BMapSVF-Client\src\widgets\Toolbox\Toolbox.vue
  * @Description: 工具箱管理组件
 -->
@@ -33,26 +33,26 @@
         class="tool-panel-header flex justify-between border-b border-neutral-5"
       >
         <div class="flex items-center header-left">
-          <SvgIcon iconName="tool-box" className="w-4 h-4 tool-icon" />
-          <span class="text-base font-extrabold text-center">ToolBox</span>
+          <SvgIcon iconName="tool-box" className="w-6 h-6 tool-icon" />
+          <span class="text-llg font-extrabold text-center">ToolBox</span>
         </div>
         <div class="flex items-center flex-row header-right">
           <div
             v-if="editable"
             class="inline-flex justify-between text-sm confirm-edit"
           >
-            <span class="edit-ok" @click="confirmEdit">确认</span>
-            <span class="edit-cancel" @click="cancelEdit">取消</span>
+            <span class="edit-ok" @click="confirmEdit">confirm</span>
+            <span class="edit-cancel" @click="cancelEdit">cancel</span>
           </div>
           <SvgIcon
             v-else
             iconName="edit-black"
-            className="w-4 h-4 icon-edit"
+            className="w-5 h-5 icon-edit"
             @click="editToolPanel"
           />
           <SvgIcon
             iconName="close"
-            className="w-3 h-3 icon-close"
+            className="w-4 h-4 icon-close"
             @click="closePanel"
           />
         </div>
@@ -75,17 +75,26 @@
             v-for="(item, index) in allTools"
             :key="index"
           >
-            <div class="all-tools-item-title text-sm text-neutral-3 relative">
+            <div class="all-tools-item-title text-lg text-neutral-3 relative">
               {{ item.label }}
             </div>
             <div
               class="all-tools-item-content relative flex justify-start font-normal flex-wrap"
             >
-              <div>
+              <div v-for="(tool, id) in item.children">
                 <ToolItem
+                  :key="id"
+                  :toolItem="tool"
                   :editable="editable"
                   :selectLight="true"
+                  :selected="
+                    tempCommonTool.filter(item => item.name === tool.name)
+                      .length > 0
+                      ? true
+                      : false
+                  "
                   @click="handleTool"
+                  @edit-click="editToolItem"
                 />
               </div>
             </div>
@@ -102,6 +111,7 @@ import CommonToolItem from "./components/CommonToolItem.vue";
 import { Message } from "view-ui-plus";
 import store from "@/store";
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
+
 const editable = ref(false);
 const isWholeBarShow = ref(false);
 const isToolPanelShow = ref(false);
@@ -109,6 +119,7 @@ const isToolPanelShow = ref(false);
 const commonTools = reactive([]);
 const tempCommonTool = reactive([]);
 const allTools = reactive([]);
+const toolMap = reactive({});
 const toolBox = reactive({
   name: "ToolBox",
   label: "ToolBox",
@@ -116,6 +127,57 @@ const toolBox = reactive({
     icon: "tool-box2"
   }
 });
+const initTool = () => {
+  // 获取工具箱的工具树
+  const resource = store.getters["widget/resourceMap"]["ToolBox"];
+  const toolInfo = getToolInfo(resource.children || []);
+  allTools.push(...toolInfo);
+};
+const getToolInfo = tools => {
+  // 工具列表
+  const toolList = [];
+  tools.forEach(tool => {
+    if (tool.children) {
+      const childrenTool = [];
+      tool.children.forEach(childTool => {
+        const wid = store.getters["widget/widgetMap"][childTool.name];
+        Object.assign(childTool, wid);
+        childrenTool.push(childTool);
+        toolMap[childTool.id] = childTool;
+      });
+      tool.children = childrenTool;
+    } else {
+      const widget = store.getters["widget/widgetMap"][tool.name];
+      Object.assign(tool, widget);
+      toolMap[tool.id] = tool;
+    }
+    toolList.push(tool);
+  });
+  return toolList;
+};
+const editToolItem = (data, selected) => {
+  if (!selected) {
+    if (tempCommonTool.length > 5) {
+      Message.info({
+        background: true,
+        content: "You can add a maximum of five common tools!",
+        duration: 3
+      });
+      return;
+    }
+    tempCommonTool.push(data);
+  } else {
+    const tempData = tempCommonTool.filter(item => {
+      item.name !== data.name;
+    });
+    Message.info({
+      background: true,
+      content: "This feature is under testing!",
+      duration: 3
+    });
+    tempCommonTool.push(tempData);
+  }
+};
 const handleClickToolbox = e => {
   e.stopPropagation();
 };
@@ -152,6 +214,11 @@ const handleTool = (item, state) => {
   });
 };
 const confirmEdit = () => {
+  commonTools = JSON.parse(JSON.stringify(tempCommonTool));
+  const widgetIds = [];
+  commonTools.forEach(tool => {
+    widgetIds.push(tool.id);
+  });
   Message.info({
     background: true,
     content: "This feature is being tested!",
@@ -163,6 +230,7 @@ const cancelEdit = () => {
   editable.value = false;
 };
 onMounted(() => {
+  initTool();
   document.click = e => {
     isToolPanelShow.value = false;
     isWholeBarShow.value = false;
@@ -183,7 +251,7 @@ onMounted(() => {
     }
   }
   .left-tool-panel {
-    width: 26.62rem;
+    width: 32.62rem;
     margin-right: 0.52rem;
     padding-bottom: 1.04rem;
 
@@ -202,7 +270,7 @@ onMounted(() => {
         }
 
         .confirm-edit {
-          width: 5rem;
+          width: 8rem;
           padding: 0 0.3rem;
           span {
             width: 50%;
@@ -211,6 +279,8 @@ onMounted(() => {
             cursor: pointer;
           }
           .edit-ok {
+            padding-right: 0.25rem;
+            margin-left: 0.8rem;
             border-right: 1px solid rgba(151, 151, 151, 0.8);
           }
           .edit-cancel {

@@ -2,9 +2,9 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-05 15:01:31
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 15:20:21
+ * @LastEditTime: 2023-04-07 19:43:33
  * @FilePath: \BMapSVF-Client\src\widgets\ToolBox\components\CommonToolItem.vue
- * @Description: 工具箱
+ * @Description: 工具箱按钮
 -->
 <template>
   <div
