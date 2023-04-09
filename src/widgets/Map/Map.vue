@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { onMounted, inject } from "vue";
+import { onMounted} from "vue";
 import store from "@/store";
 import BaiduMap from "../../components/BaiduMap.vue";
 const initApp = () => {

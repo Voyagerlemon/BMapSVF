@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 16:00:53
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 13:43:56
+ * @LastEditTime: 2023-04-08 22:43:31
  * @FilePath: \BMapSVF-Client\src\main.js
  * @Description: 入口文件相关配置
  */
@@ -25,10 +25,13 @@ import store from "@/store";
 import widgets from "@/widgets";
 store.dispatch("widget/setWidgets", widgets);
 
+// 注册全局组件
+import components from "./components/index";
 
 const app = createApp(App);
 app.component("SvgIcon", SvgIcon);
 app.use(store);
 app.use(router);
 app.use(ViewUIPlus);
+app.use(components);
 app.mount("#app");

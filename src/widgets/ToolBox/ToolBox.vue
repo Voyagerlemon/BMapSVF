@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-04 16:02:24
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 21:25:05
+ * @LastEditTime: 2023-04-08 10:43:14
  * @FilePath: \BMapSVF-Client\src\widgets\Toolbox\Toolbox.vue
  * @Description: 工具箱管理组件
 -->
@@ -208,7 +208,6 @@ const handleTool = (item, state) => {
     name: item.name,
     prop: {
       widgetName: item.name,
-      eyemap,
       store
     }
   });

@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-04 15:55:32
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 19:12:38
+ * @LastEditTime: 2023-04-08 22:31:38
  * @FilePath: \BMapSVF-Client\src\widgets\MapTool\MapTool.vue
  * @Description: 地图工具容器
 -->
@@ -38,7 +38,6 @@
 <script setup>
 import { onMounted } from "vue";
 import store from "@/store";
-
 const initTool = async () => {
   const resource = store.getters["widget/resourceMap"]["MapTool"];
   const tools = resource.children || [];

@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 17:08:02
+ * @LastEditTime: 2023-04-09 16:09:49
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -70,14 +70,22 @@ const widgets = [
     meta: {
       label: "距离测量",
       container: "mapWrapper",
-      icon: "measure-distance",
-      defaultHidden: false,
-      isMutex: true,
-      escOff: true,
-      top: 3.94,
-      left: 0.94
+      icon: "measure-distance"
     },
     component: () => import("@/widgets/DistanceMeasure")
+  },
+  {
+    name: "CalSVF",
+    meta: {
+      label: "计算SVF",
+      container: "mapWrapper",
+      icon: "fisheye",
+      defaultHidden: false,
+      hasPanel: true,
+      top: 3.94,
+      left: 48.98,
+    },
+    component: () => import("@/widgets/CalSVF")
   }
 ];
 export default widgets;

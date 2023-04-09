@@ -1,7 +1,7 @@
 /*
  * @Author: xuhy
  * @Date: 2023-04-02 13:20:44
- * @LastEditTime: 2023-04-07 09:28:05
+ * @LastEditTime: 2023-04-08 10:19:20
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 三维状态管理
  */
@@ -11,7 +11,7 @@ const map = {
   namespaced: true,
   state: {
     mapLoaded: false,
-    mapMode: "3D", // 地图展示模式
+    mapMode: "2D", // 地图展示模式
     nowBaseLayer: {}
   },
   mutations: {

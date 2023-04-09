@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-05 15:01:31
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-08 10:12:06
+ * @LastEditTime: 2023-04-08 10:37:04
  * @FilePath: \BMapSVF-Client\src\widgets\ToolBox\components\CommonToolItem.vue
  * @Description: 工具箱中的功能组件按钮
 -->
@@ -45,7 +45,7 @@
 </template>
 <script setup>
 import { ref, watchEffect, computed } from "vue";
-import store from "@/store"
+import store from "@/store";
 import { Tooltip, Message } from "view-ui-plus";
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
 const props = defineProps({
@@ -79,15 +79,15 @@ watchEffect(() => store.state.widget.activeMap, {
   }
 });
 let isDisable = computed(() => {
-  return store.getters["map/mapMode"] === "2D" && props.toolItem.meta.isMap;
+  return store.getters["map/mapMode"] === "3D" && props.toolItem.meta.isMap;
 });
 const handleClick = () => {
-  if (!isDisable) {
-    emit("click", props.toolItem, !state.value);
+  if (!isDisable.value) {
+    emits("click", props.toolItem, !state.value);
   } else {
     Message.warning({
       background: true,
-      content: "二维场景不支持三维功能！",
+      content: "2D maps do not support 3D functionality!",
       duration: 3
     });
   }

@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 19:12:44
+ * @LastEditTime: 2023-04-08 22:45:08
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: 系统界面布局
 -->
@@ -12,13 +12,13 @@
     <div class="flex flex-row flex-1 w-full overflow-hidden map-viewer">
       <div class="flex flex-1 relative">
         <div id="mapWrapper" class="relative h-full w-full"></div>
-        <div id="mapTool" class="absolute pointer-events-none map-tool">
-        </div>
+        <div id="mapTool" class="absolute pointer-events-none map-tool"></div>
       </div>
       <div
         id="mapFull"
         class="absolute top-0 left-0 bottom-0 right-0 pointer-events-none map-full"
-      ></div>
+      >
+      </div>
     </div>
   </div>
 </template>

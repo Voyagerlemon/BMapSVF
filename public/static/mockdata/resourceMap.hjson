@@ -80,6 +80,35 @@
               }
             ],
             "pid": "5fdc183f5ddd8a051936cf72"
+          },
+          {
+            "id": "5fdc183fc10c73b11936cfb8",
+            "name": "Calculation",
+            "label": "Calculation",
+            "srcId": "5f96b888b863c333260ea33b",
+            "srcpId": null,
+            "needed": "0",
+            "configId": "5fdc183f98dfa2e21936cfbb",
+            "type": 3,
+            "needTitle": null,
+            "position": 2,
+            "children": [
+              {
+                "id": "5fdc183f0a7724901936cfbf",
+                "name": "CalSVF",
+                "label": "Calculate SVF",
+                "srcId": "5f96c2ae84a1fd77260eb6f4",
+                "srcpId": null,
+                "needed": "0",
+                "configId": "5fdc183f1beb21c61936cfc2",
+                "type": 4,
+                "needTitle": null,
+                "position": 0,
+                "children": null,
+                "pid": "5fdc183fc10c73b11936cfb8"
+              }
+            ],
+            "pid": "5fdc183f5ddd8a051936cf72"
           }
         ],
         "pid": "5fdc182fe9f710d01936cedf"

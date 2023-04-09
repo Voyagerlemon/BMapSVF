@@ -1,7 +1,7 @@
 /*
  * @Author: xuhy
  * @Date: 2023-04-03 13:05:44
- * @LastEditTime: 2023-04-07 14:09:42
+ * @LastEditTime: 2023-04-09 09:00:31
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 微件状态管理
  */
@@ -13,7 +13,8 @@ import {
   CLEAR_ACTIVE_MAP,
   DELETE_ACTIVE_WIDGET,
   SET_RESOURCE_MAP,
-  SET_WIDGET_CONFIG
+  SET_WIDGET_CONFIG,
+  GET_HAS_PANEL_WIDGET
 } from "@/store/types";
 import {
   openWidget,
@@ -30,7 +31,8 @@ const widget = {
     activeMap: {},
     resourceMap: {},
     widgetConfig: {},
-    showTopic: true
+    showTopic: true,
+    hasPanelWidget: {}
   },
 
   mutations: {
@@ -54,6 +56,9 @@ const widget = {
     },
     [SET_WIDGET_CONFIG](state, data) {
       state.widgetConfig = data;
+    },
+    [GET_HAS_PANEL_WIDGET](state, data) {
+      state.hasPanelWidget = data;
     }
   },
 
@@ -127,6 +132,9 @@ const widget = {
     },
     setResourceMap({ commit }, data) {
       commit(SET_RESOURCE_MAP, data);
+    },
+    getHasPanelWidget({ commit }, data) {
+      commit(GET_HAS_PANEL_WIDGET, data);
     }
   },
 
@@ -134,7 +142,8 @@ const widget = {
     widgetMap: state => state.widgetMap,
     activeMap: state => state.activeMap,
     resourceMap: state => state.resourceMap,
-    widgetConfig: state => state.widgetConfig
+    widgetConfig: state => state.widgetConfig,
+    hasPanelWidget: state => state.hasPanelWidget
   }
 };
 
