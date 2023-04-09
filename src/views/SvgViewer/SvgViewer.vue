@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:26:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-04 10:20:24
+ * @LastEditTime: 2023-04-09 19:44:58
  * @FilePath: \BMapSVF-Client\src\views\SvgViewer\SvgViewer.vue
  * @Description: svg图标预览组件
 -->
@@ -19,7 +19,7 @@
 </template>
 <script setup>
 import { onMounted, reactive } from "vue";
-import { Message } from "view-ui-plus";
+import { Message, Copy } from "view-ui-plus";
 const iconName = reactive([]);
 const div = reactive([]);
 const icons = import.meta.glob("../../svg/*.svg");
@@ -31,15 +31,58 @@ const getIcons = () => {
     iconName.push(name);
   }
 };
+
 async function handleIconClick(iconName) {
-  await navigator.clipboard.writeText(`<SvgIcon iconName="${iconName}" />`);
+  Copy({
+    text: `<SvgIcon iconName="${iconName}" />`,
+    showTip: false,
+    success: () => {
+      Message.success({
+        background: true,
+        content: `${iconName}图标代码已复制到剪贴板`,
+        duration: 3
+      });
+    },
+    error: () => {
+      Message.error({
+        background: true,
+        content: `${iconName}图标代码复制失败`,
+        duration: 3
+      });
+    }
+  });
+  /*  await navigator.clipboard.writeText(`<SvgIcon iconName="${iconName}" />`);
   Message.success({
     background: true,
     content: `${iconName}图标代码已复制到剪切板`,
     duration: 3
-  });
+  }); */
 }
-
+// 封装在网络环境下和本地环境下复制到剪贴板
+/* function copyToClipboard(textToCopy) {
+  // navigator clipboard 需要https等安全上下文
+  if (navigator.clipboard && window.isSecureContext) {
+    // navigator clipboard 向剪贴板写文本
+    return navigator.clipboard.writeText(textToCopy);
+  } else {
+    // 创建text area
+    let textArea = document.createElement("textarea");
+    textArea.value = textToCopy;
+    // 使text area不在viewport，同时设置不可见
+    textArea.style.position = "absolute";
+    textArea.style.opacity = 0;
+    textArea.style.left = "-999999px";
+    textArea.style.top = "-999999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    return new Promise((res, rej) => {
+      // 执行复制命令并移除文本框
+      document.execCommand("copy") ? res() : rej();
+      textArea.remove();
+    });
+  }
+} */
 onMounted(() => {
   getIcons();
 });
