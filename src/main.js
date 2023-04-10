@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 16:00:53
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-08 22:43:31
+ * @LastEditTime: 2023-04-09 22:15:38
  * @FilePath: \BMapSVF-Client\src\main.js
  * @Description: 入口文件相关配置
  */
@@ -24,7 +24,6 @@ import store from "@/store";
 // 引入微件
 import widgets from "@/widgets";
 store.dispatch("widget/setWidgets", widgets);
-
 // 注册全局组件
 import components from "./components/index";
 

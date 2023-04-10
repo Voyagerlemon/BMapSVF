@@ -68,14 +68,13 @@ import {
   onMounted,
   onUnmounted,
   createApp,
-  defineComponent
+  defineComponent,
+  getCurrentInstance
 } from "vue";
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
 import store from "@/store";
-import { closePanelWidget } from "../../utils/widget/widget";
 
 const panelWidget = store.state.widget.hasPanelWidget;
-
 //let defaultHidden = panelWidget.meta.defaultHidden;
 let draggableBoxRef = ref(null);
 // 存放widget组件
@@ -172,21 +171,20 @@ const resizeStart = event => {
     return;
   }
   event.stopPropagation();
-  console.log("resizeS", event);
 };
 // 鼠标结束事件
 const resizeEnd = () => {
   if (!expand.value) {
     return;
   }
-  console.log("resizeEnd");
 };
 const handleReturn = () => {
   pageIndex.value--;
   comp.$emit("return", pageIndex.value);
 };
 function close() {
-  /* closePanelWidget(); */
+  const vNode = document.querySelector(".func-panel");
+  vNode.parentElement.removeChild(vNode);
 }
 const toggleExpand = () => {
   if (triggeredDrag.value) {

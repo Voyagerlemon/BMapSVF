@@ -2,13 +2,13 @@
  * @Author: xuhy
  * @Date: 2023-04-05 18:45:32
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-09 17:13:27
+ * @LastEditTime: 2023-04-10 10:40:35
  * @Description: widget
  */
 
 import store from "@/store";
 import { SET_ACTIVE_MAP, DELETE_ACTIVE_WIDGET } from "@/store/types";
-import { createApp, defineComponent } from "vue";
+import { createApp, defineComponent, getCurrentInstance } from "vue";
 import FuncPanel from "../../components/global/FuncPanel.vue";
 
 const createPanel = () => {
@@ -72,6 +72,5 @@ export const closeMutexWidget = activeMap => {
 };
 export const closePanelWidget = () => {
   const Panel = createPanel();
-  Panel.mount("#mapTopRight");
-  Panel.unmount();
+  console.log(Panel);
 };
