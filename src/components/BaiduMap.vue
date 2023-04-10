@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-06 16:53:21
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-10 15:19:27
+ * @LastEditTime: 2023-04-10 16:56:05
  * @FilePath: \BMapSVF-Client\src\components\BaiduMap.vue
  * @Description: 封装的百度地图组件
 -->
@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import { defineComponent, onMounted } from "vue";
+import {defineComponent, onMounted } from "vue";
+
 export default defineComponent({
   props: {
     // 传入需要定位的经纬度
@@ -64,13 +65,13 @@ export default defineComponent({
         })
       );
     });
-  }
+  },
 });
 </script>
 <style scoped>
 #map {
   width: 100%;
-  height: 93vh;
+  height: 93.5vh;
   overflow: hidden;
   margin: 0;
 }
