@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-06 16:53:21
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-08 17:00:46
+ * @LastEditTime: 2023-04-10 15:19:27
  * @FilePath: \BMapSVF-Client\src\components\BaiduMap.vue
  * @Description: 封装的百度地图组件
 -->
@@ -34,7 +34,6 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const BMap = window.BMap;
-    console.log("BMap", window);
     onMounted(() => {
       var map = new BMap.Map("map");
       window.map = map;
