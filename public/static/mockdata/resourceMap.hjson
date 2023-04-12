@@ -112,6 +112,20 @@
           }
         ],
         "pid": "5fdc182fe9f710d01936cedf"
+      },
+      {
+        "id": "856d9b2cd46d7cb1731950a4",
+        "name": "SearchPanel",
+        "label": "搜索框",
+        "srcId": "5684d453fb9a69aae92ae25",
+        "srcpId": null,
+        "needed": "0",
+        "configId": "568c9b2c91444583731950a7",
+        "type": 4,
+        "needTitle": null,
+        "position": 0,
+        "children": null,
+        "pid": "568b9b2cfd2d8ba9731950a1"
       }
     ],
     "pid": "-1"

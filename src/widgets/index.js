@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-10 10:55:30
+ * @LastEditTime: 2023-04-10 17:09:16
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -56,6 +56,15 @@ const widgets = [
     component: () => import("@/widgets/ToolBox")
   },
   {
+    name: "SearchPanel",
+    meta: {
+      label: "搜索框",
+      container: "mapTopLeft",
+      doLast: true
+    },
+    component: () => import("@/widgets/SearchPanel")
+  },
+  {
     name: "MapToggle",
     meta: {
       label: "底图切换",
@@ -83,7 +92,7 @@ const widgets = [
       defaultHidden: false,
       hasPanel: true,
       top: 2.86,
-      left: 34.66,
+      left: 34.66
     },
     component: () => import("@/widgets/CalSVF")
   }
