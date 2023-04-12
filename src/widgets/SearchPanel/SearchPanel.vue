@@ -110,7 +110,7 @@ export default {
         const resultPoi = localSearch.getResults().getPoi(0).point;
         window.map.centerAndZoom(resultPoi, 18);
         // 添加标注
-        window.map.addOverlay(new window.BMap.Marker(resultPoi));
+        //window.map.addOverlay(new window.BMap.Marker(resultPoi));
       }
 
       localSearch.search(myValue);
