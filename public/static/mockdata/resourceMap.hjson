@@ -67,7 +67,7 @@
               {
                 "id": "5fdc183fbf7f33a71936cfaa",
                 "name": "DistanceMeasure",
-                "label": "Distance Measure",
+                "label": "Distance measure",
                 "srcId": "5f96c28091b53d4c260eb657",
                 "srcpId": null,
                 "needed": "0",
@@ -84,7 +84,7 @@
           {
             "id": "5fdc183fc10c73b11936cfb8",
             "name": "Calculation",
-            "label": "Calculation",
+            "label": "Calculation SVF",
             "srcId": "5f96b888b863c333260ea33b",
             "srcpId": null,
             "needed": "0",
@@ -96,7 +96,7 @@
               {
                 "id": "5fdc183f0a7724901936cfbf",
                 "name": "CalSVF",
-                "label": "Calculate SVF",
+                "label": "A single point",
                 "srcId": "5f96c2ae84a1fd77260eb6f4",
                 "srcpId": null,
                 "needed": "0",
@@ -106,6 +106,20 @@
                 "position": 0,
                 "children": null,
                 "pid": "5fdc183fc10c73b11936cfb8"
+              },
+              {
+                "id": "5fdc183f0a5689901936cfbf",
+                "name": "CalCsvSVF",
+                "label": "Multiple points",
+                "srcId": "5f96c2ae84a1fd56860eb6f4",
+                "srcpId": null,
+                "needed": "0",
+                "configId": "5fdc183f1beb21c56785cfc2",
+                "type": 4,
+                "needTitle": null,
+                "position": 0,
+                "children": null,
+                "pid": "5fdc183fc10c73b25646cfb8"
               }
             ],
             "pid": "5fdc183f5ddd8a051936cf72"

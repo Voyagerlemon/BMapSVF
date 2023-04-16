@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-16 10:07:38
+ * @LastEditTime: 2023-04-16 10:35:46
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -95,6 +95,19 @@ const widgets = [
       left: 34.66
     },
     component: () => import("@/widgets/CalSVF")
+  },
+  {
+    name: "CalCsvSVF",
+    meta: {
+      label: "导入csv文件计算SVF",
+      container: "mapWrapper",
+      icon: "select-multiple",
+      defaultHidden: false,
+      hasPanel: true,
+      top: 2.86,
+      left: 34.66
+    },
+    component: () => import("@/widgets/CalCsvSVF")
   }
 ];
 export default widgets;
