@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-10 17:09:16
+ * @LastEditTime: 2023-04-16 10:07:38
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -88,7 +88,7 @@ const widgets = [
     meta: {
       label: "计算SVF",
       container: "mapWrapper",
-      icon: "fisheye",
+      icon: "select-cal",
       defaultHidden: false,
       hasPanel: true,
       top: 2.86,
