@@ -2,7 +2,7 @@
  * @Author: xuhy
  * @Date: 2023-04-05 18:45:32
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-10 10:40:35
+ * @LastEditTime: 2023-04-16 11:36:04
  * @Description: widget
  */
 
@@ -50,27 +50,23 @@ export const openWidget = async (widgetInfo, mixinProps = {}) => {
   }
   return true;
 };
-export const closeWidget = widget => {
-  if (widget && widget.$el) {
-    store.commit(
-      `widget/${DELETE_ACTIVE_WIDGET}`,
-      widget.widgetName.replace(/\d+/g, "")
-    );
-    widget.$el.parentElement.removeChild(widget.$el);
+export const closeWidget = async widgetInfo => {
+  const { component } = widgetInfo;
+  let widget = null;
+  const compConfig = await component();
+  const Comp = defineComponent(compConfig.default);
+  widget = createApp(Comp);
+  console.log(widget.widgetName);
+  if (widget) {
+    const vNode = document.querySelector(".func-panel");
+    vNode.parentElement.removeChild(vNode);
     widget.unmount();
   }
 };
 
 export const closeMutexWidget = activeMap => {
-  const keys = Object.keys(activeMap);
-  for (const key of keys) {
-    const widget = activeMap[key];
-    if (widget && widget.meta.isMutex) {
-      closeWidget(widget);
-    }
+  const { meta } = activeMap;
+  if (activeMap && meta.isMutex) {
+    closeWidget(activeMap);
   }
-};
-export const closePanelWidget = () => {
-  const Panel = createPanel();
-  console.log(Panel);
 };

@@ -1,7 +1,7 @@
 /*
  * @Author: xuhy
  * @Date: 2023-04-03 13:05:44
- * @LastEditTime: 2023-04-09 09:00:31
+ * @LastEditTime: 2023-04-16 11:20:50
  * @LastEditors: xuhy 1727317079@qq.com
  * @Description: 微件状态管理
  */
@@ -89,7 +89,7 @@ const widget = {
         commit(SET_WIDGET_CONFIG, config);
       }
       if (widgetInfo.meta.isMutex) {
-        closeMutexWidget(state.activeMap);
+        closeMutexWidget(widgetInfo);
       }
       await openWidget(widgetInfo, { ...prop });
       return true;
