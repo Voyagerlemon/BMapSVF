@@ -314,7 +314,7 @@ onUnmounted(() => {
   map.clearOverlays()
 });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .ivu-notice {
   width: 22rem;
 }
