@@ -117,7 +117,7 @@ const props = defineProps({
   }
 });
 //接收事件
-const emits = defineEmits(["toggle-expand", "page-change", "show"]);
+const emits = defineEmits(["toggle-expand", "page-change", "show", "return"]);
 // 获取具有panel的widget的icon
 const getIcon = computed(() => {
   const { icon } = props.meta;
@@ -180,12 +180,17 @@ const resizeEnd = () => {
 };
 const handleReturn = () => {
   pageIndex.value--;
-  comp.$emit("return", pageIndex.value);
+  emits("return", pageIndex.value);
 };
 function close() {
+  if (!comChildren.value) {
+    return;
+  }
+  comChildren.value.unmount();
   const vNode = document.querySelector(".func-panel");
   vNode.parentElement.removeChild(vNode);
 }
+// panel展开的状态
 const toggleExpand = () => {
   if (triggeredDrag.value) {
     return;
@@ -201,7 +206,7 @@ const toggleExpand = () => {
   }
   expand.value = !expand.value;
   emits("toggle-expand", {
-    expand
+    expand: expand.value
   });
 };
 const insertContent = async () => {
@@ -213,6 +218,7 @@ const insertContent = async () => {
   const el = contentRef.value;
   comp.mount(el);
 
+  comChildren.value = comp;
   emits("page-change", index => {
     pageIndex.value = index;
   });
@@ -258,7 +264,7 @@ const vDrag = {
       document.onmousemove = e => {
         el.style.bottom = "auto";
         el.style.right = "auto";
-        // 根据鼠标当前位置到客户端区域原点的距离，重新设置 目标DOM元素到父元素的距离
+        // 根据鼠标当前位置到客户端区域原点的距离，重新设置目标DOM元素到父元素的距离
         const currX = e.clientX - disx - parentX;
         const currY = e.clientY - disy - parentY;
         const maxX = el.offsetParent.clientWidth - el.clientWidth;

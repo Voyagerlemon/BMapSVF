@@ -2,7 +2,7 @@
  * @Author: xuhy
  * @Date: 2023-04-05 18:45:32
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-16 11:36:04
+ * @LastEditTime: 2023-04-18 14:45:45
  * @Description: widget
  */
 
@@ -50,16 +50,12 @@ export const openWidget = async (widgetInfo, mixinProps = {}) => {
   }
   return true;
 };
-export const closeWidget = async widgetInfo => {
-  const { component } = widgetInfo;
-  let widget = null;
-  const compConfig = await component();
-  const Comp = defineComponent(compConfig.default);
-  widget = createApp(Comp);
-  console.log(widget.widgetName);
-  if (widget) {
-    const vNode = document.querySelector(".func-panel");
-    vNode.parentElement.removeChild(vNode);
+export const closeWidget = async widget => {
+  if (widget && widget._instance.vnode.el) {
+    store.commit(`widget/${DELETE_ACTIVE_WIDGET}`, widget.widgetName);
+    widget._instance.vnode.el.parentElement.removeChild(
+      widget._instance.vnode.el
+    );
     widget.unmount();
   }
 };
