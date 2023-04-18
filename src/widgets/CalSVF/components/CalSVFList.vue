@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-09 20:03:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-16 09:58:59
+ * @LastEditTime: 2023-04-18 19:00:31
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\components\CalSVFList.vue
  * @Description: SVF计算方式
 -->
@@ -35,13 +35,41 @@
         SVF distribution of sampling points
       </Button>
     </div>
+    <!-- 对话框 -->
+    <Modal v-model="modal" width="320" transfer>
+      <template #header>
+        <div
+          class="text-primary text-xl font-medium flex flex-row items-center justify-center"
+        >
+          <SvgIcon iconName="info-circle" className="w-5 h-5" />
+          <span class="ml-1">Delete confirmation</span>
+        </div>
+      </template>
+      <div class="flex flex-col justify-center items-center text-center">
+        <p class="text-base mb-2 font-medium">
+          This is a SVF sampling point, panoid is {{ panoramaId }}
+        </p>
+        <p class="text-base font-medium">Will you delete it?</p>
+      </div>
+      <template #footer>
+        <Button
+          type="primary"
+          size="large"
+          long
+          :loading="modal_loading"
+          @click="delPoint"
+        >
+          Delete
+        </Button>
+      </template>
+    </Modal>
   </div>
 </template>
 <script setup>
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
-import { Button, Tooltip} from "view-ui-plus";
+import { Button, Tooltip } from "view-ui-plus";
 import { ref, reactive, onMounted, onUnmounted } from "vue";
-import { Message, Notice } from "view-ui-plus";
+import { Message, Notice, Modal } from "view-ui-plus";
 
 let socket = ref(null);
 let map = window.map;
@@ -50,7 +78,9 @@ let BMapLib = window.BMapLib;
 const markerLocation = reactive([]);
 let panoramaData = reactive({});
 const panoramaResults = reactive([]);
-
+const modal = ref(false);
+const modal_loading = ref(false);
+let panoramaId = ref("");
 // SVF采样点颜色
 const svfColors = reactive([
   "rgb(0,104,55)",
@@ -243,6 +273,11 @@ const distributeSVF = () => {
           title:
             "SVF=" + String(panoramaResults[0][i].svf.toFixed(2)) + " (sky)"
         });
+        // 标注的点击事件
+        markerFishEye.addEventListener("click", () => {
+          modal.value = true;
+          panoramaId.value = panoramaResults[0][i].panoid;
+        });
         markerFishEye.addEventListener("mouseover", () => {
           panResultFishEye.setAttribute(
             "src",
@@ -259,6 +294,11 @@ const distributeSVF = () => {
         });
         map.addOverlay(markerFishEye);
       }
+      const centerPoint = new BMap.Point(
+        panoramaResults[0][0].lng,
+        panoramaResults[0][0].lat
+      );
+      map.centerAndZoom(centerPoint, 18);
     } else {
       alert("请在chrome、safari、IE8+以上浏览器运行");
     }
@@ -268,7 +308,28 @@ const clearMarker = () => {
   window.map.clearOverlays();
   emit("getSVFValue", -1);
 };
-
+const delPoint = () => {
+  modal_loading.value = true;
+  socket.value.emit("deletePoint", panoramaId.value);
+  socket.value.on("getDeletePoint", res => {
+    modal_loading.value = false;
+    modal.value = false;
+    Message.success({
+      background: true,
+      content: res.msg,
+      duration: 3
+    });
+  });
+  socket.value.on("getError", res => {
+    modal_loading.value = false;
+    modal.value = false;
+    Message.error({
+      background: true,
+      content: res,
+      duration: 3
+    });
+  });
+};
 onMounted(() => {
   socketInstance();
 });

@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-08 17:20:17
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-18 10:33:37
+ * @LastEditTime: 2023-04-18 16:30:14
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\CalSVF.vue
  * @Description: 坐标转换组件
 -->
@@ -56,8 +56,8 @@ let BMap = window.BMap;
 let map = window.map;
 const wgsCoordinate = ref("");
 const bd09Coordinate = ref("");
-
 let socket = ref(null);
+
 const socketInstance = () => {
   socket.value = window.io.connect("http://127.0.0.1:5000");
   socket.value.on("connect", () => {
@@ -163,7 +163,6 @@ const translateCallback = data => {
 };
 const coordinatePosition = () => {
   if (wgsCoordinate.value && bd09Coordinate.value) {
-    console.log("1", wgsCoordinate.value, bd09Coordinate.value);
     const parts = bd09Coordinate.value.split(",");
     const lng = parseFloat(parts[0]);
     const lat = parseFloat(parts[1]);
@@ -172,7 +171,6 @@ const coordinatePosition = () => {
     map.addOverlay(marker);
     map.centerAndZoom(locationPoint, 18);
   } else if (wgsCoordinate.value && !bd09Coordinate.value) {
-    console.log("2", wgsCoordinate.value, bd09Coordinate.value);
     const parts = wgsCoordinate.value.split(",");
     const lng = parseFloat(parts[0]);
     const lat = parseFloat(parts[1]);
@@ -183,7 +181,6 @@ const coordinatePosition = () => {
     pointArr.push(locationPoint);
     convertor.translate(pointArr, 1, 5, translateCallback);
   } else {
-    console.log("3", wgsCoordinate.value, bd09Coordinate.value);
     const parts = bd09Coordinate.value.split(",");
     const lng = parseFloat(parts[0]);
     const lat = parseFloat(parts[1]);
