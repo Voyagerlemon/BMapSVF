@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-09 20:03:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-18 19:00:31
+ * @LastEditTime: 2023-04-18 21:32:50
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\components\CalSVFList.vue
  * @Description: SVF计算方式
 -->
@@ -81,8 +81,9 @@ const panoramaResults = reactive([]);
 const modal = ref(false);
 const modal_loading = ref(false);
 let panoramaId = ref("");
+let loadSecondPoints = reactive([]);
 // SVF采样点颜色
-const svfColors = reactive([
+/* const svfColors = reactive([
   "rgb(0,104,55)",
   "rgb(26,152,80)",
   "rgb(102,189,99)",
@@ -93,8 +94,31 @@ const svfColors = reactive([
   "rgb(244,109,67)",
   "rgb(215,48,39)",
   "rgb(165,0,38)"
+]); */
+const svfColors = reactive([
+  "#FDE725",
+  "#B6DE2B",
+  "#6DCD59",
+  "#35B779",
+  "#1F9E89",
+  "#26838F",
+  "#31678E",
+  "#3F4A8A",
+  "#482777",
+  "#440154"
 ]);
-
+/* const disColors = reactive([
+  "#440154",
+  "#482777",
+  "#3F4A8A",
+  "#31678E",
+  "#26838F",
+  "#1F9E89",
+  "#35B779",
+  "#6DCD59",
+  "#B6DE2B",
+  "#FDE725"
+]); */
 const emit = defineEmits(["getSVFValue"]);
 const date = new Date();
 const year = date.getFullYear();
@@ -148,7 +172,7 @@ const drawingManager = new BMapLib.DrawingManager(map, {
   drawingType: window.BMAP_DRAWING_MARKER,
   enableDrawingTool: false,
   markerOptions: {
-    title: "Hello",
+    title: "point",
     offset: new BMap.Size(6, 13)
   }
 });
@@ -177,11 +201,6 @@ const infoWindow = new BMap.InfoWindow(div, {
 
 // 在地图点击选点
 const singleClick = () => {
-  Message.info({
-    background: true,
-    content: "Click the right mouse button to close!",
-    duration: 3
-  });
   // 开启地图绘制模式
   drawingManager.open();
 
@@ -190,7 +209,7 @@ const singleClick = () => {
     markerLocation.splice(0, 1, e.point);
     const location = markerLocation[0];
     // 检索这一点的全景数据信息
-    const panoramaService = new window.BMap.PanoramaService();
+    const panoramaService = new BMap.PanoramaService();
     panoramaService.getPanoramaByLocation(
       new BMap.Point(location.lng, location.lat),
       25,
@@ -254,7 +273,12 @@ const calculateSVF = () => {
 const distributeSVF = () => {
   socket.value.emit("postPanoramaResults", "获取百度全景处理结果");
   socket.value.on("getPanoramaResults", res => {
-    panoramaResults.push(res.panoramaResults);
+    panoramaResults.splice(0, panoramaResults.length, res.panoramaResults);
+    if (panoramaResults[0].length === 0) {
+      map.clearOverlays();
+      return;
+    }
+    map.clearOverlays();
     if (document.createElement("canvas").getContext) {
       for (let i = 0; i < panoramaResults[0].length; i++) {
         const locationPoint = new BMap.Point(
@@ -308,6 +332,7 @@ const clearMarker = () => {
   window.map.clearOverlays();
   emit("getSVFValue", -1);
 };
+
 const delPoint = () => {
   modal_loading.value = true;
   socket.value.emit("deletePoint", panoramaId.value);
@@ -318,6 +343,49 @@ const delPoint = () => {
       background: true,
       content: res.msg,
       duration: 3
+    });
+  });
+  socket.value.on("getSecondPoints", res => {
+    loadSecondPoints.splice(0, loadSecondPoints.length, res.secondPoints);
+    if (loadSecondPoints[0].length === 0) {
+      map.clearOverlays();
+      return;
+    }
+    map.clearOverlays();
+    loadSecondPoints[0].forEach(ele => {
+      const locationPoint = new BMap.Point(ele.lng, ele.lat);
+      const markerFishEye = new BMap.Marker(locationPoint, {
+        icon: new BMap.Symbol(window.BMap_Symbol_SHAPE_CIRCLE, {
+          fillColor: getColor(ele.svf),
+          fillOpacity: 0.95,
+          strokeColor: getColor(ele.svf),
+          strokeWeight: 1,
+          scale: 7
+        }),
+
+        title: "SVF=" + String(ele.svf.toFixed(2)) + " (sky)"
+      });
+      // 标注的点击事件
+      markerFishEye.addEventListener("click", () => {
+        modal.value = true;
+        panoramaId.value = ele.panoid;
+      });
+      markerFishEye.addEventListener("mouseover", () => {
+        panResultFishEye.setAttribute(
+          "src",
+          "data:image/jpeg;base64," + ele.fisheye
+        );
+        panResultFisheyeSeg.setAttribute(
+          "src",
+          "data:image/jpeg;base64," + ele.fisheye_seg
+        );
+        map.openInfoWindow(infoWindow, locationPoint);
+      });
+      markerFishEye.addEventListener("mouseout", () => {
+        infoWindow.close();
+      });
+
+      map.addOverlay(markerFishEye);
     });
   });
   socket.value.on("getError", res => {
