@@ -249,14 +249,7 @@ const beforeUpload = file => {
   }
   return true;
 };
-// WGS84-->BD09转换回调函数, 一次最多10个点
-const translateCallback = data => {
-  if (data.status === 0) {
-    const marker = new BMap.Marker(data.points[0]);
-    map.addOverlay(marker);
-    map.setCenter(data.points[0]);
-  }
-};
+
 // 文件上传成功的回调
 const onUploadSuccess = response => {
   if (response.status === 200)

@@ -55,7 +55,7 @@
           {
             "id": "5fdc183f61efa6611936cfa3",
             "name": "Measure",
-            "label": "Measure",
+            "label": "Basic",
             "srcId": "5f96b87857f0e7fb260ea334",
             "srcpId": null,
             "needed": "0",
@@ -77,6 +77,20 @@
                 "position": 0,
                 "children": null,
                 "pid": "5fdc183f61efa6611936cfa3"
+              },
+              {
+                "id": "5fdg1563fbf7f33a71936cfaa",
+                "name": "CoordinatePositioning",
+                "label": "Coordinate Positioning",
+                "srcId": "5f568f8091b53d4c260eb657",
+                "srcpId": null,
+                "needed": "0",
+                "configId": "5fdc183f5256da661936cfad",
+                "type": 4,
+                "needTitle": null,
+                "position": 0,
+                "children": null,
+                "pid": "5fdc183f6256fge11936cfa3"
               }
             ],
             "pid": "5fdc183f5ddd8a051936cf72"

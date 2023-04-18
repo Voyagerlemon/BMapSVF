@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-05 15:01:31
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-16 10:21:17
+ * @LastEditTime: 2023-04-17 16:22:02
  * @FilePath: \BMapSVF-Client\src\widgets\ToolBox\components\CommonToolItem.vue
  * @Description: 工具箱中的功能组件按钮
 -->
@@ -104,7 +104,7 @@ const editToolItem = () => {
 </script>
 <style lang="scss" scoped>
 .tool-item {
-  width: 11.11rem;
+  width: auto;
   height: 1.82rem;
   line-height: 1.82rem;
   padding: 0 0.62rem;
