@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-09 20:03:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-21 14:22:36
+ * @LastEditTime: 2023-04-21 14:40:19
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\components\CalSVFList.vue
  * @Description: SVF计算方式
 -->
@@ -108,12 +108,6 @@ const svfColors = reactive([
   "#440154"
 ]);
 const emit = defineEmits(["getSVFValue"]);
-const date = new Date();
-const year = date.getFullYear();
-const month =
-  date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-const day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-const nowTime = year + "-" + month + "-" + day;
 
 // 根据SVF值给定标记点的颜色
 function getColor(val) {

@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-08 17:20:17
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-19 09:56:47
+ * @LastEditTime: 2023-04-21 14:44:47
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\CalSVF.vue
  * @Description: 坐标转换组件
 -->
@@ -152,17 +152,20 @@ const clearBD09Coordinate = () => {
 // WGS84-->BD09转换回调函数, 一次最多10个点
 const translateCallback = data => {
   if (data.status === 0) {
-    const parts = wgsCoordinate.value.split(",");
-    const lng = parseFloat(parts[0]);
-    const lat = parseFloat(parts[1]);
-    const locationPoint = new BMap.Point(lng, lat);
-    const marker = new BMap.Marker(locationPoint);
+    const marker = new BMap.Marker(data.points[0]);
     map.addOverlay(marker);
-    map.centerAndZoom(locationPoint, 18);
+    map.centerAndZoom(data.points[0], 17);
   }
 };
 const coordinatePosition = () => {
-  if (wgsCoordinate.value && bd09Coordinate.value) {
+  if (!wgsCoordinate.value && !bd09Coordinate.value) {
+    Message.warning({
+      background: true,
+      content: "Please enter coordinate!",
+      duration: 5
+    });
+  } 
+  else if (wgsCoordinate.value && bd09Coordinate.value) {
     const parts = bd09Coordinate.value.split(",");
     const lng = parseFloat(parts[0]);
     const lat = parseFloat(parts[1]);
