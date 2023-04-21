@@ -33,11 +33,39 @@
         </Tooltip>
       </div>
     </div>
+    <!-- 对话框 -->
+    <Modal v-model="modal" width="320" transfer>
+      <template #header>
+        <div
+          class="text-primary text-xl font-medium flex flex-row items-center justify-center"
+        >
+          <SvgIcon iconName="info-circle" className="w-5 h-5" />
+          <span class="ml-1">Delete confirmation</span>
+        </div>
+      </template>
+      <div class="flex flex-col justify-center items-center text-center">
+        <p class="text-base mb-2 font-medium">
+          This is a SVF sampling point, panoid is {{ panoramaId }}
+        </p>
+        <p class="text-base font-medium">Will you delete it?</p>
+      </div>
+      <template #footer>
+        <Button
+          type="primary"
+          size="large"
+          long
+          :loading="modal_loading"
+          @click="delPoint"
+        >
+          Delete
+        </Button>
+      </template>
+    </Modal>
   </div>
 </template>
 <script setup>
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
-import { Button, Tooltip, Upload } from "view-ui-plus";
+import { Button, Tooltip, Upload, Modal } from "view-ui-plus";
 import { ref, reactive, onMounted, onUnmounted } from "vue";
 import { Message, Notice } from "view-ui-plus";
 
@@ -49,31 +77,28 @@ const panoramaResults = reactive([]);
 // 根据csv文件的经纬度坐标获取的全景数据
 const postPanoramas = reactive([]);
 
+let panoramaId = ref("");
+const modal = ref(false);
+const modal_loading = ref(false);
+let loadSecondPoints = reactive([]);
 // 过滤上传的文件格式
 const accept = ref(".csv");
 let uploadedResults = reactive([]);
 const actionUrl = ref("http://127.0.0.1:5000/upload");
 // SVF采样点颜色
 const svfColors = reactive([
-  "rgb(0,104,55)",
-  "rgb(26,152,80)",
-  "rgb(102,189,99)",
-  "rgb(166,217,106)",
-  "rgb(217,239,139)",
-  "rgb(254,224,139)",
-  "rgb(253,174,97)",
-  "rgb(244,109,67)",
-  "rgb(215,48,39)",
-  "rgb(165,0,38)"
+  "#FDE725",
+  "#B6DE2B",
+  "#6DCD59",
+  "#35B779",
+  "#1F9E89",
+  "#26838F",
+  "#31678E",
+  "#3F4A8A",
+  "#482777",
+  "#440154"
 ]);
-
 const emit = defineEmits(["getSVFValue"]);
-const date = new Date();
-const year = date.getFullYear();
-const month =
-  date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-const day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-const nowTime = year + "-" + month + "-" + day;
 
 // 根据SVF值给定标记点的颜色
 function getColor(val) {
@@ -146,7 +171,7 @@ const calculateSVF = () => {
     let bsvPanorama = `http://api.map.baidu.com/panorama/v2?ak=qvIqQKAADKsPFqmxR6T0xP6EtKFT6TjQ&width=1024&height=512&location=${lng},${lat}&fov=360`;
     let bMapData = {
       panoid: ele.id,
-      date: nowTime,
+      date: ele.copyright.photoDate,
       lng: ele.position.lng,
       lat: ele.position.lat,
       description: ele.description,
@@ -184,9 +209,19 @@ const calculateSVF = () => {
 };
 
 const distributeSVF = () => {
-  socket.value.emit("postCsvPanoramaResults", "获取百度全景处理结果");
-  socket.value.on("getCsvPanoramaResults", res => {
-    panoramaResults.push(res.panoramaResults);
+  socket.value.emit("getCsvPanoramaResults", "获取百度全景处理结果");
+  Message.info({
+    background: true,
+    content: "The data is loading!",
+    duration: 3
+  });
+  socket.value.on("postCsvPanoramaResults", res => {
+    panoramaResults.splice(0, panoramaResults.length, res.panoramaResults);
+    if (panoramaResults[0].length === 0) {
+      map.clearOverlays();
+      return;
+    }
+    map.clearOverlays();
     if (document.createElement("canvas").getContext) {
       for (let i = 0; i < panoramaResults[0].length; i++) {
         const locationPoint = new BMap.Point(
@@ -201,8 +236,12 @@ const distributeSVF = () => {
             strokeWeight: 1,
             scale: 7
           }),
-          enableMassClear: false,
           title: "SVF=" + String(panoramaResults[0][i].svf.toFixed(2))
+        });
+        // 标注的点击事件
+        markerFishEye.addEventListener("click", () => {
+          modal.value = true;
+          panoramaId.value = panoramaResults[0][i].panoid;
         });
         markerFishEye.addEventListener("mouseover", () => {
           panResultFishEye.setAttribute(
@@ -220,8 +259,13 @@ const distributeSVF = () => {
         });
         map.addOverlay(markerFishEye);
       }
+      const centerPoint = new BMap.Point(
+        panoramaResults[0][0].lng,
+        panoramaResults[0][0].lat
+      );
+      map.centerAndZoom(centerPoint, 18);
     } else {
-      alert("请在chrome、safari、IE8+以上浏览器运行");
+      alert("Please run it in chrome, safari, Internet Explorer 8+ or above!");
     }
   });
 };
@@ -285,18 +329,85 @@ const onUploadSuccess = response => {
       }
     );
   }
-  // 跳转至加载的采样点上
+  // 跳转至加载的第一个采样点上
   const locationPoint = new BMap.Point(
-    uploadedResults[0][1].lng,
-    uploadedResults[0][1].lat
+    uploadedResults[0][0].lng,
+    uploadedResults[0][0].lat
   );
   map.centerAndZoom(locationPoint, 18);
 };
 const onUploadError = () => {
-  Message.error({
-    background: true,
-    content: "The csv file uploaded successfully, but it fails to be parsed!",
-    duration: 3
+  socket.value.on("postError", res => {
+    Message.error({
+      background: true,
+      content: res,
+      duration: 3
+    });
+  });
+};
+const delPoint = () => {
+  modal_loading.value = true;
+  socket.value.emit("deleteCsvPoints", panoramaId.value);
+  socket.value.on("getDeleteCsvPoint", res => {
+    modal_loading.value = false;
+    modal.value = false;
+    Message.success({
+      background: true,
+      content: res.msg,
+      duration: 3
+    });
+  });
+  socket.value.on("getSecondCsvPoints", res => {
+    loadSecondPoints.splice(0, loadSecondPoints.length, res.secondCsvPoints);
+    if (loadSecondPoints[0].length === 0) {
+      map.clearOverlays();
+      return;
+    }
+    map.clearOverlays();
+    loadSecondPoints[0].forEach(ele => {
+      const locationPoint = new BMap.Point(ele.lng, ele.lat);
+      const markerFishEye = new BMap.Marker(locationPoint, {
+        icon: new BMap.Symbol(window.BMap_Symbol_SHAPE_CIRCLE, {
+          fillColor: getColor(ele.svf),
+          fillOpacity: 0.95,
+          strokeColor: getColor(ele.svf),
+          strokeWeight: 1,
+          scale: 7
+        }),
+
+        title: "SVF=" + String(ele.svf.toFixed(2)) + " (sky)"
+      });
+      // 标注的点击事件
+      markerFishEye.addEventListener("click", () => {
+        modal.value = true;
+        panoramaId.value = ele.panoid;
+      });
+      markerFishEye.addEventListener("mouseover", () => {
+        panResultFishEye.setAttribute(
+          "src",
+          "data:image/jpeg;base64," + ele.fisheye
+        );
+        panResultFisheyeSeg.setAttribute(
+          "src",
+          "data:image/jpeg;base64," + ele.fisheye_seg
+        );
+        map.openInfoWindow(infoWindow, locationPoint);
+      });
+      markerFishEye.addEventListener("mouseout", () => {
+        infoWindow.close();
+      });
+
+      map.addOverlay(markerFishEye);
+    });
+  });
+  socket.value.on("getError", res => {
+    modal_loading.value = false;
+    modal.value = false;
+    Message.error({
+      background: true,
+      content: res,
+      duration: 3
+    });
   });
 };
 onMounted(() => {
@@ -304,11 +415,11 @@ onMounted(() => {
 });
 onUnmounted(() => {
   socket.value.close();
-  map.clearOverlays()
+  map.clearOverlays();
 });
 </script>
 <style lang="scss" scoped>
 .ivu-notice {
-  width: 22rem;
+  width: 26rem;
 }
 </style>

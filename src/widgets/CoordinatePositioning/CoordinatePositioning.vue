@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-08 17:20:17
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-18 16:30:14
+ * @LastEditTime: 2023-04-19 09:56:47
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\CalSVF.vue
  * @Description: 坐标转换组件
 -->
@@ -121,7 +121,7 @@ const coordinateTransform = () => {
       });
     } else {
       const lngLat = { lng: parts[0], lat: parts[1] };
-      socket.value.emit("transformWGSCoordinate", lngLat);
+      socket.value.emit("postTransformWGSCoordinate", lngLat);
       socket.value.on("getBD09Coordinate", res => {
         bd09Coordinate.value = res.row_result.lng + "," + res.row_result.lat;
       });

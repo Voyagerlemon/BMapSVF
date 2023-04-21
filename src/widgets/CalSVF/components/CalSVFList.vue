@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-09 20:03:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-18 21:32:50
+ * @LastEditTime: 2023-04-21 14:22:36
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\components\CalSVFList.vue
  * @Description: SVF计算方式
 -->
@@ -107,18 +107,6 @@ const svfColors = reactive([
   "#482777",
   "#440154"
 ]);
-/* const disColors = reactive([
-  "#440154",
-  "#482777",
-  "#3F4A8A",
-  "#31678E",
-  "#26838F",
-  "#1F9E89",
-  "#35B779",
-  "#6DCD59",
-  "#B6DE2B",
-  "#FDE725"
-]); */
 const emit = defineEmits(["getSVFValue"]);
 const date = new Date();
 const year = date.getFullYear();
@@ -239,7 +227,7 @@ const calculateSVF = () => {
   const bsvPanorama = `http://api.map.baidu.com/panorama/v2?ak=qvIqQKAADKsPFqmxR6T0xP6EtKFT6TjQ&width=1024&height=512&location=${panoramaData.position.lng},${panoramaData.position.lat}&fov=360`;
   const bMapData = {
     panoid: panoramaData.id,
-    date: nowTime,
+    date: panoramaData.copyright.photoDate,
     lng: panoramaData.position.lng,
     lat: panoramaData.position.lat,
     description: panoramaData.description,
@@ -271,8 +259,8 @@ const calculateSVF = () => {
   });
 };
 const distributeSVF = () => {
-  socket.value.emit("postPanoramaResults", "获取百度全景处理结果");
-  socket.value.on("getPanoramaResults", res => {
+  socket.value.emit("getPanoramaResults", "获取百度全景处理结果");
+  socket.value.on("postPanoramaResults", res => {
     panoramaResults.splice(0, panoramaResults.length, res.panoramaResults);
     if (panoramaResults[0].length === 0) {
       map.clearOverlays();
@@ -324,7 +312,7 @@ const distributeSVF = () => {
       );
       map.centerAndZoom(centerPoint, 18);
     } else {
-      alert("请在chrome、safari、IE8+以上浏览器运行");
+      alert("Please run it in chrome, safari, Internet Explorer 8+ or above!");
     }
   });
 };
