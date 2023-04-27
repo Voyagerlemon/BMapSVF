@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-08 17:20:17
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-21 14:44:47
+ * @LastEditTime: 2023-04-24 19:39:50
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\CalSVF.vue
  * @Description: 坐标转换组件
 -->
@@ -125,6 +125,13 @@ const coordinateTransform = () => {
       socket.value.on("getBD09Coordinate", res => {
         bd09Coordinate.value = res.row_result.lng + "," + res.row_result.lat;
       });
+
+      socket.value.on("postLocationError", res => {
+        Message.error({
+          background: true,
+          content: res
+        });
+      });
     }
   } else if (!wgsCoordinate.value && bd09Coordinate.value) {
     Message.warning({
@@ -164,8 +171,7 @@ const coordinatePosition = () => {
       content: "Please enter coordinate!",
       duration: 5
     });
-  } 
-  else if (wgsCoordinate.value && bd09Coordinate.value) {
+  } else if (wgsCoordinate.value && bd09Coordinate.value) {
     const parts = bd09Coordinate.value.split(",");
     const lng = parseFloat(parts[0]);
     const lat = parseFloat(parts[1]);

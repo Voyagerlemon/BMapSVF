@@ -8,6 +8,7 @@
     <div class="flex flex-col">
       <div class="ml-0 mr-2 mt-3 mb-3">
         <Upload
+          ref="uploadRef"
           :action="actionUrl"
           :before-upload="beforeUpload"
           :on-success="onUploadSuccess"
@@ -76,7 +77,7 @@ let panoramaData = reactive([]);
 const panoramaResults = reactive([]);
 // 根据csv文件的经纬度坐标获取的全景数据
 const postPanoramas = reactive([]);
-
+let uploadRef = ref(null);
 let panoramaId = ref("");
 const modal = ref(false);
 const modal_loading = ref(false);
@@ -165,47 +166,61 @@ const infoWindow = new BMap.InfoWindow(div, {
 
 // 计算SVF
 const calculateSVF = () => {
-  panoramaData.forEach(ele => {
-    let lng = ele.position.lng;
-    let lat = ele.position.lat;
-    let bsvPanorama = `http://api.map.baidu.com/panorama/v2?ak=qvIqQKAADKsPFqmxR6T0xP6EtKFT6TjQ&width=1024&height=512&location=${lng},${lat}&fov=360`;
-    let bMapData = {
-      panoid: ele.id,
-      date: ele.copyright.photoDate,
-      lng: ele.position.lng,
-      lat: ele.position.lat,
-      description: ele.description,
-      srcPath: bsvPanorama
-    };
-    postPanoramas.push(bMapData);
-  });
-  socket.value.emit("postCsvPanoramas", postPanoramas);
-  socket.value.on("getReadSegInfo", res => {
-    Notice.info({
-      title: "Semantic segmentation",
-      desc: res.msg
-    });
-  });
-  socket.value.on("getReadPanorama", res => {
-    Notice.success({
-      title: "Semantic segmentation",
-      desc: res.msg
-    });
-  });
-  socket.value.on("getCalculateSVF", res => {
-    Notice.success({
-      title: "SVF",
-      desc: res.msg
-    });
-    emit("getSVFValue", res.svf);
-  });
-  socket.value.on("getSuccessPanorama", res => {
-    Message.success({
+  if (panoramaData.length === 0) {
+    Message.info({
       background: true,
-      content: res.msg,
+      content: "Please upload csv file firstly!",
       duration: 3
     });
-  });
+  } else {
+    panoramaData[0].forEach(ele => {
+      let lng = ele.position.lng;
+      let lat = ele.position.lat;
+      let bsvPanorama = `http://api.map.baidu.com/panorama/v2?ak=qvIqQKAADKsPFqmxR6T0xP6EtKFT6TjQ&width=1024&height=512&location=${lng},${lat}&fov=360`;
+      let bMapData = {
+        panoid: ele.id,
+        date: ele.copyright.photoDate,
+        lng: ele.position.lng,
+        lat: ele.position.lat,
+        description: ele.description,
+        srcPath: bsvPanorama
+      };
+      postPanoramas.push(bMapData);
+    });
+    socket.value.emit("postCsvPanoramas", postPanoramas);
+    socket.value.on("getReadSegInfo", res => {
+      Notice.info({
+        title: "Semantic segmentation",
+        desc: res.msg
+      });
+    });
+    socket.value.on("getReadPanorama", res => {
+      Notice.success({
+        title: "Semantic segmentation",
+        desc: res.msg
+      });
+    });
+    socket.value.on("getCalculateSVF", res => {
+      Notice.success({
+        title: "SVF",
+        desc: res.msg
+      });
+      emit("getSVFValue", res.svf);
+    });
+    socket.value.on("getSuccessPanorama", res => {
+      Message.success({
+        background: true,
+        content: res.msg,
+        duration: 3
+      });
+    });
+    socket.value.on("postCsvError", res => {
+      Message.error({
+        background: true,
+        content: res
+      });
+    });
+  }
 };
 
 const distributeSVF = () => {
@@ -271,6 +286,7 @@ const distributeSVF = () => {
 };
 const clearMarker = () => {
   map.clearOverlays();
+  uploadRef.value.clearFiles();
   emit("getSVFValue", -1);
 };
 // csv文件上传之前, 对文件类型和大小等进行判断
@@ -299,10 +315,11 @@ const onUploadSuccess = response => {
   if (response.status === 200)
     Message.success({
       background: true,
-      content: "File uploaded successfully!",
-      duration: 3
+      content: response.msg
     });
-  uploadedResults.push(response.csvResults);
+  uploadedResults.splice(0, response.csvResults.length, response.csvResults);
+  map.clearOverlays();
+  let serviceArr = [];
   for (let i = 0; i < uploadedResults[0].length; i++) {
     const locationPoint = new BMap.Point(
       uploadedResults[0][i].lng,
@@ -325,23 +342,26 @@ const onUploadSuccess = response => {
           });
           return;
         }
-        panoramaData.push(imgData);
+        serviceArr.push(imgData);
       }
     );
   }
+  console.log("ser", serviceArr);
+  // 替换数组
+  panoramaData.splice(0, panoramaData.length, serviceArr);
+  console.log("panoramas", panoramaData[0], panoramaData.length);
   // 跳转至加载的第一个采样点上
   const locationPoint = new BMap.Point(
     uploadedResults[0][0].lng,
     uploadedResults[0][0].lat
   );
-  map.centerAndZoom(locationPoint, 18);
+  map.centerAndZoom(locationPoint, 15);
 };
 const onUploadError = () => {
-  socket.value.on("postError", res => {
+  socket.value.on("postUploadError", res => {
     Message.error({
       background: true,
-      content: res,
-      duration: 3
+      content: res
     });
   });
 };
@@ -416,10 +436,11 @@ onMounted(() => {
 onUnmounted(() => {
   socket.value.close();
   map.clearOverlays();
+  uploadRef.value.clearFiles();
 });
 </script>
 <style lang="scss" scoped>
-.ivu-notice {
-  width: 26rem;
+:deep(.ivu-notice) {
+  width: 30rem;
 }
 </style>

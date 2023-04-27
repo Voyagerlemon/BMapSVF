@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-09 20:03:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-21 14:40:19
+ * @LastEditTime: 2023-04-25 21:45:19
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\components\CalSVFList.vue
  * @Description: SVF计算方式
 -->
@@ -218,39 +218,53 @@ const singleClick = () => {
 };
 // 计算SVF
 const calculateSVF = () => {
-  const bsvPanorama = `http://api.map.baidu.com/panorama/v2?ak=qvIqQKAADKsPFqmxR6T0xP6EtKFT6TjQ&width=1024&height=512&location=${panoramaData.position.lng},${panoramaData.position.lat}&fov=360`;
-  const bMapData = {
-    panoid: panoramaData.id,
-    date: panoramaData.copyright.photoDate,
-    lng: panoramaData.position.lng,
-    lat: panoramaData.position.lat,
-    description: panoramaData.description,
-    srcPath: bsvPanorama
-  };
+  if (!panoramaData) {
+    Message.info({
+      background: true,
+      content: "Please Clicking firstly!",
+      duration: 3
+    });
+  } else {
+    const bsvPanorama = `http://api.map.baidu.com/panorama/v2?ak=qvIqQKAADKsPFqmxR6T0xP6EtKFT6TjQ&width=1024&height=512&location=${panoramaData.position.lng},${panoramaData.position.lat}&fov=360`;
+    const bMapData = {
+      panoid: panoramaData.id,
+      date: panoramaData.copyright.photoDate,
+      lng: panoramaData.position.lng,
+      lat: panoramaData.position.lat,
+      description: panoramaData.description,
+      srcPath: bsvPanorama
+    };
 
-  // 将获取的全景图信息传个服务器
-  socket.value.emit("postSavePanorama", bMapData);
-  socket.value.on("getReadSegInfo", res => {
-    Notice.info({
-      desc: res.msg
+    // 将获取的全景图信息传个服务器
+    socket.value.emit("postSavePanorama", bMapData);
+    socket.value.on("getReadSegInfo", res => {
+      Notice.info({
+        desc: res.msg
+      });
     });
-  });
-  socket.value.on("getReadPanorama", res => {
-    Notice.success({
-      desc: res.msg
+    socket.value.on("getReadPanorama", res => {
+      Notice.success({
+        desc: res.msg
+      });
     });
-  });
-  socket.value.on("getCalculateSVF", res => {
-    Notice.success({
-      desc: res.msg
+    socket.value.on("getCalculateSVF", res => {
+      Notice.success({
+        desc: res.msg
+      });
+      emit("getSVFValue", res.svf);
     });
-    emit("getSVFValue", res.svf);
-  });
-  socket.value.on("getSuccessPanorama", res => {
-    Notice.success({
-      desc: res.msg
+    socket.value.on("getSuccessPanorama", res => {
+      Notice.success({
+        desc: res.msg
+      });
     });
-  });
+    socket.value.on("postSaveError", res => {
+      Message.error({
+        background: true,
+        content: res
+      });
+    });
+  }
 };
 const distributeSVF = () => {
   socket.value.emit("getPanoramaResults", "获取百度全景处理结果");
