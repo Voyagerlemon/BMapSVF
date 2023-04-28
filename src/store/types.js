@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-03 10:27:04
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-09 08:59:51
+ * @LastEditTime: 2023-04-28 16:31:37
  * @FilePath: \BMapSVF-Client\src\store\types.js
  * @Description: mutation的类型名称常量
  */
@@ -20,6 +20,7 @@ export const SET_MAP_MODE = "SET_MAP_MODE"; // 设置地图模式
 export const SET_BASE_LAYER = "SET_BASE_LAYER"; // 当前底图
 export const SET_WIDGET_CONFIG = " SET_WIDGET_CONFIG"; // 微件配置文件
 export const GET_HAS_PANEL_WIDGET = " GET_HAS_PANEL_WIDGET"; // 获取具有Panel的微件
+export const SET_SVF_POINTS_LOADED = "SET_SVF_POINTS_LOADED"; // 判断svf采样点是否加载
 // SCENE
 export const SET_SCENE_LOADED = "SET_SCENE_LOADED"; // 设置场景是否加载
 export const SET_SCENEMODE = "SET_SCENEMODE"; // 设置场景模式

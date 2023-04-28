@@ -70,6 +70,7 @@ import { Button, Tooltip, Upload, Modal } from "view-ui-plus";
 import { ref, reactive, onMounted, onUnmounted } from "vue";
 import { Message, Notice } from "view-ui-plus";
 
+import store from "@/store";
 let socket = ref(null);
 let map = window.map;
 let BMap = window.BMap;
@@ -228,7 +229,7 @@ const distributeSVF = () => {
   Message.info({
     background: true,
     content: "The data is loading!",
-    duration: 3
+    duration: 5
   });
   socket.value.on("postCsvPanoramaResults", res => {
     panoramaResults.splice(0, panoramaResults.length, res.panoramaResults);
@@ -274,11 +275,12 @@ const distributeSVF = () => {
         });
         map.addOverlay(markerFishEye);
       }
+      store.dispatch("map/setSVFPointsLoaded", true);
       const centerPoint = new BMap.Point(
         panoramaResults[0][0].lng,
         panoramaResults[0][0].lat
       );
-      map.centerAndZoom(centerPoint, 18);
+      map.centerAndZoom(centerPoint, 15);
     } else {
       alert("Please run it in chrome, safari, Internet Explorer 8+ or above!");
     }
@@ -286,7 +288,8 @@ const distributeSVF = () => {
 };
 const clearMarker = () => {
   map.clearOverlays();
-  uploadRef.value.clearFiles();
+  //uploadRef.value.clearFiles();
+  store.dispatch("map/setSVFPointsLoaded", false);
   emit("getSVFValue", -1);
 };
 // csv文件上传之前, 对文件类型和大小等进行判断
@@ -436,7 +439,8 @@ onMounted(() => {
 onUnmounted(() => {
   socket.value.close();
   map.clearOverlays();
-  uploadRef.value.clearFiles();
+  //uploadRef.value.clearFiles();
+  store.dispatch("map/setSVFPointsLoaded", false);
 });
 </script>
 <style lang="scss" scoped>

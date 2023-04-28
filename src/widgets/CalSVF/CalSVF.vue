@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-08 17:20:17
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-15 10:37:24
+ * @LastEditTime: 2023-04-28 16:16:57
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\CalSVF.vue
  * @Description: 计算SVF组件
 -->
@@ -24,7 +24,6 @@
 <script setup>
 import CalSVFList from "./components/CalSVFList.vue";
 import { ref } from "vue";
-import { Message } from "view-ui-plus";
 const svfResult = ref(-1);
 const getCalSVF = res => {
   svfResult.value = res;
