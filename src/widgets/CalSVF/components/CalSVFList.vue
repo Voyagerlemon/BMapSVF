@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-09 20:03:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-25 21:45:19
+ * @LastEditTime: 2023-04-28 19:12:41
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\components\CalSVFList.vue
  * @Description: SVF计算方式
 -->
@@ -82,6 +82,7 @@ const modal = ref(false);
 const modal_loading = ref(false);
 let panoramaId = ref("");
 let loadSecondPoints = reactive([]);
+import store from "@/store";
 // SVF采样点颜色
 /* const svfColors = reactive([
   "rgb(0,104,55)",
@@ -314,6 +315,7 @@ const distributeSVF = () => {
         });
         map.addOverlay(markerFishEye);
       }
+      store.dispatch("map/setSVFPointsLoaded", true);
       const centerPoint = new BMap.Point(
         panoramaResults[0][0].lng,
         panoramaResults[0][0].lat
@@ -326,6 +328,7 @@ const distributeSVF = () => {
 };
 const clearMarker = () => {
   window.map.clearOverlays();
+  store.dispatch("map/setSVFPointsLoaded", false);
   emit("getSVFValue", -1);
 };
 
@@ -399,5 +402,6 @@ onMounted(() => {
 });
 onUnmounted(() => {
   socket.value.close();
+  store.dispatch("map/setSVFPointsLoaded", false);
 });
 </script>
