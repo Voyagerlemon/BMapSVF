@@ -288,7 +288,9 @@ const distributeSVF = () => {
 };
 const clearMarker = () => {
   map.clearOverlays();
-  //uploadRef.value.clearFiles();
+  if (uploadRef.value) {
+    uploadRef.value.clearFiles();
+  }
   store.dispatch("map/setSVFPointsLoaded", false);
   emit("getSVFValue", -1);
 };
@@ -439,7 +441,9 @@ onMounted(() => {
 onUnmounted(() => {
   socket.value.close();
   map.clearOverlays();
-  //uploadRef.value.clearFiles();
+  if (uploadRef.value) {
+    uploadRef.value.clearFiles();
+  }
   store.dispatch("map/setSVFPointsLoaded", false);
 });
 </script>
