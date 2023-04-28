@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-06 14:49:50
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 16:34:01
+ * @LastEditTime: 2023-04-28 10:02:55
  * @FilePath: \BMapSVF-Client\src\widgets\MapToggle\MapToggle.vue
  * @Description: 底图切换组件
 -->
@@ -10,7 +10,7 @@
   <Dropdown class="map-toggle" placement="left">
     <div class="bg-gray-200 cursor-pointer shadow map-layer">
       <div class="map-layer-inner">
-        <div class="">
+        <div>
           <SvgIcon
             v-if="nowBaseLayer"
             className="opacity-80 w-16 h-16"
@@ -21,7 +21,9 @@
     </div>
     <template #list>
       <DropdownMenu transfer>
-        <div class="flex justify-evenly items-center flex-row-reverse w-72 h-24">
+        <div
+          class="flex justify-evenly items-center flex-row-reverse w-72 h-24"
+        >
           <div
             class="relative layer"
             v-for="(item, index) in baseMapLayers"

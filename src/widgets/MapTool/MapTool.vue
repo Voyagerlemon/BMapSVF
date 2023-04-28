@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-04 15:55:32
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-10 19:02:31
+ * @LastEditTime: 2023-04-28 10:04:14
  * @FilePath: \BMapSVF-Client\src\widgets\MapTool\MapTool.vue
  * @Description: 地图工具容器
 -->
@@ -16,7 +16,7 @@
     </div>
     <div
       id="mapTopRight"
-      class="absolute flex items-start flex-row-reverse max-w-full pointer-events-auto top-0 right-2"
+      class="absolute flex items-start flex-row-reverse max-w-full pointer-events-auto top-0 right-0"
     >
       <!-- <ToolBox></ToolBox> -->
       <!--  -->

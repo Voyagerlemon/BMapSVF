@@ -2,12 +2,12 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-04 16:02:24
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-09 21:49:35
+ * @LastEditTime: 2023-04-28 10:18:54
  * @FilePath: \BMapSVF-Client\src\widgets\Toolbox\Toolbox.vue
  * @Description: 工具箱管理组件
 -->
 <template>
-  <div class="flex flex-row-reverse h-auto toolbox" @click="handleClickToolbox">
+  <div class="flex flex-row-reverse h-auto toolbox absolute right-3" @click="handleClickToolbox">
     <div
       class="shadow bg-default rounded overflow-hidden right-toolbar"
       :class="{ spread: isWholeBarShow }"

@@ -40,6 +40,20 @@
         "children": null,
         "pid": "603d9b2cfd2d8ba9731950a1"
       },
+       {
+        "id": "5fdc182f7702c9531936cef0",
+        "name": "ScreenExport",
+        "label": "系统截屏",
+        "srcId": "5f924d6ce5c6c932ae92ae37",
+        "srcpId": null,
+        "needed": "0",
+        "configId": "5fdc182fcfc75c381936cef3",
+        "type": 4,
+        "needTitle": null,
+        "position": 2,
+        "children": null,
+        "pid": "5fdc182fe9f710d01936cedf"
+      },
       {
         "id": "5fdc183f5ddd8a051936cf72",
         "name": "ToolBox",
