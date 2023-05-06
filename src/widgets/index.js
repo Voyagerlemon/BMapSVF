@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-06 10:32:35
+ * @LastEditTime: 2023-05-06 15:34:17
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -88,7 +88,7 @@ const widgets = [
     meta: {
       label: "计算SVF",
       container: "mapWrapper",
-      icon: "point-select",
+      icon: "point-select1",
       defaultHidden: false,
       hasPanel: true,
       top: 2.86,
@@ -130,6 +130,19 @@ const widgets = [
       doLast: true
     },
     component: () => import("@/widgets/MapLegend")
+  },
+  {
+    name: "ExportResult",
+    meta: {
+      label: "导出结果",
+      container: "mapWrapper",
+      icon: "export-result",
+      defaultHidden: false,
+      hasPanel: true,
+      top: 2.86,
+      left: 34.66
+    },
+    component: () => import("@/widgets/ExportResult")
   }
 ];
 export default widgets;

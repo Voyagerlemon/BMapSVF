@@ -40,7 +40,7 @@
         "children": null,
         "pid": "603d9b2cfd2d8ba9731950a1"
       },
-       {
+      {
         "id": "5fdc182f7702c9531936cef0",
         "name": "MapLegend",
         "label": "图例",
@@ -148,6 +148,35 @@
                 "position": 0,
                 "children": null,
                 "pid": "5fdc183fc10c73b25646cfb8"
+              }
+            ],
+            "pid": "5fdc183f5ddd8a051936cf72"
+          },
+          {
+            "id": "5fdc183fc10c73b11936cfb8",
+            "name": "ExportResult",
+            "label": "Export",
+            "srcId": "5f96b888b863c33546ea33b",
+            "srcpId": null,
+            "needed": "0",
+            "configId": "5fdc183f98dfa2ce4936cfbb",
+            "type": 3,
+            "needTitle": null,
+            "position": 2,
+            "children": [
+              {
+                "id": "5fdc183f0a7724905466cfbf",
+                "name": "ExportResult",
+                "label": "Export Results",
+                "srcId": "5f96c2ae84a1fd52260eb6f4",
+                "srcpId": null,
+                "needed": "0",
+                "configId": "5fdc183f1beb21c12536cfc2",
+                "type": 4,
+                "needTitle": null,
+                "position": 0,
+                "children": null,
+                "pid": "5fdc183fc10c73b12021cfb8"
               }
             ],
             "pid": "5fdc183f5ddd8a051936cf72"
