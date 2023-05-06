@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-31 20:48:36
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-01 11:32:40
+ * @LastEditTime: 2023-05-06 16:38:32
  * @FilePath: \BMapSVF-Client\.cz-config.js
  * @Description: cz-customizable配置文件
  */
@@ -33,7 +33,7 @@ module.exports = {
     }
   ],
 
-  scopes: ["公共模块", "全局组件", "微应用", "版本更新", "cli"],
+  scopes: ["Common module", "Global component", "Micro application", "Version updating", "cli"],
   messages: {
     type: "选择要提交的更改类型:",
     scope: "\n此更改影响的范围(可选):",
