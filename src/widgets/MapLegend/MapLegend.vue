@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-28 09:37:29
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-28 19:09:48
+ * @LastEditTime: 2023-05-06 17:04:43
  * @FilePath: \BMapSVF-Client\src\widgets\ScreenExport\ScreenExport.vue
  * @Description: 系统截图
 -->
@@ -25,9 +25,9 @@
     </Tooltip>
     <div
       v-show="showLegend"
-      class="flex flex-col items-center bg-gray-50 screen-legend absolute right-1 border rounded shadow-lg border-gray-200 bg-opacity-40 bg-gray-200"
+      class="flex flex-col items-center bg-gray-200 bg-opacity-80 screen-legend absolute right-1 border rounded shadow-lg border-gray-200"
     >
-      <h3 class="screen-legend-title text-xxl text-neutral-1 font-medium">
+      <h3 class="screen-legend-title text-xxl text-neutral-1 font-semibold">
         SVF
       </h3>
       <div class="flex flex-row items-center justify-center w-24">
