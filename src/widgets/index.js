@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 21:09:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-06 15:34:17
+ * @LastEditTime: 2023-05-07 16:24:03
  * @FilePath: \BMapSVF-Client\src\widgets\index.js
  * @Description: 微件相关配置
  **/
@@ -143,6 +143,19 @@ const widgets = [
       left: 34.66
     },
     component: () => import("@/widgets/ExportResult")
+  },
+  {
+    name: "SVFDistribution",
+    meta: {
+      label: "SVF空间分布图",
+      container: "mapWrapper",
+      icon: "fisheye",
+      defaultHidden: false,
+      hasPanel: true,
+      top: 2.86,
+      left: 34.66
+    },
+    component: () => import("@/widgets/SVFDistribution")
   }
 ];
 export default widgets;

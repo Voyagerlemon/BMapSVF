@@ -112,7 +112,7 @@
           {
             "id": "5fdc183fc10c73b11936cfb8",
             "name": "Calculation",
-            "label": "Calculation SVF",
+            "label": "SVF Calculation",
             "srcId": "5f96b888b863c333260ea33b",
             "srcpId": null,
             "needed": "0",
@@ -148,6 +148,35 @@
                 "position": 0,
                 "children": null,
                 "pid": "5fdc183fc10c73b25646cfb8"
+              }
+            ],
+            "pid": "5fdc183f5ddd8a051936cf72"
+          },
+          {
+            "id": "6dfv183fc10c73b11936cfb8",
+            "name": "SVFDistribution",
+            "label": "Distribution",
+            "srcId": "5f96b562b863c33546ea33b",
+            "srcpId": null,
+            "needed": "0",
+            "configId": "5fdc183f98ddfv5e4936cfbb",
+            "type": 3,
+            "needTitle": null,
+            "position": 2,
+            "children": [
+              {
+                "id": "5fdc1564va7724905466cfbf",
+                "name": "SVFDistribution",
+                "label": "SVF Distribution",
+                "srcId": "5f96c2215a1fd52260eb6f4",
+                "srcpId": null,
+                "needed": "0",
+                "configId": "5fdc183f1be215412536cfc2",
+                "type": 4,
+                "needTitle": null,
+                "position": 0,
+                "children": null,
+                "pid": "5fdc183fc10c73b11241cfb8"
               }
             ],
             "pid": "5fdc183f5ddd8a051936cf72"
