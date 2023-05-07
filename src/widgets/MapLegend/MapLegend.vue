@@ -2,9 +2,9 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-28 09:37:29
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-06 17:04:43
+ * @LastEditTime: 2023-05-07 11:38:40
  * @FilePath: \BMapSVF-Client\src\widgets\ScreenExport\ScreenExport.vue
- * @Description: 系统截图
+ * @Description: map legend
 -->
 <template>
   <div>
