@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-28 09:37:29
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-07 11:38:40
+ * @LastEditTime: 2023-05-12 14:42:50
  * @FilePath: \BMapSVF-Client\src\widgets\ScreenExport\ScreenExport.vue
  * @Description: map legend
 -->
@@ -74,7 +74,7 @@
   </div>
 </template>
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect} from "vue";
 import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
 import { Message, Tooltip } from "view-ui-plus";
 

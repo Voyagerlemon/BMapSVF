@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-05-07 16:20:17
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-07 18:00:25
+ * @LastEditTime: 2023-05-12 14:44:38
  * @FilePath: \BMapSVF-Client\src\widgets\SVFDistribution\SVFDistribution.vue
  * @Description: the spatial distribution of svf
 -->
@@ -157,7 +157,7 @@ const FSVFDistribution = () => {
     }
   });
 };
-const QSVFDistribution = () => {
+/* const QSVFDistribution = () => {
   socket.value.emit("getCsvPanoramaResults", "获取秦淮区案例");
   Message.info({
     background: true,
@@ -208,6 +208,53 @@ const QSVFDistribution = () => {
         map.addOverlay(markerFishEye);
       }
       //store.dispatch("map/setSVFPointsLoaded", true);
+      const centerPoint = new BMap.Point(
+        panoramaCsvResults[0][0].lng,
+        panoramaCsvResults[0][0].lat
+      );
+      map.centerAndZoom(centerPoint, 15);
+    } else {
+      alert("Please run it in chrome, safari, Internet Explorer 8+ or above!");
+    }
+  });
+}; */
+
+const QSVFDistribution = () => {
+  socket.value.emit("getCsvSVFResults", "获取秦淮区案例");
+  Message.info({
+    background: true,
+    content: "The data is loading!",
+    duration: 5
+  });
+  socket.value.on("postCsvSVFResults", res => {
+    panoramaCsvResults.splice(0, panoramaCsvResults.length, res.svfResults);
+    if (panoramaCsvResults[0].length === 0) {
+      map.clearOverlays();
+      return;
+    }
+    map.clearOverlays();
+    if (document.createElement("canvas").getContext) {
+      for (let i = 0; i < panoramaCsvResults[0].length; i++) {
+        const locationPoint = new BMap.Point(
+          panoramaCsvResults[0][i].lng,
+          panoramaCsvResults[0][i].lat
+        );
+        const markerFishEye = new BMap.Marker(locationPoint, {
+          icon: new BMap.Symbol(window.BMap_Symbol_SHAPE_CIRCLE, {
+            fillColor: getColor(panoramaCsvResults[0][i].svf),
+            fillOpacity: 0.95,
+            strokeColor: getColor(panoramaCsvResults[0][i].svf),
+            strokeWeight: 1,
+            scale: 4
+          }),
+          title: "SVF=" + String(panoramaCsvResults[0][i].svf.toFixed(2))
+        });
+        markerFishEye.addEventListener("mouseout", () => {
+          infoWindow.close();
+        });
+        map.addOverlay(markerFishEye);
+      }
+      store.dispatch("map/setSVFPointsLoaded", true);
       const centerPoint = new BMap.Point(
         panoramaCsvResults[0][0].lng,
         panoramaCsvResults[0][0].lat

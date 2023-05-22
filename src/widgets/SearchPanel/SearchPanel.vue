@@ -12,7 +12,7 @@
       @keydown.enter="select"
       @focus="showCloseIcon"
       @blur="showCloseIcon"
-      placeholder="Please enter the search address"
+      placeholder="Find address or place"
     />
     <SvgIcon
       className="h-4 cursor-pointer absolute top-1.5 left-64"
