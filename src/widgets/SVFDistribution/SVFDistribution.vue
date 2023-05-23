@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-05-07 16:20:17
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-12 14:44:38
+ * @LastEditTime: 2023-05-23 20:08:35
  * @FilePath: \BMapSVF-Client\src\widgets\SVFDistribution\SVFDistribution.vue
  * @Description: the spatial distribution of svf
 -->
@@ -105,6 +105,11 @@ const infoWindow = new BMap.InfoWindow(div, {
 //#endregion
 const FSVFDistribution = () => {
   socket.value.emit("getPanoramaResults", "获取福华路案例");
+  Message.info({
+    background: true,
+    content: "The data is loading...",
+    duration: 6
+  });
   socket.value.on("postPanoramaResults", res => {
     panoramaResults.splice(0, panoramaResults.length, res.panoramaResults);
     if (panoramaResults[0].length === 0) {
@@ -127,8 +132,7 @@ const FSVFDistribution = () => {
             scale: 7
           }),
 
-          title:
-            "SVF=" + String(panoramaResults[0][i].svf.toFixed(2)) + " (sky)"
+          title: "SVF=" + String(panoramaResults[0][i].svf.toFixed(2))
         });
         markerFishEye.addEventListener("mouseover", () => {
           panResultFishEye.setAttribute(
@@ -223,7 +227,7 @@ const QSVFDistribution = () => {
   socket.value.emit("getCsvSVFResults", "获取秦淮区案例");
   Message.info({
     background: true,
-    content: "The data is loading!",
+    content: "The data is loading...",
     duration: 5
   });
   socket.value.on("postCsvSVFResults", res => {

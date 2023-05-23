@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-05-06 10:44:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-22 22:37:22
+ * @LastEditTime: 2023-05-23 11:06:37
  * @FilePath: \BMapSVF-Client\src\widgets\ExportResult\ExportResult.vue
  * @Description: 导出数据库中的数据
 -->
@@ -19,13 +19,23 @@
         </Button>
       </div>
     </div>
+    <Progress
+      v-show="showProgress"
+      :percent="progress"
+      :status="statusToggle"
+      :stroke-width="6"
+      class="mt-2"
+    />
   </div>
 </template>
 <script setup>
-import { Button, Message } from "view-ui-plus";
+import { Button, Message, Progress } from "view-ui-plus";
 import { ref, onMounted, onUnmounted } from "vue";
 
 let socket = ref(null);
+let progress = ref(0);
+let statusToggle = ref("active");
+let showProgress = ref(false);
 
 // 封装socket.io连接事件
 const socketInstance = () => {
