@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-05-06 10:44:41
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-06 16:14:39
+ * @LastEditTime: 2023-05-22 22:37:22
  * @FilePath: \BMapSVF-Client\src\widgets\ExportResult\ExportResult.vue
  * @Description: 导出数据库中的数据
 -->
@@ -11,7 +11,7 @@
     <div class="font-bold text-sm mr-1">Test cases</div>
     <div class="flex flex-row items-center">
       <div class="ml-0 mr-6 mt-2 mb-2">
-        <Button class="text-base">Fuhua Rd.</Button>
+        <Button class="text-base" @click="ExportRoadResults">Fuhua Rd.</Button>
       </div>
       <div class="ml-0 mr-2 mt-2 mb-2">
         <Button class="text-base" @click="ExportDistrictResults">
@@ -59,20 +59,56 @@ const socketInstance = () => {
     });
   });
 };
-
-const ExportDistrictResults = () => {
-  socket.value.emit("getAllPanoramaResults", "获取数据库中的数据");
-  socket.value.on("postAllPanoramaResults", res => {
+const ExportRoadResults = () => {
+  socket.value.emit("getFuhuaPanoramaResults", "获取深圳福华路数据");
+  Message.success({
+    background: true,
+    content: "The results are being exported...",
+    duration: 3
+  });
+  socket.value.on("postFuhuaPanoramaResults", res => {
     if (res.status === 200) {
-      Message.success({
-        background: true,
-        content: res.msg,
-        duration: 3
-      });
+      const zipData = res.data;
+      const zipBlob = new Blob([zipData], { type: "application/zip" });
+      // 创建下载链接
+      const url = window.URL.createObjectURL(zipBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", res.name + ".zip");
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
     } else {
       Message.error({
         background: true,
-        content: "All data is saved unsuccessfully!",
+        content: "The result export failed, please try again later!",
+        duration: 3
+      });
+    }
+  });
+};
+const ExportDistrictResults = () => {
+  socket.value.emit("getQinhuaiPanoramaResults", "获取秦淮区数据");
+  Message.success({
+    background: true,
+    content: "The results are being exported...",
+    duration: 7
+  });
+  socket.value.on("postQinhuaiPanoramaResults", res => {
+    if (res.status === 200) {
+      const zipData = res.data;
+      const zipBlob = new Blob([zipData], { type: "application/zip" });
+      const url = window.URL.createObjectURL(zipBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", res.name + ".zip");
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } else {
+      Message.error({
+        background: true,
+        content: "The result export failed, please try again later!",
         duration: 3
       });
     }
@@ -85,4 +121,3 @@ onUnmounted(() => {
   socket.value.close();
 });
 </script>
-<style lang="scss"></style>
