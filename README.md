@@ -176,7 +176,7 @@ app.component("SvgIcon", SvgIcon);
 #### View UI Plus
 - `npm install view-ui-plus --save`
 #### clipboard
-- `yarn add clipboard -S` ---用于将文本复制到剪贴板(项目中暂时弃用)
+- `yarn add clipboard -S` --- Used to copy text to the clipboard (temporarily deprecated in the project)
 #### alias
 - `yarn add -D @rollup/plugin-alias`
 - `yarn add / npm install --save-dev @babel/plugin-proposal-optional-chaining`-->Optional chain operator? The attribute before the operator is valid or not
