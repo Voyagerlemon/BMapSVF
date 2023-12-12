@@ -1,58 +1,58 @@
 /*
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-03 10:27:04
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-28 16:31:37
+ * @LastEditTime: 2023-12-12 21:11:41
  * @FilePath: \BMapSVF-Client\src\store\types.js
- * @Description: mutation的类型名称常量
+ * @Description: The type name constant of mutation
  */
-// 公共
-export const SET_CONFIG = "SET_CONFIG"; // 设置全局配置内容
-export const SET_MAIN_APP_PROP = "SET_MAIN_APP_PROP"; // 设置系统名
-export const SET_SITE_INFO = "SET_SITE_INFO"; // 设置站点信息
-export const SET_USER_ORG_LIST = "SET_USER_ORG_LIST"; // 用户组织信息
+// PUBLIC
+export const SET_CONFIG = "SET_CONFIG"; // Set the global configuration content
+export const SET_MAIN_APP_PROP = "SET_MAIN_APP_PROP"; // Set system name
+export const SET_SITE_INFO = "SET_SITE_INFO"; // Setting Site Information
+export const SET_USER_ORG_LIST = "SET_USER_ORG_LIST"; // User organization information
 export const SET_APP_ID = "SET_APP_ID";
 export const SET_SHOW_TOPIC = "SET_SHOW_TOPIC";
 
 // MAP
-export const SET_MAP_LOADED = "SET_MAP_LOADED"; // 设置地图是否加载
-export const SET_MAP_MODE = "SET_MAP_MODE"; // 设置地图模式
-export const SET_BASE_LAYER = "SET_BASE_LAYER"; // 当前底图
-export const SET_WIDGET_CONFIG = " SET_WIDGET_CONFIG"; // 微件配置文件
-export const GET_HAS_PANEL_WIDGET = " GET_HAS_PANEL_WIDGET"; // 获取具有Panel的微件
-export const SET_SVF_POINTS_LOADED = "SET_SVF_POINTS_LOADED"; // 判断svf采样点是否加载
+export const SET_MAP_LOADED = "SET_MAP_LOADED"; // Sets whether the map loads
+export const SET_MAP_MODE = "SET_MAP_MODE"; // Set map mode
+export const SET_BASE_LAYER = "SET_BASE_LAYER"; // Current base map
+export const SET_WIDGET_CONFIG = " SET_WIDGET_CONFIG"; // Widget configuration file
+export const GET_HAS_PANEL_WIDGET = " GET_HAS_PANEL_WIDGET"; // Gets a widget with a Panel
+export const SET_SVF_POINTS_LOADED = "SET_SVF_POINTS_LOADED"; // Check whether the SVF sampling point is loaded
 // SCENE
-export const SET_SCENE_LOADED = "SET_SCENE_LOADED"; // 设置场景是否加载
-export const SET_SCENEMODE = "SET_SCENEMODE"; // 设置场景模式
-export const SET_FILLVIEW = "SET_FILLVIEW"; // 场景全图范围
-export const SET_CAMARA = "SET_CAMARA"; // 设置相机范围
+export const SET_SCENE_LOADED = "SET_SCENE_LOADED"; // Set whether the scene is loaded
+export const SET_SCENEMODE = "SET_SCENEMODE"; // Set scene mode
+export const SET_FILLVIEW = "SET_FILLVIEW"; // Scene full scope
+export const SET_CAMARA = "SET_CAMARA"; // Set camera range
 export const SET_BASE_LAYER_STATE = "SET_BASE_LAYER_STATE";
 export const SET_ANNOTATION_LAYER_STATE = "SET_ANNOTATION_LAYER_STATE";
 export const SET_GRAY_STATE = "SET_GRAY_STATE";
-export const SET_BASELAYER = "SET_BASELAYER"; // 当前底图
-export const SET_CUR_CAMARA = "SET_CUR_CAMARA"; // 实时的3D相机范围
-export const SET_CUR_2D_CAMARA = "SET_CUR_2D_CAMARA"; // 实时二维相机范围
-export const SET_ANNOTATION_LAYER = "SET_ANNOTATION_LAYER"; //设置注记图层
+export const SET_BASELAYER = "SET_BASELAYER"; // Current base map
+export const SET_CUR_CAMARA = "SET_CUR_CAMARA"; // Real-time 3D camera range
+export const SET_CUR_2D_CAMARA = "SET_CUR_2D_CAMARA"; // Real-time 2D camera range
+export const SET_ANNOTATION_LAYER = "SET_ANNOTATION_LAYER"; // Set the note layer
 
 export const SET_WIDGETS = "SET_WIDGETS"; // widgets
-export const SET_WIDGET_MAP = "SET_WIDGET_MAP"; // widget映射
-export const CLEAR_ACTIVE_MAP = "CLEAR_ACTIVE_MAP"; // 清除激活的widget
-export const SET_ACTIVE_MAP = "SET_ACTIVE_MAP"; // 激活的widget
-export const DELETE_ACTIVE_WIDGET = "DELETE_ACTIVE_WIDGET"; //关闭widget
+export const SET_WIDGET_MAP = "SET_WIDGET_MAP"; // widget mapping
+export const CLEAR_ACTIVE_MAP = "CLEAR_ACTIVE_MAP"; // Clear the active widget
+export const SET_ACTIVE_MAP = "SET_ACTIVE_MAP"; // Active widget
+export const DELETE_ACTIVE_WIDGET = "DELETE_ACTIVE_WIDGET"; // Close widget
 
-export const SET_TOPIC = "SET_TOPIC"; // 专题
-export const SET_ACTIVE_TOPIC = "SET_ACTIVE_TOPIC"; // 打开专题
-export const DELETE_ACTIVE_TOPIC = "DELETE_ACTIVE_TOPIC"; // 关闭激活专题
-export const SET_TOPIC_OPACITY = "SET_TOPIC_OPACITY"; // 专题透明度
-export const CLEAR_ACTIVE_TOPIC = "CLEAR_ACTIVE_TOPIC"; // 清除激活专题
-export const CLEAR_TOPIC_OPACITY = "CLEAR_TOPIC_OPACITY"; // 清除专题透明度
-export const SET_TOPIC_VISIBILITY = "SET_TOPIC_VISIBILITY"; // 设置专题显隐
-export const SET_ACTIVE_TOPICS = "SET_ACTIVE_TOPICS"; // 设置激活的专题
-export const DEFAULT_LAYERS = "DEFAULT_LAYERS"; // 默认的图层
+export const SET_TOPIC = "SET_TOPIC"; // Topic
+export const SET_ACTIVE_TOPIC = "SET_ACTIVE_TOPIC"; // Open topic
+export const DELETE_ACTIVE_TOPIC = "DELETE_ACTIVE_TOPIC"; // Close activation topics
+export const SET_TOPIC_OPACITY = "SET_TOPIC_OPACITY"; // Thematic transparency
+export const CLEAR_ACTIVE_TOPIC = "CLEAR_ACTIVE_TOPIC"; // Clear activation topics
+export const CLEAR_TOPIC_OPACITY = "CLEAR_TOPIC_OPACITY"; // Clear thematic transparency
+export const SET_TOPIC_VISIBILITY = "SET_TOPIC_VISIBILITY"; // Set topic implicit
+export const SET_ACTIVE_TOPICS = "SET_ACTIVE_TOPICS"; // Set the active topic
+export const DEFAULT_LAYERS = "DEFAULT_LAYERS"; // Default layer
 
-export const SET_RESOURCE_MAP = "SET_RESOURCE_MAP"; //应用资源映射表
+export const SET_RESOURCE_MAP = "SET_RESOURCE_MAP"; // Apply the resource mapping table
 
 // 图例
-export const SET_LEGEND_INFO = "SET_LEGEND_INFO"; // 设置图例
-export const ADD_OPEN_LEGEND = "ADD_OPEN_LEGEND"; // 添加图例
-export const DELETE_OPEN_LEGEND = "DELETE_OPEN_LEGEND"; // 删除图例
+export const SET_LEGEND_INFO = "SET_LEGEND_INFO"; // Set legend
+export const ADD_OPEN_LEGEND = "ADD_OPEN_LEGEND"; // Add legend
+export const DELETE_OPEN_LEGEND = "DELETE_OPEN_LEGEND"; // Delete legend

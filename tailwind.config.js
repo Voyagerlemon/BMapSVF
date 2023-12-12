@@ -2,9 +2,9 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-30 20:20:59
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-07 20:03:16
+ * @LastEditTime: 2023-12-12 21:40:48
  * @FilePath: \BMapSVF-Client\tailwind.config.cjs
- * @Description: Tailwind CSS配置
+ * @Description: Tailwind CSS configure
  */
 module.exports = {
   purge: ["./index.html", "./src/**/*.{html,vue,js,scss}"],

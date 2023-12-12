@@ -1,11 +1,12 @@
 html,
 body {
   font-family: "Microsoft YaHei", "PingFang SC";
-  line-height: 1.15; // iview设的是1.5，但ui是常规的1.15，需要覆盖
+  line-height: 1.15; // The iview is set to 1.5, but the ui is normal 1.15 and needs to be overridden
 }
 
-/* 重写滚动条样式 */
-/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+/* Rewrite the scroll bar style */
+/*Define the dimensions of the scrollbar height and background height and width corresponding 
+to horizontal and vertical scrollbars respectively*/
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -13,7 +14,7 @@ body {
   background-color: transparent;
 }
 
-/*定义滚动条轨道 内阴影+圆角*/
+/*Define the shadow + rounded corner inside the scroll bar track*/
 
 ::-webkit-scrollbar-track {
   width: 0;
@@ -21,7 +22,7 @@ body {
   background-color: transparent;
 }
 
-/*定义滑块 内阴影+圆角*/
+/*Define the shadow + rounded corner inside the slider*/
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
@@ -30,7 +31,7 @@ body {
   background-color: #e7ecf2;
 }
 
-/*滑块效果*/
+/*Slider effect*/
 
 ::-webkit-scrollbar-thumb:hover {
   border-radius: 5px;
@@ -38,7 +39,7 @@ body {
   background: rgba(0, 0, 0, 0.4);
 }
 
-/* transiton动画 */
+/* transiton */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.28s;
@@ -48,4 +49,4 @@ body {
 .fade-leave-to {
   opacity: 0;
 }
-/* 微应用使用的样式 */
+/* Styles used by micro applications */

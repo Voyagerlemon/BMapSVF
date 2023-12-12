@@ -2,9 +2,9 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:24:11
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-08 22:45:08
+ * @LastEditTime: 2023-12-12 21:36:35
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
- * @Description: 系统界面布局
+ * @Description: System interface layout
 -->
 <template>
   <div id="mapViewer" class="absolute flex flex-col w-full h-full">
@@ -35,7 +35,7 @@ const logoUrl = reactive({
 });
 const appTitle = ref("BMapSVF");
 const store = useStore();
-// 监听store数据的变化
+// Listen for changes in store data
 watch(
   () => store.state.map.mapLoaded,
   data => {
@@ -58,7 +58,7 @@ const initApp = async () => {
   if (!mapInfo) {
     Message.info({
       background: true,
-      content: "资源中不存在地图组件",
+      content: "The map component does not exist in the resource",
       duration: 3
     });
     return;

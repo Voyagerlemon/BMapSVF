@@ -1,40 +1,45 @@
-# 城市天空可视域数字化系统
+# BMapSVF
 
-## feature
+**The operation of this project requires the Server support of [BMapSVF Server](https://github.com/Voyagerlemon/BMapSVF-server)**
 
-- 符合规范的组织结构
-- 提供常用工具的配置
-- 配置文件读取
+![BMapSVF_GUI.jpg](src/assets/BMapSVF_GUI.jpg)
+
+![Workflow.jpg](src/assets/Workflow.jpg)
+
+# Feature
+- The technical architecture of micro front end is adopted.
+- Conform to the normative organizational structure.
+- Provides the configuration of common tools.
+- Configuration file reading.
 - axios
 - rem
-- iview
-- svg 图标
+- iView
+- SVG icon
 - yarn commit
-- ie 11
+- IE 11
+# Directory organization specification
 
-## 目录组织规范
-
-```
+```shell
 ├── public
 │ ├── favicon.ico
 │ ├── index.html
-│ └── static ---------------------------- 统一放置相关 hjson 文件
+│ └── static ---------------------------- Place related hjson files uniformly
 ├── src
-│ ├── App.vue --------------------------- Root 组件
-│ ├── api ------------------------------- 接口管理
-│ ├── assets ---------------------------- 静态文件，一般用来放图片
-│ ├── components ------------------------ 全局组件
-│ │ ├── FuncPanel ---------------------------- 全局功能组件
-│ ├── svg ------------------------------  svg图标
-│ ├── initAppConfig.js --------------------- 初始化系统配置信息
-│ ├── layout ---------------------------- layout 层管理
-│ ├── main.js --------------------------- app 入口文件
-│ ├── router ---------------------------  路由
+│ ├── App.vue --------------------------- Root component
+│ ├── api ------------------------------- Interface management
+│ ├── assets ---------------------------- Static file, usually used to store pictures
+│ ├── components ------------------------ Global component
+│ │ ├── FuncPanel ---------------------------- Global functional component
+│ ├── svg ------------------------------  SVG icon
+│ ├── initAppConfig.js --------------------- Example Initialize system configuration -------------------------------------------- information
+│ ├── layout ---------------------------- layout Layer Management
+│ ├── main.js --------------------------- app entry file
+│ ├── router ---------------------------  Route
 │ ├── store ----------------------------  Vuex
-│ ├── styles ---------------------------- 全局 css 和 scss 函数变量
-│ ├── utils ----------------------------- 工具函数管理
-│ ├── views ----------------------------- 子系统页面模块
-│ └── widgets ---------------------------- 全局widgets组件
+│ ├── styles ---------------------------- Global css and scss function variables
+│ ├── utils ----------------------------- Tool function management
+│ ├── views ----------------------------- Subsystem page module
+│ └── widgets ---------------------------- Global widgets component
 ├── vite.config.js
 ├── .cz-config.js
 ├── .commitlintrc.js
@@ -47,28 +52,54 @@
 ├── yarn.lock
 ```
 
-## 代码提交规范
+# Install
 
-**使用`yarn commit`**
+### 1、Create environment
 
-- feat: 新特性，新功能
-- fix: 修复bug
-- merge: 合并
-- perf: 性能优化
-- refactor: 代码重构
-- docs: 文档修改
-- style: 代码格式修改, 注意不是 css 修改
-- chore: 其他修改, 比如构建流程, 依赖管理
-- test: 测试
-- version: 版本发布
-- scope: commit 影响的范围, 比如: route, component, utils, build...
+```shell
+Install Node.js: https://nodejs.org/en
+Install Yarn:    npm install --global yarn
+```
+
+### 2、 Install package
+
+```shell
+git clone https://github.com/Voyagerlemon/BMapSVF.git
+cd BMapSVF
+yarn or yarn install
+```
+
+### 3、 Run
+
+```shell
+yarn dev
+```
 
 
-## 安装与配置说明
-### svg图标处理
-- `yarn add vite-plugin-svg-icons` ---在vite构建工具中处理svg图标
-- `yarn add fast-glob` --- 快速进行文件遍历, 解析完成后缓存处理
-- 在vite.config.js里进行配置相关svg图标
+# Notes
+
+### Code submission specification
+
+**`yarn commit`**
+
+- feat: new features, new capabilities
+- fix: fix bug
+- merge: 
+- perf: performance optimization
+- refactor: code refactoring
+- docs: document modification
+- style: code format changes, not css changes
+- chore: other changes, such as build processes, dependency management
+- test: 
+- version: 
+- scope: commit impact range, such as route, component, utils, build...
+
+
+### Installation and configuration instructions
+#### SVG icon processing
+- `yarn add vite-plugin-svg-icons` --- work with svg icons in the vite build tool
+- `yarn add fast-glob` --- fast file traversal and cache processing after parsing
+- Configure the relevant svg icons in vite.config.js
 ```javascript
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -80,16 +111,16 @@ export default defineConfig({
   plugins: [
     vue(),
     createSvgIconsPlugin({
-      // 解析svg图标地址
+      // Parse the svg icon address
       iconDirs: [resolve(process.cwd(), "src/svg")],
-      // 解析svg图标名字
+      // Parse svg icon names
       symbolId: "icon-[name]",
     }),
   ],
 });
 ```
 
-- 封装svg图标组件
+- Encapsulate svg icon components
 
 ```vue
 <template>
@@ -100,7 +131,7 @@ export default defineConfig({
 
 <script setup>
 const props = defineProps({
-  // svg图标文件名
+  // svg icon file name
   iconName: String,
   className: {
     type: String,
@@ -120,7 +151,7 @@ const props = defineProps({
 </style>
 ```
 
-- 全局注册svg图标组件
+- Global registration of svg icon components
 
 ```javascript
 import SvgIcon from "./views/SvgViewer/components";
@@ -129,10 +160,10 @@ import "virtual:svg-icons-register";
 app.component("SvgIcon", SvgIcon);
 ```
 
-- svg图标组件使用
+- Globally registered svg icon components used by svg icon components
 
 ```vue
-// className类名可以根据需要调整svg图标的style属性
+// The className class name allows you to adjust the style attribute of the svg icon as needed
 <SvgIcon className="map-icon" iconName="404" />
 .map-icon {
   width: 200px;
@@ -140,31 +171,44 @@ app.component("SvgIcon", SvgIcon);
 }
 ```
 
-### 路由安装
+#### Route installation
 - `yarn add vue-router -S`
-### View UI Plus
+#### View UI Plus
 - `npm install view-ui-plus --save`
-### clipboard
+#### clipboard
 - `yarn add clipboard -S` ---用于将文本复制到剪贴板(项目中暂时弃用)
-### alias插件
+#### alias
 - `yarn add -D @rollup/plugin-alias`
-- `yarn add / npm install --save-dev @babel/plugin-proposal-optional-chaining`-->可选链操作符 ?. 可以按照操作符之前的属性是否有效
-### postcss-pxtorem
-- `yarn add postcss-pxtorem -D`---将px转换为rem
-### Tailwind CSS
+- `yarn add / npm install --save-dev @babel/plugin-proposal-optional-chaining`-->Optional chain operator? The attribute before the operator is valid or not
+#### postcss-pxtorem
+- `yarn add postcss-pxtorem -D`--- px ---> rem
+#### Tailwind CSS
 - `yarn add tailwindcss@2.2.16 postcss@latest autoprefixer@latest -D`---https://www.tailwindcss.cn/docs/installation
-### eslint与prettier
+#### eslint与prettier
 - `yarn add  eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue eslint-plugin-html prettier -D`
-### Pinia---Vue的专属状态管理库(本项目使用了Vuex, Pinia作为下次版本更新)
+#### Pinia- Vue's own status management library (this project uses Vuex, Pinia as the next version update)
 - `yarn add vuex -S`
-- `yarn add vuex-persistedstate -S` --- 解决刷新数据无保存的问题
+- `yarn add vuex-persistedstate -S` --- Solve the problem that refreshed data is not saved
 - `yarn add pinia` ---https://pinia.vuejs.org/zh/getting-started.html
-- `yarn add pinia-plugin-persist -S` ---实现数据持久化功能
-### yarn commit
+- `yarn add pinia-plugin-persist -S` ---Realize data persistence function
+#### yarn commit
 https://yarnpkg.com/package/commitizen
-- `yarn add commitizen -D`--- 局部安装commitizen, 辅助填写提交信息
-- `yarn add cz-conventional-changelog -D` --- 基于conventional-changelog 规范的适配器
-- `yarn add cz-customizable -D` --- 支持自定义的适配器
+- `yarn add commitizen -D`--- When commitizen is partially installed, fill in the submission information
+- `yarn add cz-conventional-changelog -D` --- Adapters based on the conventional-changelog specification
+- `yarn add cz-customizable -D` --- Support for custom adapters
 - `yarn add @@commitlint/cli @commitlint/config-conventional husky lint-staged`
-### axios
+#### axios
 - `yarn add axios -S`
+
+# Citation
+
+```text
+@misc{BMapSVF,
+  title={BMapSVF},
+  url={https://github.com/Voyagerlemon/BMapSVF},
+  note={Open source software available from https://github.com/Voyagerlemon/BMapSVF},
+  author={Voyagerlemon},
+  year={2023},
+}
+```
+

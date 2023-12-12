@@ -1,8 +1,8 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-06 16:53:21
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-10 16:56:05
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-12 20:40:59
  * @FilePath: \BMapSVF-Client\src\components\BaiduMap.vue
  * @Description: 封装的百度地图组件
 -->
@@ -15,7 +15,7 @@ import {defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   props: {
-    // 传入需要定位的经纬度
+    // Pass in the latitude and longitude to be located
     latitude: {
       type: Number,
       default: () => {

@@ -1,8 +1,8 @@
 /*
- * @Author: xuhy
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-02 13:20:44
- * @LastEditTime: 2023-04-28 18:01:45
- * @LastEditors: xuhy 1727317079@qq.com
+ * @LastEditTime: 2023-12-12 21:22:55
+ * @LastEditors: xuhy
  * @Description: 三维状态管理
  */
 
@@ -17,7 +17,7 @@ const map = {
   state: {
     mapLoaded: false,
     svfPointsLoaded: false,
-    mapMode: "2D", // 地图展示模式
+    mapMode: "2D", // Map display mode
     nowBaseLayer: {}
   },
   mutations: {

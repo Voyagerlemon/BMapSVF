@@ -1,9 +1,9 @@
 /*
- * @Author: xuhy
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-03 13:05:44
- * @LastEditTime: 2023-04-16 11:20:50
+ * @LastEditTime: 2023-12-12 21:26:32
  * @LastEditors: xuhy 1727317079@qq.com
- * @Description: 微件状态管理
+ * @Description: Micro device status management
  */
 
 import {
@@ -74,12 +74,12 @@ const widget = {
     async openWidget({ state, commit }, { name, prop }) {
       const widgetInfo = state.widgetMap[name];
       if (!widgetInfo) {
-        console.error(`Widget:${name}不存在`);
+        console.error(`Widget:${name} inexistence`);
         return;
       }
       const widget = state.activeMap[name];
       if (widget) {
-        console.info(`Widget:${name}已运行`);
+        console.info(`Widget:${name} has run`);
         return;
       }
       let config = {};
@@ -97,7 +97,7 @@ const widget = {
     closeWidget({ state }, name) {
       const widget = state.activeMap[name];
       if (!widget) {
-        console.error(`Widget:${name}没运行`);
+        console.error(`Widget:${name} has not run`);
         return;
       }
       closeWidget(widget);

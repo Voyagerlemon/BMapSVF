@@ -2,9 +2,9 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-01 22:34:27
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-06 14:09:31
+ * @LastEditTime: 2023-12-12 21:35:42
  * @FilePath: \BMapSVF-Client\src\views\MapViewer\components\Header.vue
- * @Description: 头部组件
+ * @Description: Header component
 -->
 <template>
   <div

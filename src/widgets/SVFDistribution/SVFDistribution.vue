@@ -2,7 +2,7 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-05-07 16:20:17
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-23 20:08:35
+ * @LastEditTime: 2023-10-02 21:03:05
  * @FilePath: \BMapSVF-Client\src\widgets\SVFDistribution\SVFDistribution.vue
  * @Description: the spatial distribution of svf
 -->
@@ -19,6 +19,11 @@
         </Button>
       </div>
     </div>
+    <div class="ml-0 mr-2 mt-2 mb-2">
+      <Button class="text-base" @click="getLessVerify">
+        Validation of 3D urban building models
+      </Button>
+    </div>
   </div>
 </template>
 <script setup>
@@ -28,6 +33,7 @@ import store from "@/store";
 let socket = ref(null);
 const panoramaResults = reactive([]);
 const panoramaCsvResults = reactive([]);
+const fisheyeTest = reactive([]);
 let map = window.map;
 let BMap = window.BMap;
 // 封装socket.io连接事件
@@ -46,6 +52,8 @@ const socketInstance = () => {
       content: "BMapSVF server is connected unsuccessfully!",
       duration: 3
     });
+    map.clearOverlays();
+    store.dispatch("map/setSVFPointsLoaded", false);
   });
   socket.value.on("reconnect", () => {
     Message.info({
@@ -231,6 +239,7 @@ const QSVFDistribution = () => {
     duration: 5
   });
   socket.value.on("postCsvSVFResults", res => {
+    console.log("@@@", res);
     panoramaCsvResults.splice(0, panoramaCsvResults.length, res.svfResults);
     if (panoramaCsvResults[0].length === 0) {
       map.clearOverlays();
@@ -253,6 +262,19 @@ const QSVFDistribution = () => {
           }),
           title: "SVF=" + String(panoramaCsvResults[0][i].svf.toFixed(2))
         });
+        if (i === 422) {
+          markerFishEye.addEventListener("mouseover", () => {
+            panResultFishEye.setAttribute(
+              "src",
+              "data:image/jpeg;base64," + res.fisheyeResults[0].fisheye
+            );
+            panResultFisheyeSeg.setAttribute(
+              "src",
+              "data:image/jpeg;base64," + res.fisheyeResults[0].fisheye_seg
+            );
+            map.openInfoWindow(infoWindow, locationPoint);
+          })
+        }
         markerFishEye.addEventListener("mouseout", () => {
           infoWindow.close();
         });
@@ -267,6 +289,54 @@ const QSVFDistribution = () => {
     } else {
       alert("Please run it in chrome, safari, Internet Explorer 8+ or above!");
     }
+  });
+};
+
+const getLessVerify = () => {
+  socket.value.emit("getQinhuaiLessResults", "获取秦淮区部分数据");
+  Message.info({
+    background: true,
+    content: "The data is loading...",
+    duration: 5
+  });
+  socket.value.on("postIdResults", res => {
+    panoramaResults.splice(0, panoramaResults.length, res.idResults);
+    if (panoramaResults[0].length === 0) {
+      map.clearOverlays();
+      return;
+    }
+    map.clearOverlays();
+
+    for (let i = 0; i < panoramaResults[0].length; i++) {
+      const locationPoint = new BMap.Point(
+        panoramaResults[0][i].lng,
+        panoramaResults[0][i].lat
+      );
+      const markerFishEye = new BMap.Marker(locationPoint, {
+        icon: new BMap.Symbol(window.BMap_Symbol_SHAPE_CIRCLE, {
+          fillColor: "#4c0073",
+          fillOpacity: 0.95,
+          strokeColor: "#4c0073",
+          strokeWeight: 1,
+          scale: 6
+        })
+      });
+      const panoramaId = String(panoramaResults[0][i].id);
+      const label = new BMap.Label(panoramaId);
+      label.setOffset(new BMap.Size(-5, -23));
+      label.setStyle({
+        color: "black",
+        fontSize: "13px",
+        fontFamily: "Times New Roman"
+      });
+      markerFishEye.setLabel(label);
+      map.addOverlay(markerFishEye);
+    }
+    const centerPoint = new BMap.Point(
+      panoramaResults[0][0].lng,
+      panoramaResults[0][0].lat
+    );
+    map.centerAndZoom(centerPoint, 18);
   });
 };
 onMounted(() => {

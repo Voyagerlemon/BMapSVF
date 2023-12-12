@@ -4,7 +4,7 @@
  * @LastEditors: xuhy 1727317079@qq.com
  * @LastEditTime: 2023-04-01 11:44:12
  * @FilePath: \ce-map3d\src\views\SvgViewer\components\SvgRegister.vue
- * @Description: Svg图标注册
+ * @Description: Svg icon registration
 -->
 <template>
   <svg :class="className" aria-hidden="true">

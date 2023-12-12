@@ -1,9 +1,9 @@
 /*
- * @Author: xuhy
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-02 13:08:44
- * @LastEditTime: 2023-04-06 14:14:13
- * @LastEditors: xuhy 1727317079@qq.com
- * @Description: 应用程序状态管理
+ * @LastEditTime: 2023-12-12 21:22:13
+ * @LastEditors: xuhy
+ * @Description: Application state management
  */
 import {
   SET_CONFIG,

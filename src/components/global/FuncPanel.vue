@@ -1,5 +1,5 @@
 <template>
-  <!-- panel整体 -->
+  <!-- panel whole -->
   <div
     v-show="show"
     class="func-panel absolute shadow overflow-hidden"
@@ -7,7 +7,7 @@
     ref="draggableBoxRef"
     :style="panelStyle"
   >
-    <!-- panel头部 -->
+    <!-- panel header -->
     <div
       v-show="expand"
       class="func-panel-header bg-primary text-default flex items-center justify-center"
@@ -18,7 +18,7 @@
         :style="`visibility:${pageIndex !== 0 ? 'visible' : 'hidden'}`"
       >
         <SvgIcon className="w-4 h-4 all-icon" iconName="return" />
-        <span>返回</span>
+        <span>return</span>
       </div>
       <div class="flex flex-1 justify-center font-bold">
         <SvgIcon className="w-6 h-6 header-icon all-icon" :iconName="getIcon" />
@@ -47,7 +47,7 @@
       @mouseup="resizeEnd"
       @mousedown="resizeStart"
     >
-      <!-- panel里的widget -->
+      <!-- panel widget -->
       <div ref="contentRef" />
     </div>
 
@@ -75,19 +75,19 @@ import SvgIcon from "@/views/SvgViewer/components/SvgRegister.vue";
 import store from "@/store";
 
 const panelWidget = store.state.widget.hasPanelWidget;
-//let defaultHidden = panelWidget.meta.defaultHidden;
+// let defaultHidden = panelWidget.meta.defaultHidden;
 let draggableBoxRef = ref(null);
-// 存放widget组件
+// Storing widget components
 let contentRef = ref(null);
-// panel是否展开
+// Whether the panel is expanded
 const expand = ref(true);
-// 面板展开宽度
+// Panel width
 const expandWidth = ref(0);
-// 组件页
+// Component page
 const pageIndex = ref(0);
-// panel的子组件
+// A child component of a panel
 const comChildren = ref(null);
-//面板是否触发 drag 事件
+// Whether the panel triggers the drag event
 const triggeredDrag = ref(false);
 const show = ref(true);
 const props = defineProps({
@@ -116,14 +116,14 @@ const props = defineProps({
     default: false
   }
 });
-//接收事件
+// Receive event
 const emits = defineEmits(["toggle-expand", "page-change", "show", "return"]);
-// 获取具有panel的widget的icon
+// Gets the icon of a widget with a panel
 const getIcon = computed(() => {
   const { icon } = props.meta;
   return icon;
 });
-// 获取具有panel的widget定位样式
+// Gets the widget positioning style with panel
 const panelStyle = computed(() => {
   const { top, bottom, left, right } = props.meta;
   return {
@@ -143,7 +143,7 @@ const resizeBoxClass = computed(() => {
   };
 });
 
-// panel 默认宽高自适应, 最小宽高为 36 * 36
+// panel: the default width and height is adaptive. The minimum width and height is 36 x 36
 const resizeBoxStyle = computed(() => {
   {
     const { width, height, minWidth, maxWidth, minHeight, maxHeight } =
@@ -165,14 +165,14 @@ const resizeBoxStyle = computed(() => {
     };
   }
 });
-// 鼠标出现在右下角 20 * 20px 区域，判定为resize
+// The mouse appears in the 20 * 20px area in the lower right corner and determines resize
 const resizeStart = event => {
   if (!expand.value) {
     return;
   }
   event.stopPropagation();
 };
-// 鼠标结束事件
+// Mouse end event
 const resizeEnd = () => {
   if (!expand.value) {
     return;
@@ -190,7 +190,7 @@ function close() {
   const vNode = document.querySelector(".func-panel");
   vNode.parentElement.removeChild(vNode);
 }
-// panel展开的状态
+// The expanded state of the panel
 const toggleExpand = () => {
   if (triggeredDrag.value) {
     return;
@@ -236,7 +236,7 @@ onUnmounted(() => {
   }
   comChildren.value.unmount();
 });
-// 获取在限定矩形范围内的坐标值
+// Gets the coordinate value within the limits of the rectangle
 const getPositionWithinBoundary = function (x, y, maxX, maxY) {
   if (x < 0) x = 0;
   if (x > maxX) x = maxX;
@@ -250,36 +250,37 @@ const getPositionWithinBoundary = function (x, y, maxX, maxY) {
 const vDrag = {
   mounted: (el, { value, modifiers }) => {
     el.onmousedown = e => {
-      // 鼠标到目标DOM元素内边距的距离
+      // The distance of the mouse to the inner margin of the target DOM element
       const disx = e.offsetX;
       const disy = e.offsetY;
-      // 目标DOM元素到父元素的距离
+      // Distance from the target DOM element to the parent element
       const offsetX = el.offsetLeft;
       const offsetY = el.offsetTop;
-      // 父元素到客户端区域原点的距离
+      // The distance from the parent element to the origin of the client area
       const parentX = e.clientX - disx - offsetX;
       const parentY = e.clientY - disy - offsetY;
-      //阻止浏览器的默认事件
+      // Block browser default events
       e.preventDefault();
       document.onmousemove = e => {
         el.style.bottom = "auto";
         el.style.right = "auto";
-        // 根据鼠标当前位置到客户端区域原点的距离，重新设置目标DOM元素到父元素的距离
+        // Reset the distance between the target DOM element and 
+        // the parent element based on the distance between the current mouse position and the origin of the client area
         const currX = e.clientX - disx - parentX;
         const currY = e.clientY - disy - parentY;
         const maxX = el.offsetParent.clientWidth - el.clientWidth;
         const maxY = el.offsetParent.clientHeight - el.clientHeight;
-        // 边界控制
+        // Border control
         const { x, y } = getPositionWithinBoundary(currX, currY, maxX, maxY);
-        //如果表达式的结果是false,就不拖拽
+        // If the expression results in false, no dragging is done
         if (!value) {
           return;
         }
-        //修饰符
+        // modifier
         if (modifiers.x) {
           el.style.left = x + "px";
         }
-        //修饰符
+        // 修饰符
         if (modifiers.y) {
           el.style.top = y + "px";
         }
@@ -303,7 +304,7 @@ const vDrag = {
   height: auto;
   border-radius: 0.36rem;
   pointer-events: auto;
-  //overflow: initial;
+  // overflow: initial;
   .all-icon {
     cursor: pointer;
     margin: auto 0.31rem;

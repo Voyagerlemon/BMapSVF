@@ -2,15 +2,15 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-03 11:27:30
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-05 20:44:46
+ * @LastEditTime: 2023-12-12 21:34:09
  * @FilePath: \BMapSVF-Client\src\utils\permission\permission.js
- * @Description: 授权访问
+ * @Description: authorized visit
  */
 import store from "@/store";
 /**
- * @description 格式化资源信息，将array转为hash
- * @param {Array} resources [资源信息]
- * @param {Object} resourceMap [转换后资源对象]
+ * @description Format the resource information and convert the array into a hash
+ * @param {Array} resources [resource information]
+ * @param {Object} resourceMap [Converted resource object]
  */
 const formatResource = (resources, resourceMap = {}) => {
   if (Array.isArray(resources)) {

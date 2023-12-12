@@ -1,10 +1,10 @@
 /*
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-29 20:15:52
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-07 15:52:36
+ * @LastEditTime: 2023-12-12 20:51:50
  * @FilePath: \BMapSVF-Client\src\router\index.js
- * @Description: 路由相关配置
+ * @Description: Routing configuration
  */
 import { createRouter, createWebHistory } from "vue-router";
 

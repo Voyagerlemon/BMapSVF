@@ -2,13 +2,13 @@
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-03-29 20:26:35
  * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-09 19:44:58
+ * @LastEditTime: 2023-12-12 21:37:50
  * @FilePath: \BMapSVF-Client\src\views\SvgViewer\SvgViewer.vue
- * @Description: svg图标预览组件
+ * @Description: SVG icon preview component
 -->
 <template>
   <div class="icon-view">
-    <h2>点击Svg图标获取代码</h2>
+    <h2>Click the SVG icon to get the code</h2>
     <div class="icons">
       <div class="icon" v-for="item in iconName" @click="handleIconClick(item)">
         <SvgIcon :iconName="item" />
@@ -39,14 +39,14 @@ async function handleIconClick(iconName) {
     success: () => {
       Message.success({
         background: true,
-        content: `${iconName}图标代码已复制到剪贴板`,
+        content: `${iconName} icon code was copied to the clipboard`,
         duration: 3
       });
     },
     error: () => {
       Message.error({
         background: true,
-        content: `${iconName}图标代码复制失败`,
+        content: `${iconName} failed to copy icon code`,
         duration: 3
       });
     }
