@@ -1,8 +1,8 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2022-12-05 15:40:45
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-01 11:44:12
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 13:02:47
  * @FilePath: \ce-map3d\src\views\SvgViewer\components\SvgRegister.vue
  * @Description: Svg icon registration
 -->

@@ -1,8 +1,8 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-29 20:26:35
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-12-12 21:37:50
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 13:05:28
  * @FilePath: \BMapSVF-Client\src\views\SvgViewer\SvgViewer.vue
  * @Description: SVG icon preview component
 -->
@@ -54,21 +54,21 @@ async function handleIconClick(iconName) {
   /*  await navigator.clipboard.writeText(`<SvgIcon iconName="${iconName}" />`);
   Message.success({
     background: true,
-    content: `${iconName}图标代码已复制到剪切板`,
+    content: `${iconName} icon code is copied to the clipboard`,
     duration: 3
   }); */
 }
-// 封装在网络环境下和本地环境下复制到剪贴板
+// The package is copied to the clipboard in network and local environments
 /* function copyToClipboard(textToCopy) {
-  // navigator clipboard 需要https等安全上下文
+  // navigator clipboard: A security context such as https is required
   if (navigator.clipboard && window.isSecureContext) {
-    // navigator clipboard 向剪贴板写文本
+    // navigator clipboard: Write text to the clipboard
     return navigator.clipboard.writeText(textToCopy);
   } else {
-    // 创建text area
+    // Creating a text area
     let textArea = document.createElement("textarea");
     textArea.value = textToCopy;
-    // 使text area不在viewport，同时设置不可见
+    // Make the text area out of the viewport and invisible
     textArea.style.position = "absolute";
     textArea.style.opacity = 0;
     textArea.style.left = "-999999px";
@@ -77,7 +77,7 @@ async function handleIconClick(iconName) {
     textArea.focus();
     textArea.select();
     return new Promise((res, rej) => {
-      // 执行复制命令并移除文本框
+      // Execute the copy command and remove the text box
       document.execCommand("copy") ? res() : rej();
       textArea.remove();
     });

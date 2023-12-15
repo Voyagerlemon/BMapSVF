@@ -90,7 +90,7 @@ export default {
       )
     );
     this.autoComplete.addEventListener("onconfirm", function (event) {
-      // 鼠标点击下拉列表后的事件
+      // Mouse click after the drop-down list of events
       const _value = event.item.value;
       myValue =
         _value.province +
@@ -102,14 +102,14 @@ export default {
 
       window.map.clearOverlays();
       const localSearch = new window.BMap.LocalSearch(window.map, {
-        // 智能搜索
+        // intelligent search
         onSearchComplete: addressPanorama
       });
       function addressPanorama() {
-        // 获取第一个智能搜索的结果
+        // Get the results of your first intelligent search
         const resultPoi = localSearch.getResults().getPoi(0).point;
         window.map.centerAndZoom(resultPoi, 18);
-        // 添加标注
+        // Add annotation
         //window.map.addOverlay(new window.BMap.Marker(resultPoi));
       }
 

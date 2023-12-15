@@ -1,16 +1,16 @@
 /*
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-30 20:20:59
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-12-12 21:40:48
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 19:06:49
  * @FilePath: \BMapSVF-Client\tailwind.config.cjs
  * @Description: Tailwind CSS configure
  */
 module.exports = {
   purge: ["./index.html", "./src/**/*.{html,vue,js,scss}"],
-  darkMode: false, // or 'media' or 'class' // 关闭深色模式变体
+  darkMode: false, // or 'media' or 'class' // Turn off the Dark mode variant
   theme: {
-    // 响应设置
+    // Response setting
     screens: {
       sm: "640px",
       // => @media (min-width: 640px) { ... }
@@ -33,7 +33,7 @@ module.exports = {
       llg: "1.36rem",
       xxl: "1.67rem"
     },
-    // 自定义全局颜色
+    // Customize the global color
     colors: {
       transparent: "transparent",
       default: "#ffffff",
@@ -60,7 +60,7 @@ module.exports = {
     boxShadow: {
       default: "0rem 0rem 0.52rem 0.21rem rgba(0, 0, 0, 0.1)"
     },
-    // 拓展覆盖原属性名称
+    // The extension overwrites the original property name
     extend: {
       opacity: {
         0: "0",
@@ -75,9 +75,9 @@ module.exports = {
     }
   },
   variants: {},
-  // 支持自定义类名及类内容详见 https://www.tailwindcss.cn/docs/plugins
+  // Support custom class names and class content details: https://www.tailwindcss.cn/docs/plugins
   plugins: [],
-  // 可以在此关闭你不想使用的类
+  // You can close classes you don't want to use here
   corePlugins: {
     container: false
   }

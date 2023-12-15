@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-04 15:55:32
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-28 10:04:14
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:42:58
  * @FilePath: \BMapSVF-Client\src\widgets\MapTool\MapTool.vue
- * @Description: 地图工具容器
+ * @Description: Map tool container
 -->
 <template>
   <div class="map-tool">
@@ -31,7 +31,6 @@
       id="mapBottomRight"
       class="absolute flex items-end flex-col-reverse max-w-full pointer-events-auto bottom-0 right-0"
     >
-      <!--  -->
     </div>
   </div>
 </template>

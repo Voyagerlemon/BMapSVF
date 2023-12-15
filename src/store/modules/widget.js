@@ -1,8 +1,8 @@
 /*
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-03 13:05:44
- * @LastEditTime: 2023-12-12 21:26:32
- * @LastEditors: xuhy 1727317079@qq.com
+ * @LastEditTime: 2023-12-14 21:40:33
+ * @LastEditors: xuhy xuhaiyangw@163.com
  * @Description: Micro device status management
  */
 

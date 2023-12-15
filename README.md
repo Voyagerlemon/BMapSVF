@@ -155,7 +155,7 @@ const props = defineProps({
 
 ```javascript
 import SvgIcon from "./views/SvgViewer/components";
-// 注册svg图标
+// Register SVG icon
 import "virtual:svg-icons-register";
 app.component("SvgIcon", SvgIcon);
 ```

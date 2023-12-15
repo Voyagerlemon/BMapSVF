@@ -1,8 +1,8 @@
 /*
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-03 10:27:04
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-12-12 21:11:41
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-14 21:39:37
  * @FilePath: \BMapSVF-Client\src\store\types.js
  * @Description: The type name constant of mutation
  */

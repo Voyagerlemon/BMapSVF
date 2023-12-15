@@ -1,10 +1,10 @@
 <!-- 
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-06 14:49:50
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-28 10:02:55
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:42:12
  * @FilePath: \BMapSVF-Client\src\widgets\MapToggle\MapToggle.vue
- * @Description: 底图切换组件
+ * @Description: Base map switch component
 -->
 <template>
   <Dropdown class="map-toggle" placement="left">
@@ -66,9 +66,9 @@ let layerName = ref("");
 let nowBaseLayer = ref("");
 const baseMapLayers = reactive([]);
 const addBaseMap = () => {
-  // 获取到MapToggle配置文件中的baseLayers
+  // Gets the baseLayers in the MapToggle configuration file
   const { baseLayers } = store.getters["widget/widgetConfig"];
-  // 当前打开的默认底图
+  // The current open default base map
   const curBaseLayer = baseLayers.filter(item => {
     return item.visible;
   })[0];

@@ -1,8 +1,8 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-28 09:37:29
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-12 14:42:50
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:40:31
  * @FilePath: \BMapSVF-Client\src\widgets\ScreenExport\ScreenExport.vue
  * @Description: map legend
 -->

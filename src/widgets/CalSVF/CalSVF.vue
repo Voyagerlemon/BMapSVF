@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-08 17:20:17
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-28 16:16:57
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 13:26:13
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\CalSVF.vue
- * @Description: 计算SVF组件
+ * @Description: Calculate SVF components
 -->
 <template>
   <div class="distance-measure">

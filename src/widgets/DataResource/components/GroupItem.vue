@@ -1,9 +1,9 @@
 <!--
- * @Author: Lauxb
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2021-03-11 14:03:07
- * @LastEditTime: 2023-04-04 11:36:30
- * @LastEditors: xuhy 1727317079@qq.com
- * @Description: 组数据组件
+ * @LastEditTime: 2023-12-15 13:29:04
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @Description: Group data element
 -->
 <template>
   <div class="group-item">

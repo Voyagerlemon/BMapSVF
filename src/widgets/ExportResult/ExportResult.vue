@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-05-06 10:44:41
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-05-23 11:06:37
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:38:04
  * @FilePath: \BMapSVF-Client\src\widgets\ExportResult\ExportResult.vue
- * @Description: 导出数据库中的数据
+ * @Description: Export data from the database
 -->
 <template>
   <div class="flex flex-col">
@@ -37,7 +37,7 @@ let progress = ref(0);
 let statusToggle = ref("active");
 let showProgress = ref(false);
 
-// 封装socket.io连接事件
+// Encapsulate socket.io connection events
 const socketInstance = () => {
   socket.value = window.io.connect("http://127.0.0.1:5000");
   socket.value.on("connect", () => {
@@ -70,7 +70,7 @@ const socketInstance = () => {
   });
 };
 const ExportRoadResults = () => {
-  socket.value.emit("getFuhuaPanoramaResults", "获取深圳福华路数据");
+  socket.value.emit("getFuhuaPanoramaResults", "Get Shenzhen Fuhua Road data");
   Message.success({
     background: true,
     content: "The results are being exported...",
@@ -80,7 +80,7 @@ const ExportRoadResults = () => {
     if (res.status === 200) {
       const zipData = res.data;
       const zipBlob = new Blob([zipData], { type: "application/zip" });
-      // 创建下载链接
+      // Create download link
       const url = window.URL.createObjectURL(zipBlob);
       const link = document.createElement("a");
       link.href = url;
@@ -98,7 +98,7 @@ const ExportRoadResults = () => {
   });
 };
 const ExportDistrictResults = () => {
-  socket.value.emit("getQinhuaiPanoramaResults", "获取秦淮区数据");
+  socket.value.emit("getQinhuaiPanoramaResults", "Obtain Qinhuai district data");
   Message.success({
     background: true,
     content: "The results are being exported...",

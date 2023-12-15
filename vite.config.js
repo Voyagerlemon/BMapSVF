@@ -1,10 +1,10 @@
 /*
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-29 16:00:53
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-03 13:58:39
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 19:08:48
  * @FilePath: \BMapSVF-Client\vite.config.js
- * @Description: vite配置文件
+ * @Description: vite configuration file
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -17,9 +17,9 @@ export default defineConfig({
   plugins: [
     vue(),
     createSvgIconsPlugin({
-      // 解析svg图标地址
+      // Parse the svg icon address
       iconDirs: [resolve(process.cwd(), "src/svg")],
-      // 解析svg图标名字
+      // Parse svg icon names
       symbolId: "icon-[name]",
     }),
     alias({
@@ -36,7 +36,7 @@ export default defineConfig({
     port: 8088,
     open: true,
    /*  proxy: {
-      //设置代理，前端跨域
+      // Set proxy, front end cross-domain
       "/api": {
         target: "http://localhost:5000/api",
         changeOrigin: true,
