@@ -184,7 +184,7 @@ app.component("SvgIcon", SvgIcon);
 - `yarn add postcss-pxtorem -D`--- px ---> rem
 #### Tailwind CSS
 - `yarn add tailwindcss@2.2.16 postcss@latest autoprefixer@latest -D`---https://www.tailwindcss.cn/docs/installation
-#### eslint与prettier
+#### eslint and prettier
 - `yarn add  eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue eslint-plugin-html prettier -D`
 #### Pinia- Vue's own status management library (this project uses Vuex, Pinia as the next version update)
 - `yarn add vuex -S`
