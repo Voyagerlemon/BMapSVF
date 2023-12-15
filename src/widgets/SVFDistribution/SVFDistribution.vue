@@ -1,8 +1,8 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-05-07 16:20:17
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-10-02 21:03:05
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:49:06
  * @FilePath: \BMapSVF-Client\src\widgets\SVFDistribution\SVFDistribution.vue
  * @Description: the spatial distribution of svf
 -->
@@ -36,7 +36,7 @@ const panoramaCsvResults = reactive([]);
 const fisheyeTest = reactive([]);
 let map = window.map;
 let BMap = window.BMap;
-// 封装socket.io连接事件
+// Encapsulate socket.io connection events
 const socketInstance = () => {
   socket.value = window.io.connect("http://127.0.0.1:5000");
   socket.value.on("connect", () => {
@@ -82,14 +82,14 @@ const svfColors = reactive([
   "#482777",
   "#440154"
 ]);
-// 根据SVF值给定标记点的颜色
+// The color of the marker is given based on the SVF value
 function getColor(val) {
   let opts = Math.floor(val * 10);
   if (opts < 0) opts = 0;
   if (opts > 9) opts = 9;
   return svfColors[opts];
 }
-// 创建地图信息窗口的DOM结点
+// Create the DOM node of the map information window
 //#region
 const div = document.createElement("div");
 div.style.float = "left";
@@ -112,7 +112,7 @@ const infoWindow = new BMap.InfoWindow(div, {
 });
 //#endregion
 const FSVFDistribution = () => {
-  socket.value.emit("getPanoramaResults", "获取福华路案例");
+  socket.value.emit("getPanoramaResults", "Obtain the case of Fuhua Road");
   Message.info({
     background: true,
     content: "The data is loading...",
@@ -170,7 +170,7 @@ const FSVFDistribution = () => {
   });
 };
 /* const QSVFDistribution = () => {
-  socket.value.emit("getCsvPanoramaResults", "获取秦淮区案例");
+  socket.value.emit("getCsvPanoramaResults", "The case of Qinhuai District was obtained");
   Message.info({
     background: true,
     content: "The data is loading!",
@@ -232,7 +232,7 @@ const FSVFDistribution = () => {
 }; */
 
 const QSVFDistribution = () => {
-  socket.value.emit("getCsvSVFResults", "获取秦淮区案例");
+  socket.value.emit("getCsvSVFResults", "The case of Qinhuai District was obtained");
   Message.info({
     background: true,
     content: "The data is loading...",
@@ -293,7 +293,7 @@ const QSVFDistribution = () => {
 };
 
 const getLessVerify = () => {
-  socket.value.emit("getQinhuaiLessResults", "获取秦淮区部分数据");
+  socket.value.emit("getQinhuaiLessResults", "Obtain some data of Qinhuai district");
   Message.info({
     background: true,
     content: "The data is loading...",

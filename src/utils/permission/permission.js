@@ -1,8 +1,8 @@
 /*
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-03 11:27:30
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-12-12 21:34:09
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-14 21:41:45
  * @FilePath: \BMapSVF-Client\src\utils\permission\permission.js
  * @Description: authorized visit
  */

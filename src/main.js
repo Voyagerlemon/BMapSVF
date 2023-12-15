@@ -1,30 +1,28 @@
 /*
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-29 16:00:53
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-09 22:15:38
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 19:01:25
  * @FilePath: \BMapSVF-Client\src\main.js
- * @Description: 入口文件相关配置
+ * @Description: Configure import files
  */
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import SvgIcon from "./views/SvgViewer/components";
-// 注册svg图标
+// Register SVG icon
 import "virtual:svg-icons-register";
-// 导入View UI Plus图标
+// Import the View UI Plus icon
 import ViewUIPlus from "view-ui-plus";
 import "view-ui-plus/dist/styles/viewuiplus.css";
-// 导入全局样式
+// Import global style
 import "@/styles/index.scss";
-// 导入Tailwind CSS
 import "@/styles/tailwind.scss";
-// 导入store
 import store from "@/store";
-// 引入微件
+// Introducing microelement
 import widgets from "@/widgets";
 store.dispatch("widget/setWidgets", widgets);
-// 注册全局组件
+// Register global components
 import components from "./components/index";
 
 const app = createApp(App);

@@ -1,10 +1,10 @@
 /*
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-30 20:46:10
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-03-30 20:46:20
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 19:02:40
  * @FilePath: \BMapSVF-Client\.eslintrc.js
- * @Description: eslint相关配置
+ * @Description: eslint related configurations
  */
 module.exports = {
   root: true,

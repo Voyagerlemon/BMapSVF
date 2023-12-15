@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-04 16:02:24
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-28 10:18:54
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:51:21
  * @FilePath: \BMapSVF-Client\src\widgets\Toolbox\Toolbox.vue
- * @Description: 工具箱管理组件
+ * @Description: Toolbox management component
 -->
 <template>
   <div class="flex flex-row-reverse h-auto toolbox absolute right-3" @click="handleClickToolbox">
@@ -128,13 +128,13 @@ const toolBox = reactive({
   }
 });
 const initTool = () => {
-  // 获取工具箱的工具树
+  // Get the tool tree of the toolbox
   const resource = store.getters["widget/resourceMap"]["ToolBox"];
   const toolInfo = getToolInfo(resource.children || []);
   allTools.push(...toolInfo);
 };
 const getToolInfo = tools => {
-  // 工具列表
+  // list of tools
   const toolList = [];
   tools.forEach(tool => {
     if (tool.children) {

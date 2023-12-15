@@ -1,9 +1,9 @@
 <!--
- * @Author: Lauxb
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2021-03-11 13:48:12
- * @LastEditTime: 2023-04-04 09:48:53
- * @LastEditors: xuhy 1727317079@qq.com
- * @Description: 数据资源树组件
+ * @LastEditTime: 2023-12-15 18:35:30
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @Description: Data resource tree component
 -->
 <template>
   <div class="data-resource">
@@ -13,7 +13,7 @@
       "
     >
       <Input
-        placeholder="请输入关键字"
+        placeholder="Please enter a keyword"
         search
         clearable
         v-model="curInputVal"
@@ -63,10 +63,10 @@ export default {
         const temp = res.config ? JSON.parse(res.config) : res;
         Object.assign(this.config, temp);
       }
-     /*  const topics = this.config["topics"];
-      console.log("原始数据资源目录：", topics);
+      /*  const topics = this.config["topics"];
+      console.log("Raw data resource directory：", topics);
       this.transformTopics(topics, this.topicAllList);
-      console.log("转换后数据资源目录：", this.topicAllList); */
+      console.log("Converted data resource directory：", this.topicAllList); */
       this.topicTreeData = this.topicAllList;
     },
     transformTopics(res, list = []) {
@@ -99,7 +99,7 @@ export default {
     search() {
       this.OpenRelatedTopicByName(this.curInputVal);
     },
-    // 搜索并打开相关专题(普通函数)
+    // Search and open related topics (normal functions)
     OpenRelatedTopicByName(curTopicName) {
       const cloneData = lodash.cloneDeep(this.topicAllList);
       if (curTopicName) {

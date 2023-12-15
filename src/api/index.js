@@ -1,10 +1,10 @@
 /*
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-02 10:45:09
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-12-12 20:38:39
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-14 21:36:31
  * @FilePath: \BMapSVF-Client\src\api\index.js
- * @Description: 网络请求封装
+ * @Description: Network request encapsulation
  */
 import Hjson from "hjson";
 import lodash from "lodash";

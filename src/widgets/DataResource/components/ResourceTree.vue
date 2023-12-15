@@ -1,9 +1,9 @@
 <!--
- * @Author: Lauxb
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2021-03-11 13:53:12
- * @LastEditTime: 2023-04-04 09:43:30
- * @LastEditors: xuhy 1727317079@qq.com
- * @Description: 资源树组件
+ * @LastEditTime: 2023-12-15 18:33:20
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @Description: Resource tree component
 -->
 <template>
   <div class="resource-tree">

@@ -34,7 +34,7 @@
         </Tooltip>
       </div>
     </div>
-    <!-- 对话框 -->
+    <!-- dialog box -->
     <Modal v-model="modal" width="320" transfer>
       <template #header>
         <div
@@ -76,18 +76,19 @@ let map = window.map;
 let BMap = window.BMap;
 let panoramaData = reactive([]);
 const panoramaResults = reactive([]);
-// 根据csv文件的经纬度坐标获取的全景数据
+// Panoramic data obtained from the latitude and longitude coordinates of the csv file
 const postPanoramas = reactive([]);
 let uploadRef = ref(null);
 let panoramaId = ref("");
 const modal = ref(false);
 const modal_loading = ref(false);
 let loadSecondPoints = reactive([]);
-// 过滤上传的文件格式
+// Filter uploaded file formats
 const accept = ref(".csv");
 let uploadedResults = reactive([]);
+// Local server
 const actionUrl = ref("http://127.0.0.1:5000/upload");
-// SVF采样点颜色
+// SVF sampling point color
 const svfColors = reactive([
   "#FDE725",
   "#B6DE2B",
@@ -102,14 +103,26 @@ const svfColors = reactive([
 ]);
 const emit = defineEmits(["getSVFValue"]);
 
-// 根据SVF值给定标记点的颜色
+// Apply for address: https://lbsyun.baidu.com/apiconsole/center#/home
+const API_KEY_POOL = reactive([
+  "BrlC46ogjvmEkblNNsauxtjmgKjHBiqN",
+  "uYPVx8FpGoILUNAkM9WGCvFb1t5tQAuH",
+  "h5GlIkW5aT6ZVyESoOtaz5C8KCPpcCLE",
+  "YniOI8mkAeMNRPNR4DkFu5LQP9ArmWGn",
+  "YeOWIMkFXGT8k6LIYi6l5eGYEYpnS9gr",
+  "qvIqQKAADKsPFqmxR6T0xP6EtKFT6TjQ",
+  "5NLRP7yso7RyZWiSkERyl8ZmPVrOEDRH",
+  "2rP0A4BSKwhFnWnQAvswGIUISoIHRtTU"
+]);
+
+// The color of the marker is given based on the SVF value
 function getColor(val) {
   let opts = Math.floor(val * 10);
   if (opts < 0) opts = 0;
   if (opts > 9) opts = 9;
   return svfColors[opts];
 }
-// 封装socket.io连接事件
+// Encapsulate socket.io connection events
 const socketInstance = () => {
   socket.value = window.io.connect("http://127.0.0.1:5000");
   socket.value.on("connect", () => {
@@ -142,8 +155,8 @@ const socketInstance = () => {
   });
 };
 
-// 创建地图信息窗口的DOM结点
-//#region
+// Create the DOM node of the map information window
+// #region
 const div = document.createElement("div");
 div.style.float = "left";
 div.style.borderRadius = "border-radius: 0.36rem;";
@@ -165,7 +178,6 @@ const infoWindow = new BMap.InfoWindow(div, {
 });
 //#endregion
 
-// 计算SVF
 const calculateSVF = () => {
   if (panoramaData.length === 0) {
     Message.info({
@@ -177,7 +189,8 @@ const calculateSVF = () => {
     panoramaData[0].forEach(ele => {
       let lng = ele.position.lng;
       let lat = ele.position.lat;
-      let bsvPanorama = `http://api.map.baidu.com/panorama/v2?ak=qvIqQKAADKsPFqmxR6T0xP6EtKFT6TjQ&width=1024&height=512&location=${lng},${lat}&fov=360`;
+
+      let bsvPanorama = `http://api.map.baidu.com/panorama/v2?ak=${API_KEY_POOL[0]}&width=1024&height=512&location=${lng},${lat}&fov=360`;
       let bMapData = {
         panoid: ele.id,
         date: ele.copyright.photoDate,
@@ -225,7 +238,7 @@ const calculateSVF = () => {
 };
 
 const distributeSVF = () => {
-  socket.value.emit("getCsvPanoramaResults", "获取百度全景处理结果");
+  socket.value.emit("getCsvPanoramaResults", "Get BSV processing results");
   Message.info({
     background: true,
     content: "The data is loading!",
@@ -254,7 +267,7 @@ const distributeSVF = () => {
           }),
           title: "SVF=" + String(panoramaResults[0][i].svf.toFixed(2))
         });
-        // 标注的点击事件
+        // Annotated click events
         markerFishEye.addEventListener("click", () => {
           modal.value = true;
           panoramaId.value = panoramaResults[0][i].panoid;
@@ -294,7 +307,7 @@ const clearMarker = () => {
   store.dispatch("map/setSVFPointsLoaded", false);
   emit("getSVFValue", -1);
 };
-// csv文件上传之前, 对文件类型和大小等进行判断
+// Before uploading a csv file, determine the file type and size
 const beforeUpload = file => {
   if (file.type !== "text/csv") {
     Message.error({
@@ -315,7 +328,7 @@ const beforeUpload = file => {
   return true;
 };
 
-// 文件上传成功的回调
+// File upload successful callback function
 const onUploadSuccess = response => {
   if (response.status === 200)
     Message.success({
@@ -333,7 +346,7 @@ const onUploadSuccess = response => {
     const marker = new BMap.Marker(locationPoint);
     map.addOverlay(marker);
 
-    // 检索这一点的全景数据信息
+    // Retrieve the panoramic data information for this point
     const panoramaService = new BMap.PanoramaService();
     panoramaService.getPanoramaByLocation(
       locationPoint,
@@ -352,10 +365,10 @@ const onUploadSuccess = response => {
     );
   }
   console.log("ser", serviceArr);
-  // 替换数组
+  // Replacement array
   panoramaData.splice(0, panoramaData.length, serviceArr);
   console.log("panoramas", panoramaData[0], panoramaData.length);
-  // 跳转至加载的第一个采样点上
+  // Jump to the first sampling point of the load
   const locationPoint = new BMap.Point(
     uploadedResults[0][0].lng,
     uploadedResults[0][0].lat
@@ -402,7 +415,7 @@ const delPoint = () => {
 
         title: "SVF=" + String(ele.svf.toFixed(2)) + " (sky)"
       });
-      // 标注的点击事件
+      // Annotated click events
       markerFishEye.addEventListener("click", () => {
         modal.value = true;
         panoramaId.value = ele.panoid;

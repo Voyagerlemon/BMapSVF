@@ -1,9 +1,9 @@
 <!--
- * @Author: Lauxb
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2021-03-11 14:05:31
- * @LastEditTime: 2023-04-05 16:18:39
- * @LastEditors: xuhy 1727317079@qq.com
- * @Description: 右侧操作按钮组件
+ * @LastEditTime: 2023-12-15 18:32:46
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @Description: Operate the button assembly on the right
 -->
 <template>
   <div class="border-b-0 border-solid border-neutral-5 resource-item">
@@ -45,7 +45,7 @@
             :class="{ active: isFavorite }"
             @click.stop="collectResource"
           >
-            {{ isFavorite ? "取消收藏" : "收藏" }}
+            {{ isFavorite ? "cancel collection" : "collection" }}
           </div>
           <div
             :class="`border-b border-neutral-3 tool-item ${
@@ -53,9 +53,9 @@
             }`"
             @click.stop="openOpacity"
           >
-            透明度
+            diaphaneity
           </div>
-          <div class="tool-item" @click.stop="zoomToTopic">显示全图</div>
+          <div class="tool-item" @click.stop="zoomToTopic">Show full map</div>
         </div>
       </Poptip>
     </div>
@@ -188,7 +188,7 @@ export default {
   .svg-icon {
     margin-right: 0.73rem;
   }
- :deep(.ivu-poptip) {
+  :deep(.ivu-poptip) {
     @apply h-full;
     .ivu-poptip-rel {
       @apply h-full;
@@ -197,16 +197,16 @@ export default {
       margin: 0 0.73rem;
     }
   }
- :deep(.ivu-poptip-rel) {
+  :deep(.ivu-poptip-rel) {
     @apply flex;
   }
- :deep(.ivu-poptip-inner) {
+  :deep(.ivu-poptip-inner) {
     @apply bg-transparent;
   }
- :deep(.ivu-poptip-body) {
+  :deep(.ivu-poptip-body) {
     @apply p-0;
   }
- :deep(.ivu-poptip-popper) {
+  :deep(.ivu-poptip-popper) {
     min-width: 4rem;
     .ivu-poptip-arrow {
       border-bottom-color: rgba($color: #00131b, $alpha: 0.7);

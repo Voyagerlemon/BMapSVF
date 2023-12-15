@@ -280,7 +280,6 @@ const vDrag = {
         if (modifiers.x) {
           el.style.left = x + "px";
         }
-        // 修饰符
         if (modifiers.y) {
           el.style.top = y + "px";
         }

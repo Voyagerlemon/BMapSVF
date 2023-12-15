@@ -1,9 +1,9 @@
 /*
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-02 13:20:44
- * @LastEditTime: 2023-12-12 21:22:55
- * @LastEditors: xuhy
- * @Description: 三维状态管理
+ * @LastEditTime: 2023-12-14 21:40:21
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @Description: Three-dimensional state management
  */
 
 import {

@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-05 15:01:31
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-17 16:22:02
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:50:56
  * @FilePath: \BMapSVF-Client\src\widgets\ToolBox\components\CommonToolItem.vue
- * @Description: 工具箱中的功能组件按钮
+ * @Description: Function component button in the toolbox
 -->
 <template>
   <Tooltip :content="toolItem.label" placement="top" transfer>
@@ -57,7 +57,7 @@ const props = defineProps({
     type: Boolean,
     default: () => false
   },
-  // 是否选择了此功能
+  // Whether this function is selected
   selected: {
     type: Boolean,
     default: () => false

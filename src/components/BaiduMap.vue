@@ -2,9 +2,9 @@
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-06 16:53:21
  * @LastEditors: xuhy xuhaiyangw@163.com
- * @LastEditTime: 2023-12-12 20:40:59
+ * @LastEditTime: 2023-12-14 21:37:15
  * @FilePath: \BMapSVF-Client\src\components\BaiduMap.vue
- * @Description: 封装的百度地图组件
+ * @Description: Packaged Baidu map components
 -->
 <template>
   <div id="map"></div>

@@ -1,9 +1,9 @@
 <!--
- * @Author: Lauxb
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2021-03-11 15:39:04
- * @LastEditTime: 2023-04-04 11:36:17
- * @LastEditors: xuhy 1727317079@qq.com
- * @Description: 透明度滑杆
+ * @LastEditTime: 2023-12-15 13:29:50
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @Description: Transparent slide
 -->
 <template>
   <div class="flex items-center opacity-slider">

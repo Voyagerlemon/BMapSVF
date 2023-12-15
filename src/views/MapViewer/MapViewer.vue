@@ -1,8 +1,8 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-29 20:24:11
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-12-12 21:36:35
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 13:02:04
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: System interface layout
 -->

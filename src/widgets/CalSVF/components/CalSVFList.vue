@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-09 20:03:35
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-28 19:12:41
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 13:25:39
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\components\CalSVFList.vue
- * @Description: SVF计算方式
+ * @Description: SVF calculation method
 -->
 <template>
   <div class="flex flex-col">
@@ -35,7 +35,7 @@
         SVF distribution of sampling points
       </Button>
     </div>
-    <!-- 对话框 -->
+    <!-- dialog box -->
     <Modal v-model="modal" width="320" transfer>
       <template #header>
         <div
@@ -83,7 +83,7 @@ const modal_loading = ref(false);
 let panoramaId = ref("");
 let loadSecondPoints = reactive([]);
 import store from "@/store";
-// SVF采样点颜色
+
 /* const svfColors = reactive([
   "rgb(0,104,55)",
   "rgb(26,152,80)",
@@ -110,14 +110,14 @@ const svfColors = reactive([
 ]);
 const emit = defineEmits(["getSVFValue"]);
 
-// 根据SVF值给定标记点的颜色
+// The color of the marker is given based on the SVF value
 function getColor(val) {
   let opts = Math.floor(val * 10);
   if (opts < 0) opts = 0;
   if (opts > 9) opts = 9;
   return svfColors[opts];
 }
-// 封装socket.io连接事件
+// Encapsulate socket.io connection events
 const socketInstance = () => {
   socket.value = window.io.connect("http://127.0.0.1:5000");
   socket.value.on("connect", () => {
@@ -149,7 +149,7 @@ const socketInstance = () => {
     });
   });
 };
-// 标记点的鼠标绘制事件
+// Mark the point of the mouse drawing event
 const drawingManager = new BMapLib.DrawingManager(map, {
   isOpen: false,
   drawingType: window.BMAP_DRAWING_MARKER,
@@ -159,7 +159,7 @@ const drawingManager = new BMapLib.DrawingManager(map, {
     offset: new BMap.Size(6, 13)
   }
 });
-// 创建地图信息窗口的DOM结点
+// Create the DOM node of the map information window
 //#region
 const div = document.createElement("div");
 div.style.float = "left";
@@ -182,16 +182,16 @@ const infoWindow = new BMap.InfoWindow(div, {
 });
 //#endregion
 
-// 在地图点击选点
+// Click select points on the map
 const singleClick = () => {
-  // 开启地图绘制模式
+  // Open map mode
   drawingManager.open();
 
-  // 标注点绘制完成事件
+  // Annotated point drawing completion event
   drawingManager.addEventListener("markercomplete", function (e) {
     markerLocation.splice(0, 1, e.point);
     const location = markerLocation[0];
-    // 检索这一点的全景数据信息
+    // Retrieve the panoramic data information for this point
     const panoramaService = new BMap.PanoramaService();
     panoramaService.getPanoramaByLocation(
       new BMap.Point(location.lng, location.lat),
@@ -210,14 +210,14 @@ const singleClick = () => {
     );
   });
 
-  // 鼠标右键关闭地图绘制
+  // Right mouse button to close the map drawing
   document.body.onmouseup = e => {
     if (e.button === 2) {
       drawingManager.close();
     }
   };
 };
-// 计算SVF
+
 const calculateSVF = () => {
   if (!panoramaData) {
     Message.info({
@@ -236,7 +236,7 @@ const calculateSVF = () => {
       srcPath: bsvPanorama
     };
 
-    // 将获取的全景图信息传个服务器
+    // Send the obtained panorama information to the server
     socket.value.emit("postSavePanorama", bMapData);
     socket.value.on("getReadSegInfo", res => {
       Notice.info({
@@ -268,7 +268,7 @@ const calculateSVF = () => {
   }
 };
 const distributeSVF = () => {
-  socket.value.emit("getPanoramaResults", "获取百度全景处理结果");
+  socket.value.emit("getPanoramaResults", "Get BSV processing results");
   socket.value.on("postPanoramaResults", res => {
     panoramaResults.splice(0, panoramaResults.length, res.panoramaResults);
     if (panoramaResults[0].length === 0) {
@@ -294,7 +294,7 @@ const distributeSVF = () => {
           title:
             "SVF=" + String(panoramaResults[0][i].svf.toFixed(2)) + " (sky)"
         });
-        // 标注的点击事件
+        // Annotated click events
         markerFishEye.addEventListener("click", () => {
           modal.value = true;
           panoramaId.value = panoramaResults[0][i].panoid;
@@ -364,7 +364,7 @@ const delPoint = () => {
 
         title: "SVF=" + String(ele.svf.toFixed(2)) + " (sky)"
       });
-      // 标注的点击事件
+      // Annotated click events
       markerFishEye.addEventListener("click", () => {
         modal.value = true;
         panoramaId.value = ele.panoid;

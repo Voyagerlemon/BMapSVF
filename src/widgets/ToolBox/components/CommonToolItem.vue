@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-05 15:01:31
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-28 10:17:52
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:57:30
  * @FilePath: \BMapSVF-Client\src\widgets\ToolBox\components\CommonToolItem.vue
- * @Description: 工具箱按钮
+ * @Description: Toolbox button
 -->
 <template>
   <div

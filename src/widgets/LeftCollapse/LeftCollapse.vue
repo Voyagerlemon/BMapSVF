@@ -17,7 +17,7 @@
      <div class="flex items-center bg-neutral-5 text-neutral-3 reset-wrapper">
       <div class="flex items-center cursor-pointer" @click="reset">
         <SvgIcon className="w-4 h-4 reset-icon" iconName="reset-setting" />
-        <span>重置</span>
+        <span>Reset</span>
       </div>
       <div class="flex-1 tip">
         <div v-show="isResetTip" class="flex justify-end">
@@ -25,11 +25,11 @@
             class="text-primary font-medium cursor-pointer tip-button"
             @click="okReset"
           >
-            确定
+            Confirm
           </span>
           <Divider type="vertical" />
           <span class="text-primary cursor-pointer tip-button" @click="noReset">
-            取消
+            Cancel
           </span>
         </div>
       </div>

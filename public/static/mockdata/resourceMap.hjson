@@ -1,9 +1,9 @@
-// 组件配置
+// Component configuration
 [
   {
     "id": "603d9b2c4a730d4f73195085",
     "name": "Map",
-    "label": "地图组件",
+    "label": "Map Component",
     "srcId": "5f924caa8af6dfa4ae92ad67",
     "srcpId": "5f90e2434781b880fe9f5088",
     "needed": "0",
@@ -17,7 +17,7 @@
   {
     "id": "603d9b2cfd2d8ba9731950a1",
     "name": "MapTool",
-    "label": "地图工具",
+    "label": "Map Tool",
     "srcId": "5f924d2580f640d1ae92ae1c",
     "srcpId": "5f90e2434781b880fe9f5088",
     "needed": "0",
@@ -29,7 +29,7 @@
       {
         "id": "603d9b2cd46d7cb1731950a4",
         "name": "MapToggle",
-        "label": "底图切换",
+        "label": "Map Toggle",
         "srcId": "5f924d453fb9a69aae92ae25",
         "srcpId": null,
         "needed": "0",
@@ -43,7 +43,7 @@
       {
         "id": "5fdc182f7702c9531936cef0",
         "name": "MapLegend",
-        "label": "图例",
+        "label": "Map Legend",
         "srcId": "5f924d6ce5c6c932ae92ae37",
         "srcpId": null,
         "needed": "0",
@@ -57,7 +57,7 @@
       {
         "id": "5fdc183f5ddd8a051936cf72",
         "name": "ToolBox",
-        "label": "工具箱",
+        "label": "Tool Box",
         "srcId": "5f96b844192875dc260ea30f",
         "srcpId": null,
         "needed": "0",
@@ -81,7 +81,7 @@
               {
                 "id": "5fdc183fbf7f33a71936cfaa",
                 "name": "DistanceMeasure",
-                "label": "Distance measure",
+                "label": "Distance Measure",
                 "srcId": "5f96c28091b53d4c260eb657",
                 "srcpId": null,
                 "needed": "0",
@@ -216,7 +216,7 @@
       {
         "id": "856d9b2cd46d7cb1731950a4",
         "name": "SearchPanel",
-        "label": "搜索框",
+        "label": "Search Panel",
         "srcId": "5684d453fb9a69aae92ae25",
         "srcpId": null,
         "needed": "0",

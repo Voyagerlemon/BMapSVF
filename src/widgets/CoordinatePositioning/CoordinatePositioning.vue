@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-08 17:20:17
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-24 19:39:50
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 13:28:19
  * @FilePath: \BMapSVF-Client\src\widgets\CalSVF\CalSVF.vue
- * @Description: 坐标转换组件
+ * @Description: Coordinate conversion element
 -->
 <template>
   <div class="flex flex-col items-center">
@@ -59,6 +59,7 @@ const bd09Coordinate = ref("");
 let socket = ref(null);
 
 const socketInstance = () => {
+  // Local server
   socket.value = window.io.connect("http://127.0.0.1:5000");
   socket.value.on("connect", () => {
     Message.success({
@@ -98,7 +99,7 @@ const coordinateTransform = () => {
       duration: 5
     });
   } else if (wgsCoordinate.value && !bd09Coordinate.value) {
-    // 对输入的经纬度坐标进行校验
+    // Verify the input latitude and longitude coordinates
     // WGS84-->BD09
     const parts = wgsCoordinate.value.split(",");
     if (parts.length !== 2) {
@@ -156,7 +157,7 @@ const clearBD09Coordinate = () => {
   bd09Coordinate.value = "";
 };
 
-// WGS84-->BD09转换回调函数, 一次最多10个点
+// WGS84-->BD09: Convert callback functions up to 10 points at a time
 const translateCallback = data => {
   if (data.status === 0) {
     const marker = new BMap.Marker(data.points[0]);

@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-10 17:02:58
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-10 19:34:10
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:46:46
  * @FilePath: \BMapSVF-Client\src\widgets\SearchPanel\SearchPanel.vue
- * @Description: 百度地图搜索框
+ * @Description: Baidu map search box
 -->
 <template>
   <div class="w-full">
@@ -43,7 +43,7 @@ const loadSearchPanel = () => {
     location: window.map
   });
   autoComplete.addEventListener("onhighlight", function (e) {
-    //鼠标放在下拉列表上的事件
+    // Mouse over the event on the drop-down list
     var str = "";
     var _value = e.fromitem.value;
     var value = "";
@@ -73,7 +73,7 @@ const loadSearchPanel = () => {
     G("searchResultPanel").innerHTML = str;
   });
   autoComplete.addEventListener("onconfirm", function (event) {
-    // 鼠标点击下拉列表后的事件
+    // Mouse click after the drop-down list of events
     const _value = event.item.value;
     myValue =
       _value.province +
@@ -88,15 +88,15 @@ const loadSearchPanel = () => {
   function setPlace() {
     window.map.clearOverlays();
     const localSearch = new window.BMap.LocalSearch(window.map, {
-      // 智能搜索
+      // intelligent search
       onSearchComplete: addressPanorama
     });
     console.log(localSearch);
     function addressPanorama() {
-      // 获取第一个智能搜索的结果
+      // Get the results of your first intelligent search
       const resultPoi = localSearch.getResults().getPoi(0).point;
       window.map.centerAndZoom(resultPoi, 18);
-      // 添加标注
+      // Add annotation
       window.map.addOverlay(new window.BMap.Marker(resultPoi));
     }
 

@@ -1,10 +1,10 @@
 <!--
- * @Author: xuhy 1727317079@qq.com
+ * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-07 16:49:32
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-04-08 17:21:14
+ * @LastEditors: xuhy xuhaiyangw@163.com
+ * @LastEditTime: 2023-12-15 18:36:33
  * @FilePath: \BMapSVF-Client\src\widgets\DistanceMeasure\DistanceMeasure.vue
- * @Description: 距离测量
+ * @Description: range measurement
 -->
 <template></template>
 <script setup>
