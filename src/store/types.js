@@ -1,8 +1,8 @@
 /*
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-03 10:27:04
- * @LastEditors: xuhy xuhaiyangw@163.com
- * @LastEditTime: 2023-12-14 21:39:37
+ * @LastEditors: Voyagerlemon xuhaiyangw@163.com
+ * @LastEditTime: 2024-03-24 10:44:54
  * @FilePath: \BMapSVF-Client\src\store\types.js
  * @Description: The type name constant of mutation
  */
@@ -52,7 +52,7 @@ export const DEFAULT_LAYERS = "DEFAULT_LAYERS"; // Default layer
 
 export const SET_RESOURCE_MAP = "SET_RESOURCE_MAP"; // Apply the resource mapping table
 
-// 图例
+// legend
 export const SET_LEGEND_INFO = "SET_LEGEND_INFO"; // Set legend
 export const ADD_OPEN_LEGEND = "ADD_OPEN_LEGEND"; // Add legend
 export const DELETE_OPEN_LEGEND = "DELETE_OPEN_LEGEND"; // Delete legend

@@ -1,14 +1,18 @@
 <!--
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-29 20:24:11
- * @LastEditors: xuhy xuhaiyangw@163.com
- * @LastEditTime: 2023-12-15 13:02:04
+ * @LastEditors: Voyagerlemon xuhaiyangw@163.com
+ * @LastEditTime: 2024-03-07 15:37:41
  * @FilePath: \BMapSVF-Client\src\views\ScreenViewer\ScreenViewer.vue
  * @Description: System interface layout
 -->
 <template>
   <div id="mapViewer" class="absolute flex flex-col w-full h-full">
-    <top-header :logoUrl="logoUrl" :appTitle="appTitle"></top-header>
+    <top-header
+      :logoUrl="logoUrl"
+      :appTitle="appTitle"
+      :githubUrl="githubUrl"
+    ></top-header>
     <div class="flex flex-row flex-1 w-full overflow-hidden map-viewer">
       <div class="flex flex-1 relative">
         <div id="mapWrapper" class="relative h-full w-full"></div>
@@ -17,8 +21,7 @@
       <div
         id="mapFull"
         class="absolute top-0 left-0 bottom-0 right-0 pointer-events-none map-full"
-      >
-      </div>
+      ></div>
     </div>
   </div>
 </template>
@@ -32,6 +35,10 @@ import { handleResource } from "@/utils/permission/permission";
 const logoUrl = reactive({
   name: "system icon",
   icon: "/fisheye.png"
+});
+const githubUrl = reactive({
+  name: "BMapSVF github",
+  url: "https://github.com/Voyagerlemon/BMapSVF"
 });
 const appTitle = ref("BMapSVF");
 const store = useStore();

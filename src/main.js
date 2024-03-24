@@ -1,8 +1,8 @@
 /*
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-03-29 16:00:53
- * @LastEditors: xuhy xuhaiyangw@163.com
- * @LastEditTime: 2023-12-15 19:01:25
+ * @LastEditors: Voyagerlemon xuhaiyangw@163.com
+ * @LastEditTime: 2024-03-01 16:43:51
  * @FilePath: \BMapSVF-Client\src\main.js
  * @Description: Configure import files
  */

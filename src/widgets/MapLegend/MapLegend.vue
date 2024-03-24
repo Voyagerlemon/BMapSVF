@@ -1,8 +1,8 @@
 <!--
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-04-28 09:37:29
- * @LastEditors: xuhy xuhaiyangw@163.com
- * @LastEditTime: 2023-12-15 18:40:31
+ * @LastEditors: Voyagerlemon xuhaiyangw@163.com
+ * @LastEditTime: 2024-03-01 15:58:14
  * @FilePath: \BMapSVF-Client\src\widgets\ScreenExport\ScreenExport.vue
  * @Description: map legend
 -->
@@ -32,23 +32,23 @@
       </h3>
       <div class="flex flex-row items-center justify-center w-24">
         <div class="screen-draw1 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.0-0.1</div>
+        <div class="text-lg text-neutral-2 font-medium">0.0–0.1</div>
       </div>
       <div class="flex flex-row items-center justify-center py-1 w-24">
         <div class="screen-draw2 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.1-0.2</div>
+        <div class="text-lg text-neutral-2 font-medium">0.1–0.2</div>
       </div>
       <div class="flex flex-row items-center justify-center py-1 w-24">
         <div class="screen-draw3 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.2-0.3</div>
+        <div class="text-lg text-neutral-2 font-medium">0.2–0.3</div>
       </div>
       <div class="flex flex-row items-center justify-center py-1 w-24">
         <div class="screen-draw4 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.3-0.4</div>
+        <div class="text-lg text-neutral-2 font-medium">0.3–0.4</div>
       </div>
       <div class="flex flex-row items-center justify-center py-1 w-24">
         <div class="screen-draw5 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.4-0.5</div>
+        <div class="text-lg text-neutral-2 font-medium">0.4–0.5</div>
       </div>
       <div class="flex flex-row items-center justify-center py-1 w-24">
         <div class="screen-draw6 w-4 h-4 rounded-full mr-2"></div>
@@ -56,19 +56,19 @@
       </div>
       <div class="flex flex-row items-center justify-center w-24 py-1">
         <div class="screen-draw7 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.6-0.7</div>
+        <div class="text-lg text-neutral-2 font-medium">0.6–0.7</div>
       </div>
       <div class="flex flex-row items-center justify-center w-24 py-1">
         <div class="screen-draw8 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.7-0.8</div>
+        <div class="text-lg text-neutral-2 font-medium">0.7–0.8</div>
       </div>
       <div class="flex flex-row items-center justify-center w-24 py-1">
         <div class="screen-draw9 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.8-0.9</div>
+        <div class="text-lg text-neutral-2 font-medium">0.8–0.9</div>
       </div>
       <div class="flex flex-row items-center justify-center w-24 py-1">
         <div class="screen-draw10 w-4 h-4 rounded-full mr-2"></div>
-        <div class="text-lg text-neutral-2 font-medium">0.9-1.0</div>
+        <div class="text-lg text-neutral-2 font-medium">0.9–1.0</div>
       </div>
     </div>
   </div>

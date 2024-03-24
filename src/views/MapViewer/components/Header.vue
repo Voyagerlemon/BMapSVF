@@ -1,15 +1,13 @@
 <!--
  * @Author: xuhy 1727317079@qq.com
  * @Date: 2023-04-01 22:34:27
- * @LastEditors: xuhy 1727317079@qq.com
- * @LastEditTime: 2023-12-12 21:35:42
+ * @LastEditors: Voyagerlemon xuhaiyangw@163.com
+ * @LastEditTime: 2024-03-07 15:58:11
  * @FilePath: \BMapSVF-Client\src\views\MapViewer\components\Header.vue
  * @Description: Header component
 -->
 <template>
-  <div
-    class="app-header flex justify-between text-default bg-primary"
-  >
+  <div class="app-header flex justify-between text-default bg-primary">
     <div class="app-container flex items-center">
       <img
         v-if="logoUrl"
@@ -22,17 +20,32 @@
         {{ appTitle }}
       </span>
     </div>
+    <div class="flex items-center">
+      <SvgIcon
+        iconName="github"
+        className="w-8 h-8 cursor-pointer"
+        @click="skipGithubUrl"
+      />
+      <SvgIcon iconName="lang-en" className="w-8 h-8 cursor-pointer ml-4 mr-4" />
+    </div>
   </div>
 </template>
 <script setup>
-defineProps({
+const props = defineProps({
   logoUrl: {
     type: Object
   },
   appTitle: {
     type: String
+  },
+  githubUrl: {
+    type: Object
   }
 });
+
+const skipGithubUrl = () => {
+  window.location.href = props.githubUrl.url;
+};
 </script>
 <style lang="scss" scoped>
 .app-header {

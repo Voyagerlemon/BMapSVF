@@ -1,8 +1,8 @@
 <!--
  * @Author: xuhy xuhaiyangw@163.com
  * @Date: 2023-05-07 16:20:17
- * @LastEditors: xuhy xuhaiyangw@163.com
- * @LastEditTime: 2023-12-15 18:49:06
+ * @LastEditors: Voyagerlemon xuhaiyangw@163.com
+ * @LastEditTime: 2024-03-01 17:01:50
  * @FilePath: \BMapSVF-Client\src\widgets\SVFDistribution\SVFDistribution.vue
  * @Description: the spatial distribution of svf
 -->
@@ -258,7 +258,7 @@ const QSVFDistribution = () => {
             fillOpacity: 0.95,
             strokeColor: getColor(panoramaCsvResults[0][i].svf),
             strokeWeight: 1,
-            scale: 4
+            scale: 6
           }),
           title: "SVF=" + String(panoramaCsvResults[0][i].svf.toFixed(2))
         });
@@ -336,7 +336,7 @@ const getLessVerify = () => {
       panoramaResults[0][0].lng,
       panoramaResults[0][0].lat
     );
-    map.centerAndZoom(centerPoint, 18);
+    map.centerAndZoom(centerPoint, 1);
   });
 };
 onMounted(() => {
